@@ -135,7 +135,8 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 
 		</style>
 		
-		<script>			
+		<script>
+		//This function is called at the start of the game and populates the first 3 cards in the pile
 			function playFunction() {
 				var playBtn = document.getElementById("PlayButton");
 				var gameTitleScreen = document.getElementById("GameTitleScreen");
@@ -165,9 +166,11 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 			        %>
 			    }
 			}
-			
-			function pickCard(index) {
-				var pos = index;
+			//This function allows the user to choose a card from the pile and add it to thier deck
+			//It also adds a new card to the pile so players always have three cards
+			function pickCard(card) {
+				
+				//Java Code
 				<%
 					
 				%>
@@ -219,14 +222,21 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 					</header>
 					<p>
 						<img src="images/BirdGameTitle.png" alt="BirdGame" id="GameTitleScreen">
-						<img id="CardLeft" value="Card1" onclick="pickCard()">
-						<img id="CardMiddle" value="Card2" onclick="pickCard()">
-						<img id="CardRight" value="Card3" onclick="pickCard()">
-						<img id="DeckCardLeftMost" value="Card4" src="images/Galah.PNG">
-						<img id="DeckCardLeftMiddle" value="Card5" src="images/Galah.PNG">
-						<img id="DeckCardMiddle" value="Card6" src="images/Galah.PNG">
-						<img id="DeckCardRightMiddle" value="Card7" src="images/Galah.PNG">
-						<img id="DeckCardRightMost" value="Card8" src="images/Galah.PNG">
+						<img id="CardLeft" value="Card1" onclick="pickCard(CardLeft)">
+						<img id="CardMiddle" value="Card2" onclick="pickCard(CardMiddle)">
+						<img id="CardRight" value="Card3" onclick="pickCard(CardRight)">
+						<img id="DeckCardLeftMost" value="Card4">
+						<img id="DeckCardLeftMiddle" value="Card5">
+						<img id="DeckCardMiddle" value="Card6">
+						<img id="DeckCardRightMiddle" value="Card7">
+						<img id="DeckCardRightMost" value="Card8">
+						
+<!-- 						<img id="DeckCardLeftMost" value="Card4" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardLeftMiddle" value="Card5" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardMiddle" value="Card6" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardRightMiddle" value="Card7" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardRightMost" value="Card8" src="images/Galah.PNG"> -->
+						
 						<button type="button" id="PlayButton" onclick="playFunction()">Play!</button>
 						<div id="GameBoard" style="width:1200px; height:700px; border:3px solid black; display:none;"></div>
 						<div id="Deck" style="height:200px; border:3px solid black; display:none;"></div>
