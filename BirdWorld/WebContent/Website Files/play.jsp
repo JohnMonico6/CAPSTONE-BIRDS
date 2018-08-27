@@ -1,3 +1,10 @@
+<%@ 
+page language="java" 
+contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"
+import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
+%>
+
 <!DOCTYPE HTML>
 <!--
 	Ex Machina by TEMPLATED
@@ -40,6 +47,41 @@
 				height: 30px;
 				max-width: 100%;
 			}
+			
+			#CardLeft {
+				position: absolute;
+				width: 230px;
+				height: 320px;
+				left: 22%;
+				top: 11%;
+				max-width: 100%;
+			}
+			
+			#CardMiddle {
+				position: absolute;
+				width: 230px;
+				height: 320px;
+				left: 42%;
+				top: 11%;
+				max-width: 100%;
+			}
+			
+			#CardRight {
+				position: absolute;
+				width: 230px;
+				height: 320px;
+				left: 62%;
+				top: 11%;
+				max-width: 100%;
+			}
+			
+			#Deck {
+				position: absolute;
+				background: lightblue;
+				left: 20%;
+				top: 34.5%;
+				width: 860px;
+			}
 		</style>
 		
 		<script>			
@@ -54,12 +96,30 @@
 			        gameTitleScreen.style.display = "none";
 			        
 			        document.getElementById("GameBoard").style.display = "block";
+			        document.getElementById("Deck").style.display = "block";
 			        
 			        //Java Code
 			        <%
-			        
+			        		Player player1 = new Player("TheLegend27");
+			        		
+			        		String image1 = player1.getDrawHand().getCard(0).getImgSource();
+			        		String image2 = player1.getDrawHand().getCard(1).getImgSource();
+			        		String image3 = player1.getDrawHand().getCard(2).getImgSource();
+			        		
+			        		%>
+					        document.getElementById("CardLeft").src = '<%= image1 %>';
+					        document.getElementById("CardMiddle").src = '<%= image2 %>';
+					        document.getElementById("CardRight").src = '<%= image3 %>';
+			        		<%
 			        %>
 			    }
+			}
+			
+			function pickCard(index) {
+				var pos = index;
+				<%
+					
+				%>
 			}
 		</script>
 	</head>
@@ -108,8 +168,12 @@
 					</header>
 					<p>
 						<img src="images/BirdGameTitle.png" alt="BirdGame" id="GameTitleScreen">
+						<img id="CardLeft" value="Card1" onclick="pickCard()">
+						<img id="CardMiddle" value="Card2" onclick="pickCard()">
+						<img id="CardRight" value="Card3" onclick="pickCard()">
 						<button type="button" id="PlayButton" onclick="playFunction()">Play!</button>
 						<div id="GameBoard" style="width:1200px; height:700px; border:3px solid black; display:none;"></div>
+						<div id="Deck" style="height:200px; border:3px solid black; display:none;"></div>
 					</p>
 				</section>
 			</div>

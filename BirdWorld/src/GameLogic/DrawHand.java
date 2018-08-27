@@ -18,9 +18,9 @@ public class DrawHand {
 		}
 	}
 	
-	public void removeCard(Card card) {
+	public void removeCard(int index) {
 		if(drawHand.size() > 0) {
-			drawHand.remove(card);
+			drawHand.remove(drawHand.get(index));
 		} else {
 			System.out.print("Cannot remove a card from empty deck.");
 		}
