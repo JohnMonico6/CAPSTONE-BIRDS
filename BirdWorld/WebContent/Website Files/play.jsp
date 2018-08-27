@@ -75,6 +75,55 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 				max-width: 100%;
 			}
 			
+			#DeckCardLeftMost {
+				position: absolute;
+				width: 172.5px;
+				height: 240px;
+				left: 18%;
+				top: 32%;
+				max-width: 100%;
+				z-index: +1;
+			}
+			
+			#DeckCardLeftMiddle {
+				position: absolute;
+				width: 172.5px;
+				height: 240px;
+				left: 31%;
+				top: 32%;
+				max-width: 100%;
+				z-index: +1;
+			}
+			
+			#DeckCardMiddle {
+				position: absolute;
+				width: 172.5px;
+				height: 240px;
+				left: 44%;
+				top: 32%;
+				max-width: 100%;
+				z-index: +1;
+			}
+			
+			#DeckCardRightMiddle {
+				position: absolute;
+				width: 172.5px;
+				height: 240px;
+				left: 57%;
+				top: 32%;
+				max-width: 100%;
+				z-index: +1;
+			}
+			
+			#DeckCardRightMost {
+				position: absolute;
+				width: 172.5px;
+				height: 240px;
+				left: 70%;
+				top: 32%;
+				max-width: 100%;
+				z-index: +1;
+			}
 			#Deck {
 				position: absolute;
 				background: lightblue;
@@ -82,6 +131,8 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 				top: 34.5%;
 				width: 860px;
 			}
+			
+
 		</style>
 		
 		<script>			
@@ -171,6 +222,11 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 						<img id="CardLeft" value="Card1" onclick="pickCard()">
 						<img id="CardMiddle" value="Card2" onclick="pickCard()">
 						<img id="CardRight" value="Card3" onclick="pickCard()">
+						<img id="DeckCardLeftMost" value="Card4" src="images/Galah.PNG">
+						<img id="DeckCardLeftMiddle" value="Card5" src="images/Galah.PNG">
+						<img id="DeckCardMiddle" value="Card6" src="images/Galah.PNG">
+						<img id="DeckCardRightMiddle" value="Card7" src="images/Galah.PNG">
+						<img id="DeckCardRightMost" value="Card8" src="images/Galah.PNG">
 						<button type="button" id="PlayButton" onclick="playFunction()">Play!</button>
 						<div id="GameBoard" style="width:1200px; height:700px; border:3px solid black; display:none;"></div>
 						<div id="Deck" style="height:200px; border:3px solid black; display:none;"></div>

@@ -11,7 +11,7 @@ public class Card {
 		this.imgSource = imgSource;
 	}
 	
-	public String getBirdName() {
+	public String getName() {
 		return birdName;
 	}
 	
