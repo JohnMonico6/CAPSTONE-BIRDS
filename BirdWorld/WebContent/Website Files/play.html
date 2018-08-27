@@ -28,18 +28,40 @@
 			#GameTitleScreen {
 				border: 3px solid black;
 				width:1200px;
-				height:600px;
+				height:700px;
 				max-width: 120%;
 			}
 			
 			#PlayButton {
 				position: absolute;
-				left: 600px;
-				top: 400px;
+				left: 45%;
+				top: 25%;
 				width: 100px;
 				height: 30px;
+				max-width: 100%;
 			}
 		</style>
+		
+		<script>			
+			function playFunction() {
+				var playBtn = document.getElementById("PlayButton");
+				var gameTitleScreen = document.getElementById("GameTitleScreen");
+			    if (playBtn.style.display === "none" && gameTitleScreen.style.display == "none") {
+			        playBtn.style.display = "block";
+			        gameTitleScreen.style.display = "block";
+			    } else {
+			        playBtn.style.display = "none";
+			        gameTitleScreen.style.display = "none";
+			        
+			        document.getElementById("GameBoard").style.display = "block";
+			        
+			        //Java Code
+			        <%
+			        
+			        %>
+			    }
+			}
+		</script>
 	</head>
 	<body class="right-sidebar">
 
@@ -78,7 +100,7 @@
 	<!-- Game -->
 	<div id="game" class="container">
 		<div class="row">
-			<div class="9u">
+			<div class="gameScreen">
 				<section>
 					<header>
 						<h2>Bird Challenge!</h2>
@@ -86,9 +108,9 @@
 					</header>
 					<p>
 						<img src="images/BirdGameTitle.png" alt="BirdGame" id="GameTitleScreen">
-						<button type="button" id="PlayButton">Play!</button>
+						<button type="button" id="PlayButton" onclick="playFunction()">Play!</button>
+						<div id="GameBoard" style="width:1200px; height:700px; border:3px solid black; display:none;"></div>
 					</p>
-
 				</section>
 			</div>
 		

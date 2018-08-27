@@ -2,7 +2,7 @@
 page language="java" 
 contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"
-import="GameLogic.Cards"
+import="GameLogic.Card, GameLogic.Pile"
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,8 +14,11 @@ import="GameLogic.Cards"
 <body>
 <%
 	int[] attributes = {1, 2, 3, 4, 5};
-	Cards card = new Cards("Robin", attributes);
-	out.print(card.getBirdName());
+	Card card = new Card("Robin", attributes, " ");
+	Pile pile = new Pile();
+	
+	Card newCard = pile.draw();
+	out.print(newCard.getBirdName());
 %>
 </body>
 </html>

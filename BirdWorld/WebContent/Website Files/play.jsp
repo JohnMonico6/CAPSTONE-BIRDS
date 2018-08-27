@@ -1,3 +1,10 @@
+<%@ 
+page language="java" 
+contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"
+import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
+%>
+
 <!DOCTYPE HTML>
 <!--
 	Ex Machina by TEMPLATED
@@ -6,7 +13,7 @@
 -->
 <html>
 	<head>
-		<title>Bird World | Login or Register</title>
+		<title>Bird World | Play</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -23,6 +30,98 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		
+		<style>
+			#GameTitleScreen {
+				border: 3px solid black;
+				width:1200px;
+				height:700px;
+				max-width: 120%;
+			}
+			
+			#PlayButton {
+				position: absolute;
+				left: 45%;
+				top: 25%;
+				width: 100px;
+				height: 30px;
+				max-width: 100%;
+			}
+			
+			#CardLeft {
+				position: absolute;
+				width: 230px;
+				height: 320px;
+				left: 22%;
+				top: 11%;
+				max-width: 100%;
+			}
+			
+			#CardMiddle {
+				position: absolute;
+				width: 230px;
+				height: 320px;
+				left: 42%;
+				top: 11%;
+				max-width: 100%;
+			}
+			
+			#CardRight {
+				position: absolute;
+				width: 230px;
+				height: 320px;
+				left: 62%;
+				top: 11%;
+				max-width: 100%;
+			}
+			
+			#Deck {
+				position: absolute;
+				background: lightblue;
+				left: 20%;
+				top: 34.5%;
+				width: 860px;
+			}
+		</style>
+		
+		<script>			
+			function playFunction() {
+				var playBtn = document.getElementById("PlayButton");
+				var gameTitleScreen = document.getElementById("GameTitleScreen");
+			    if (playBtn.style.display === "none" && gameTitleScreen.style.display == "none") {
+			        playBtn.style.display = "block";
+			        gameTitleScreen.style.display = "block";
+			    } else {
+			        playBtn.style.display = "none";
+			        gameTitleScreen.style.display = "none";
+			        
+			        document.getElementById("GameBoard").style.display = "block";
+			        document.getElementById("Deck").style.display = "block";
+			        
+			        //Java Code
+			        <%
+			        		Player player1 = new Player("TheLegend27");
+			        		
+			        		String image1 = player1.getDrawHand().getCard(0).getImgSource();
+			        		String image2 = player1.getDrawHand().getCard(1).getImgSource();
+			        		String image3 = player1.getDrawHand().getCard(2).getImgSource();
+			        		
+			        		%>
+					        document.getElementById("CardLeft").src = '<%= image1 %>';
+					        document.getElementById("CardMiddle").src = '<%= image2 %>';
+					        document.getElementById("CardRight").src = '<%= image3 %>';
+			        		<%
+			        %>
+			    }
+			}
+			
+			function pickCard(index) {
+				var pos = index;
+				<%
+					
+				%>
+			}
+		</script>
 	</head>
 	<body class="right-sidebar">
 
@@ -32,19 +131,18 @@
 
 				<!-- Logo -->
 					<div id="logo">
-						<h1><a href="#">Bird World - Login/Register</a></h1>
+						<h1><a href="#">Bird World - Play</a></h1>
 					</div>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html">Homepage</a></li>
-							<li><a href="play.html">Play</a></li>
+							<li class="active"><a href="play.html">Play</a></li>
 							<li><a href="news.html">Read</a></li>
-							<li class="active"><a href="Login_Register.html">Login/Register</a></li>
+							<li><a href="Login_Register.html">Login/Register</a></li>
 						</ul>
 					</nav>
-
 			</div>
 		</div>
 	<!-- Header -->
@@ -59,98 +157,27 @@
 	<!-- Main -->
 		<div id="page">
 
-			<!-- Main -->
-			<div id="main" class="container">
-				<div class="row">
-					<div class="9u">
-						<section id='three'>
-                <h2 class="standard-title">Register your account</h2>
-                <div>
-                    <form action="/directory/url" method="get">
-                        <div class="form-group">
-                            <h3 class="form-legend">Register</h3>
-                        </div>
-                        <div class="form-group">
-                            <!-- The label tag defines a label for the input field -->
-                            <label>Username</label>
-                            <span class="input-validator" id='usernameValidation'>Username is too short</span>
-                            <!-- Type specifies the element to display. -->
-                            <!-- Name specifies the name of the input. -->
-                            <!-- Maxlength specifies the maximum string length of the input. -->
-                            <!-- Required specifies that the user must input a value -->
-                            <input type="text" id='username' class='form-control' name='username' maxlength="25" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <span class="input-validator" id='emailValidation'>Email address does not contain an '@' or '.' symbol</span>
-                            <!-- User input must contain a @ symbol. Not secure enough for validation. -->
-                            <!-- Only way to ensure secure validation for email is to send an email to that address
-                                 and request the sender to verify their email account -->
-                            <input type="email" id='email' class='form-control' name='email' maxlength="100" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <!-- Type of password will hide the user input -->
-                            <input type="password" id='password' class='form-control' name='password' maxlength="100" required />
-                        </div>
-                        <div class="form-group">
-                            <label>Gender</label>
-                            <!-- Radio buttons can share the same name. This means only one button can be checked at any time. -->
-                            <!-- Checked attribute automatically checks the button by default -->
-                            <input type="radio" name='gender' checked /> Male
-                            <input type="radio" name='gender' /> Female
-                        </div>
-                        <div class="form-group">
-                            <label>Bio</label>
-                            <!-- Textarea fields are primarily used for long text inputs -->
-                            <textarea rows="4" cols='50' class='form-control' maxlength="1000"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" name='remember' checked /> Remember my login details
-                        </div>
-                        <div class="form-group">
-                            <button id='submitBtn' class='btn btn-info' onclick="checkName(this);">Submit</button>
-                            <button id='cancelBtn' class='btn btn-default'>Cancel</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-					</div>
-
-					<div class="3u">
-						<section class="sidebar">
-							<header>
-								<h2>Feugiat Tempus</h2>
-							</header>
-							<ul class="style1">
-								<li><a href="#">Maecenas luctus lectus at sapien</a></li>
-								<li><a href="#">Etiam rhoncus volutpat erat</a></li>
-								<li><a href="#">Donec dictum metus in sapien</a></li>
-								<li><a href="#">Nulla luctus eleifend purus</a></li>
-								<li><a href="#">Maecenas luctus lectus at sapien</a></li>
-							</ul>
-						</section>
-						<section class="sidebar">
-							<header>
-								<h2>Nulla luctus eleifend</h2>
-							</header>
-							<ul class="style1">
-								<li><a href="#">Maecenas luctus lectus at sapien</a></li>
-								<li><a href="#">Donec dictum metus in sapien</a></li>
-								<li><a href="#">Integer gravida nibh quis urna</a></li>
-								<li><a href="#">Etiam posuere augue sit amet nisl</a></li>
-								<li><a href="#">Mauris vulputate dolor sit amet nibh</a></li>
-							</ul>
-						</section>
-					</div>
-
-				</div>
+	<!-- Game -->
+	<div id="game" class="container">
+		<div class="row">
+			<div class="gameScreen">
+				<section>
+					<header>
+						<h2>Bird Challenge!</h2>
+						<span class="byline">Learn bird calls and facts about Birds in this game! (Playable in web browser)</span>
+					</header>
+					<p>
+						<img src="images/BirdGameTitle.png" alt="BirdGame" id="GameTitleScreen">
+						<img id="CardLeft" value="Card1" onclick="pickCard()">
+						<img id="CardMiddle" value="Card2" onclick="pickCard()">
+						<img id="CardRight" value="Card3" onclick="pickCard()">
+						<button type="button" id="PlayButton" onclick="playFunction()">Play!</button>
+						<div id="GameBoard" style="width:1200px; height:700px; border:3px solid black; display:none;"></div>
+						<div id="Deck" style="height:200px; border:3px solid black; display:none;"></div>
+					</p>
+				</section>
 			</div>
-			<!-- Main -->
-
-		</div>
-	<!-- /Main -->
-
+		
 	<!-- Featured -->
 		<div id="featured">
 			<div class="container">
