@@ -12,7 +12,6 @@ public class DrawHand {
 	public void addCard(Pile pile) {
 		if(drawHand.size() < 3) {
 			drawHand.add(pile.draw());
-			System.out.print(drawHand.size());
 		} else {
 			System.out.print("Deck cannot have more than 3 cards.");
 		}

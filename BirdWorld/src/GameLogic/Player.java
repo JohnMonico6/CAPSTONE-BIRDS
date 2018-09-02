@@ -1,24 +1,19 @@
 package GameLogic;
 
+import java.util.ArrayList;
+
 public class Player {
 	private String name;
 	private Deck deck;
-	private Pile pile;
-	private DrawHand drawHand;
 	private int score;
-	private int maxDrawHandSize = 3;
+	private boolean winner;
 	
 	public Player(String name) {
 		this.name = name;
+		score = 0;
+		winner = false;
 		
 		deck = new Deck();
-		pile = new Pile();
-		drawHand = new DrawHand();
-		
-		drawHand.addCard(pile);
-		drawHand.addCard(pile);
-		drawHand.addCard(pile);
-		
 	}
 	
 	public void increaseScore() {
@@ -29,11 +24,23 @@ public class Player {
 		return deck;
 	}
 	
-	public DrawHand getDrawHand() {
-		return drawHand;
-	}
-	
 	public int getScore() {
 		return score;
+	}
+	
+	public void addCardToDeck(Card card) {
+		deck.addCard(card);
+	}
+	
+	public void removeCardFromDeck(Card card) {
+		if (deck.isEmpty() == false) {
+			deck.removeCard(card);
+		} else {
+			System.out.print("Cannot remove card from empty deck.");
+		}
+	}
+	
+	public void isWinner() {
+		winner = true;
 	}
 }

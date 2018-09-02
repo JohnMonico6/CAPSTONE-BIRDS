@@ -10,11 +10,19 @@ public class Deck {
 		deck = new ArrayList<Card>();
 	}
 	
+	public boolean isEmpty() {
+		if (deck.size() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public void addCard(Card card) {
 		deck.add(card);
 	}
 	
-	public void deleteCard(Card card) {
+	public void removeCard(Card card) {
 		deck.remove(card);
 	}
 }

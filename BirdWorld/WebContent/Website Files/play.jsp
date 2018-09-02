@@ -2,7 +2,7 @@
 page language="java" 
 contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"
-import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
+import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand, GameLogic.SinglePlayerRound"
 %>
 
 <!DOCTYPE HTML>
@@ -32,107 +32,6 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		
 		<style>
-			#GameTitleScreen {
-				border: 3px solid black;
-				width:1200px;
-				height:700px;
-				max-width: 120%;
-			}
-			
-			#PlayButton {
-				position: absolute;
-				left: 45%;
-				top: 25%;
-				width: 100px;
-				height: 30px;
-				max-width: 100%;
-			}
-			
-			#CardLeft {
-				position: absolute;
-				width: 230px;
-				height: 320px;
-				left: 22%;
-				top: 11%;
-				max-width: 100%;
-			}
-			
-			#CardMiddle {
-				position: absolute;
-				width: 230px;
-				height: 320px;
-				left: 42%;
-				top: 11%;
-				max-width: 100%;
-			}
-			
-			#CardRight {
-				position: absolute;
-				width: 230px;
-				height: 320px;
-				left: 62%;
-				top: 11%;
-				max-width: 100%;
-			}
-			
-			#DeckCardLeftMost {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 18%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-			
-			#DeckCardLeftMiddle {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 31%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-			
-			#DeckCardMiddle {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 44%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-			
-			#DeckCardRightMiddle {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 57%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-			
-			#DeckCardRightMost {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 70%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-			#Deck {
-				position: absolute;
-				background: lightblue;
-				left: 20%;
-				top: 34.5%;
-				width: 860px;
-			}
-			
-
 		</style>
 		
 		<script>
@@ -140,6 +39,7 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 			function playFunction() {
 				var playBtn = document.getElementById("PlayButton");
 				var gameTitleScreen = document.getElementById("GameTitleScreen");
+				
 			    if (playBtn.style.display === "none" && gameTitleScreen.style.display == "none") {
 			        playBtn.style.display = "block";
 			        gameTitleScreen.style.display = "block";
@@ -152,11 +52,12 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 			        
 			        //Java Code
 			        <%
-			        		Player player1 = new Player("TheLegend27");
+			        		Player player = new Player("TheLegend27");
+			        		SinglePlayerRound round = new SinglePlayerRound(player);
 			        		
-			        		String image1 = player1.getDrawHand().getCard(0).getImgSource();
-			        		String image2 = player1.getDrawHand().getCard(1).getImgSource();
-			        		String image3 = player1.getDrawHand().getCard(2).getImgSource();
+			        		String image1 = round.getDrawHand().getCard(0).getImgSource();
+			        		String image2 = round.getDrawHand().getCard(1).getImgSource();
+			        		String image3 = round.getDrawHand().getCard(2).getImgSource();
 			        		
 			        		%>
 					        document.getElementById("CardLeft").src = '<%= image1 %>';
@@ -168,17 +69,27 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 			}
 			//This function allows the user to choose a card from the pile and add it to thier deck
 			//It also adds a new card to the pile so players always have three cards
-			function pickCard(card) {
+			function pickCard(index) {
 				
-				//Java Code
-				<%
-					
-				%>
+				if (index == 0) {
+					//Java Code
+
+				} else if (index == 1) {
+					//Java Code
+					<%
+						System.out.print("1");
+					%>	
+				} else if (index == 2) {
+					//Java Code
+					<%
+						System.out.print("2");
+					%>	
+				}
 			}
 		</script>
 	</head>
 	<body class="right-sidebar">
-
+	
 	<!-- Header -->
 		<div id="header">
 			<div class="container">
@@ -222,9 +133,9 @@ import="GameLogic.Card, GameLogic.Pile, GameLogic.Player, GameLogic.DrawHand"
 					</header>
 					<p>
 						<img src="images/BirdGameTitle.png" alt="BirdGame" id="GameTitleScreen">
-						<img id="CardLeft" value="Card1" onclick="pickCard(CardLeft)">
-						<img id="CardMiddle" value="Card2" onclick="pickCard(CardMiddle)">
-						<img id="CardRight" value="Card3" onclick="pickCard(CardRight)">
+						<img id="CardLeft" value="Card1" onclick="pickCard('0')">
+						<img id="CardMiddle" value="Card2" onclick="pickCard('1')">
+						<img id="CardRight" value="Card3" onclick="pickCard('2')">
 						<img id="DeckCardLeftMost" value="Card4">
 						<img id="DeckCardLeftMiddle" value="Card5">
 						<img id="DeckCardMiddle" value="Card6">
