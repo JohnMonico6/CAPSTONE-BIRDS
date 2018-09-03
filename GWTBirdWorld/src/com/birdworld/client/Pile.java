@@ -31,7 +31,7 @@ public class Pile {
 		Card channelBilledCuckoo = new Card("Channel-Billed Cuckoo", birdAtr, "images/Channel-Billed Cuckoo.PNG");
 		Card commonKoel = new Card("Common Koel", birdAtr, "images/Common Koel.PNG");
 		Card commonMyna = new Card("Common Myna", birdAtr, "images/Common Myna.PNG");
-		Card crestedPidgeon = new Card("Crested Pidgeon", birdAtr, "images/Crested Pidgeon.PNG");
+		Card crestedPidgeon = new Card("Crested Pidgeon", birdAtr, "images/Crested Pigeon.PNG");
 		Card crimsonRosella = new Card("Crimson Rosella", birdAtr, "images/Crimson Rosella.PNG");
 		Card easternWhipbird = new Card("Eastern Whipbird", birdAtr, "images/Eastern Whipbird.PNG");
 		Card galah = new Card ("Galah", birdAtr, "images/Galah.PNG");

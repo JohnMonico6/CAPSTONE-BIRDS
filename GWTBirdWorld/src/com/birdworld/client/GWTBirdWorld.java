@@ -42,16 +42,16 @@ public class GWTBirdWorld implements EntryPoint {
 	   cardRight.setHeight("320px");
 	   
 	   //Format deck cards
-	   deckCard1.setWidth("230px");
-	   deckCard1.setHeight("320px");
-	   deckCard2.setWidth("230px");
-	   deckCard2.setHeight("320px");
-	   deckCard3.setWidth("230px");
-	   deckCard3.setHeight("320px");
-	   deckCard4.setWidth("230px");
-	   deckCard4.setHeight("320px");
-	   deckCard5.setWidth("230px");
-	   deckCard5.setHeight("320px");
+	   deckCard1.setWidth("172.5px");
+	   deckCard1.setHeight("240px");
+	   deckCard2.setWidth("172.5px");
+	   deckCard2.setHeight("240px");
+	   deckCard3.setWidth("172.5px");
+	   deckCard3.setHeight("240px");
+	   deckCard4.setWidth("172.5px");
+	   deckCard4.setHeight("240px");
+	   deckCard5.setWidth("172.5px");
+	   deckCard5.setHeight("240px");
 	   
 	   playBtn.addStyleName("PlayButton");
 	   playBtn.setWidth("100px");
@@ -79,40 +79,13 @@ public class GWTBirdWorld implements EntryPoint {
 		   }
 	   });
 	   
-	   //add a clickListener to CardLeft
-	   cardLeft.addClickHandler(new ClickHandler() {
-		   @Override
-		   public void onClick(ClickEvent event) {
-			   round.playerSelectedCard(0);
-			   
-			   Window.alert(player1.getDeck().getCard(0).getName());
-			   updateScreen();
-		   }
-	   });
-	   
-	   //add a clickListener to CardMiddle
-	   cardMiddle.addClickHandler(new ClickHandler() {
-		   @Override
-		   public void onClick(ClickEvent event) {
-			   Card selectedCard = round.getDrawHand().getCard(1);
-			   round.getDrawHand().removeCard(1);
-			   
-			   round.getPlayer().getDeck().addCard(selectedCard);  
-			   updateScreen();
-		   }
-	   });
-	   
-	   //add a clickListener to CardRight
-	   cardRight.addClickHandler(new ClickHandler() {
-		   @Override
-		   public void onClick(ClickEvent event) {
-			   Card selectedCard = round.getDrawHand().getCard(2);
-			   round.getDrawHand().removeCard(2);
-			   
-			   round.getPlayer().getDeck().addCard(selectedCard); 
-			   updateScreen();
-		   }
-	   });
+	   if (player1.getDeck().isFull() == false) {
+		   drawCardClicked(cardLeft, 0);
+		   
+		   drawCardClicked(cardMiddle, 1);
+		   
+		   drawCardClicked(cardRight, 2);
+	   }
 	   
 	   //Create Panels for objects
 	   VerticalPanel playBtnPanel = new VerticalPanel();
@@ -151,9 +124,29 @@ public class GWTBirdWorld implements EntryPoint {
 	   cardLeft.setUrl(round.getDrawHand().getCard(0).getImgSource());
 	   cardMiddle.setUrl(round.getDrawHand().getCard(1).getImgSource());
 	   cardRight.setUrl(round.getDrawHand().getCard(2).getImgSource());
+	   
+	   deckCard1.setUrl(player1.getDeck().getCard(0).getImgSource());
+	   deckCard2.setUrl(player1.getDeck().getCard(1).getImgSource());
+	   deckCard3.setUrl(player1.getDeck().getCard(2).getImgSource());
+	   deckCard4.setUrl(player1.getDeck().getCard(3).getImgSource());
+	   deckCard5.setUrl(player1.getDeck().getCard(4).getImgSource());
+	   
+	   if(player1.getDeck().isFull() == true) {
+		   Document.get().getElementById("CardLeft").getStyle().setDisplay(Display.NONE);
+		   Document.get().getElementById("CardMiddle").getStyle().setDisplay(Display.NONE);
+		   Document.get().getElementById("CardRight").getStyle().setDisplay(Display.NONE);
+	   }
    }
    
-   public void drawCardClicked() {
-	   
+   public void drawCardClicked(Image card, final int index) {
+	   //add a clickListener to CardRight
+	   card.addClickHandler(new ClickHandler() {
+		   @Override
+		   public void onClick(ClickEvent event) {
+			   round.playerSelectedCard(index);
+			   
+			   updateScreen();
+		   }
+	   });
    }
 }

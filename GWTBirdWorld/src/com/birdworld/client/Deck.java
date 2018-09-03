@@ -29,7 +29,11 @@ public class Deck {
 		return deck.get(index);
 	}
 	
-	public Card getLastCard() {
-		return deck.get(deck.size() - 1);
+	public boolean isFull() {
+		if (deck.size() >= 5) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
