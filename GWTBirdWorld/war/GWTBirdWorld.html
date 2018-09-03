@@ -10,8 +10,8 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel = "stylesheet" href = "GWTButton.css"/>
-        <script language = "javascript" src = "gwtbutton/gwtbutton.nocache.js">
+		<link rel = "stylesheet" href = "GWTBirdWorld.css"/>
+        <script language = "javascript" src = "gwtbirdworld/gwtbirdworld.nocache.js">
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -28,109 +28,19 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		
 		<style>
-			#GameTitleScreen {
-				border: 3px solid black;
-				width:1200px;
-				height:700px;
-				max-width: 120%;
-			}
-						
-			#PlayButton {
-				position: absolute;
-				left: 45%;
-				top: 25%;
-				width: 100px;
-				height: 30px;
-				max-width: 100%;
-			}
-						
-			#CardLeft {
-				position: absolute;
-				width: 230px;
-				height: 320px;
-				left: 22%;
-				top: 11%;
-				max-width: 100%;
-			}
-						
-			#CardMiddle {
-				position: absolute;
-				width: 230px;
-				height: 320px;
-				left: 42%;
-				top: 11%;
-				max-width: 100%;
-			}
-						
-			#CardRight {
-				position: absolute;
-				width: 230px;
-				height: 320px;
-				left: 62%;
-				top: 11%;
-				max-width: 100%;
-			}
-						
-			#DeckCardLeftMost {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 18%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-						
-			#DeckCardLeftMiddle {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 31%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-						
-			#DeckCardMiddle {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 44%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-						
-			#DeckCardRightMiddle {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 57%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-						
-			#DeckCardRightMost {
-				position: absolute;
-				width: 172.5px;
-				height: 240px;
-				left: 70%;
-				top: 32%;
-				max-width: 100%;
-				z-index: +1;
-			}
-			
-			#Deck {
-				position: absolute;
-				background: lightblue;
-				left: 20%;
-				top: 34.5%;
-				width: 860px;
-			}
 		</style>
 
 	<body class="right-sidebar">
+	
+	<div id = "PlayButton"></div>
+	<div id = "CardLeft"></div>
+	<div id = "CardMiddle"></div>
+	<div id = "CardRight"></div>
+	<div id = "DeckCard1"></div>
+	<div id = "DeckCard2"></div>
+	<div id = "DeckCard3"></div>
+	<div id = "DeckCard4"></div>
+	<div id = "DeckCard5"></div>
 	
 	<!-- Header -->
 		<div id="header">
@@ -175,9 +85,9 @@
 					</header>
 					<p>
 						<img src="images/BirdGameTitle.png" alt="BirdGame" id="GameTitleScreen">
-						<img id="CardLeft" value="Card1" onclick="pickCard('0')">
-						<img id="CardMiddle" value="Card2" onclick="pickCard('1')">
-						<img id="CardRight" value="Card3" onclick="pickCard('2')">
+						<!--<img id="CardLeft" value="Card1">-->
+						<!--<img id="CardMiddle" value="Card2">-->
+						<!--<img id="CardRight" value="Card3">-->
 						<img id="DeckCardLeftMost" value="Card4">
 						<img id="DeckCardLeftMiddle" value="Card5">
 						<img id="DeckCardMiddle" value="Card6">
@@ -190,8 +100,7 @@
 <!-- 						<img id="DeckCardRightMiddle" value="Card7" src="images/Galah.PNG"> -->
 <!-- 						<img id="DeckCardRightMost" value="Card8" src="images/Galah.PNG"> -->
 						
-						<button type="button" id="PlayButton" onclick="playFunction()">Play!</button>
-						<div id="GameBoard" style="width:1200px; height:700px; border:3px solid black; display:none;"></div>
+						<div id="GameBoard" style="width:1200px; height:730px; border:3px solid black; display:none;"></div>
 						<div id="Deck" style="height:200px; border:3px solid black; display:none;"></div>
 					</p>
 				</section>

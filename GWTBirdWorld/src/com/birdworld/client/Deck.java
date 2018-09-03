@@ -24,4 +24,12 @@ public class Deck {
 	public void removeCard(Card card) {
 		deck.remove(card);
 	}
+	
+	public Card getCard(int index) {
+		return deck.get(index);
+	}
+	
+	public Card getLastCard() {
+		return deck.get(deck.size() - 1);
+	}
 }

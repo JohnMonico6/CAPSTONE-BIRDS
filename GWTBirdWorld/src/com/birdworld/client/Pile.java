@@ -2,6 +2,7 @@ package com.birdworld.client;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class Pile {
 	ArrayList<Card> pile;
@@ -39,7 +40,7 @@ public class Pile {
 		Card hoodedPlover = new Card("Hooded Plover", birdAtr, "images/Hooded Plover.PNG");
 		Card kookaburra = new Card("Kookaburra", birdAtr, "images/Kookaburra.PNG");
 		Card magpieLark = new Card("Magpie Lark", birdAtr, "images/Magpie Lark.PNG");
-		Card noisyMiner = new Card("Noisy Miner", birdAtr, "images/Noisy Minder.PNG");
+		Card noisyMiner = new Card("Noisy Miner", birdAtr, "images/Noisy Miner.PNG");
 		Card rainbowBeeEater = new Card("Rainbow Bee-Eater", birdAtr, "images/Rainbow Bee-Eater.PNG");
 		Card rainbowLorikeet = new Card("Rainbow Lorikeet", birdAtr, "images/Rainbow Lorikeet.PNG");
 		Card satinBowerBird = new Card("Satin Bowerbird", birdAtr, "images/Satin Bowerbird.PNG");
@@ -89,15 +90,14 @@ public class Pile {
 		
 	}
 	
-	public void shuffle() {
-		Collections.shuffle(pile);
-	}
-	
 	public Card draw() {
 		Card drawnCard;
 		
-		Collections.shuffle(pile);
-		drawnCard = pile.get(0);
+		Random random = new Random();  
+		
+		int n = random.nextInt(pile.size()) + 0;
+
+		drawnCard = pile.get(n);
 		pile.remove(drawnCard);
 		
 		return drawnCard;

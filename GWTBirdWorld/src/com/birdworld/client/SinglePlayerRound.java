@@ -22,7 +22,7 @@ public class SinglePlayerRound {
 		return drawHand;
 	}
 	
-	public void PlayerSelectedCard(int index) {
+	public void playerSelectedCard(int index) {
 		player.addCardToDeck(drawHand.getCard(index));
 		
 		drawHand.removeCard(index);
@@ -40,5 +40,9 @@ public class SinglePlayerRound {
 				player.isWinner();
 			}
 		}
+	}
+	
+	public Player getPlayer() {
+		return player;
 	}
 }
