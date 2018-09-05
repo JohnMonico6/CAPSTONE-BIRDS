@@ -100,6 +100,61 @@
 	z-index: +1;
 }
 
+#OpponentCard1 {
+	position: absolute;
+	width: 172.5px;
+	height: 240px;
+	left: 20.1%;
+	top: 56.8%;
+	max-width: 100%;
+	z-index: +1;
+	display: none;
+}
+			
+#OpponentCard2 {
+	position: absolute;
+	width: 172.5px;
+	height: 240px;
+	left: 32%;
+	top: 56.8%;
+	max-width: 100%;
+	z-index: +1;
+	display: none;
+}
+			
+#OpponentCard3 {
+	position: absolute;
+	width: 172.5px;
+	height: 240px;
+	left: 44%;
+	top: 56.8%;
+	max-width: 100%;
+	z-index: +1;
+	display: none;
+}
+			
+#OpponentCard4 {
+	position: absolute;
+	width: 172.5px;
+	height: 240px;
+	left: 55.9%;
+	top: 56.8%;
+	max-width: 100%;
+	z-index: +1;
+	display: none;
+}
+			
+#OpponentCard5 {
+	position: absolute;
+	width: 172.5px;
+	height: 240px;
+	left: 67.8%;
+	top: 56.8%;
+	max-width: 100%;
+	z-index: +1;
+	display: none;
+}
+
 #Deck {
 	position: absolute;
 	background: lightblue;

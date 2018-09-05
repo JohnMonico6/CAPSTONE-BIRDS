@@ -1,10 +1,13 @@
 package com.birdworld.client;
 
+import java.util.Random;
+
 public class SinglePlayerRound {
 	private Pile pile;
 	private DrawHand drawHand;
 	private Player player;
 	private Player computer;
+	private final int MAX_DECK_SIZE = 5;
 	
 	public SinglePlayerRound(Player player) {
 		pile = new Pile();
@@ -27,9 +30,10 @@ public class SinglePlayerRound {
 		
 		drawHand.removeCard(index);
 		drawHand.addCard(pile);
+		drawHand.switchNewCard(index);
 	}
 	
-	public void checkForVictor() {
+	public void checkForVictory() {
 		boolean playerDeckEmpty = player.getDeck().isEmpty();
 		boolean computerDeckEmpty = computer.getDeck().isEmpty();
 		
@@ -44,5 +48,21 @@ public class SinglePlayerRound {
 	
 	public Player getPlayer() {
 		return player;
+	}
+	
+	public Player getOpponent() {
+		return computer;
+	}
+	
+	public void buildComputerDeck() {
+		while (computer.getDeck().isFull() == false) {
+			Random random = new Random();  
+			
+			int n = random.nextInt(drawHand.getSize() - 1) + 0;
+			
+			computer.addCardToDeck(drawHand.getCard(n));
+			drawHand.removeCard(n);
+			drawHand.addCard(pile);
+		}
 	}
 }

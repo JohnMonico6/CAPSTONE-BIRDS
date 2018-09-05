@@ -5,9 +5,11 @@ import com.birdworld.client.Pile;
 public class Computer {
 	private int score;
 	private Deck deck;
+	private boolean winner;
 	
 	public Computer() {
 		score = 0;
+		winner = false;
 		
 		this.deck = new Deck();
 	}
@@ -32,5 +34,21 @@ public class Computer {
 	
 	public void removeCard(Card card) {
 		deck.removeCard(card);
+	}
+	
+	public void addCardToDeck(Card card) {
+		deck.addCard(card);
+	}
+	
+	public void removeCardFromDeck(Card card) {
+		if (deck.isEmpty() == false) {
+			deck.removeCard(card);
+		} else {
+			System.out.print("Cannot remove card from empty deck.");
+		}
+	}
+	
+	public void isWinner() {
+		winner = true;
 	}
 }

@@ -1,11 +1,13 @@
 package com.birdworld.client;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.birdworld.client.Pile;
 
 public class DrawHand {
 	ArrayList<Card> drawHand;
+	final int NEW_CARD_INDEX = 2;
 	
 	public DrawHand() {
 		drawHand = new ArrayList<Card>();
@@ -31,14 +33,17 @@ public class DrawHand {
 		return drawHand.get(index);
 	}
 	
-	public String[] displayCards(){
-		String[] images = new String[3];
-		int index = 0;
-		
-		for (Card card : drawHand) {
-			images[index] = card.getImgSource();
+	public void switchNewCard(int index) {
+		if (index == 0) {
+			Collections.swap(drawHand, index, NEW_CARD_INDEX);
+			Collections.swap(drawHand, index + 1, index + 2);
+		} else {
+			Collections.swap(drawHand, index, NEW_CARD_INDEX);
 		}
 		
-		return images;
+	}
+	
+	public int getSize() {
+		return drawHand.size();
 	}
 }
