@@ -40,36 +40,36 @@ public class GWTBirdWorld implements EntryPoint {
 	public void onModuleLoad() {
 	   
 		//Format draw cards
-		cardLeft.setWidth("230px");
-		cardLeft.setHeight("320px");
-		cardMiddle.setWidth("230px");
-		cardMiddle.setHeight("320px");
-		cardRight.setWidth("230px");
-		cardRight.setHeight("320px");
+		cardLeft.setWidth("200px");
+		cardLeft.setHeight("auto");
+		cardMiddle.setWidth("200px");
+		cardMiddle.setHeight("auto");
+		cardRight.setWidth("200px");
+		cardRight.setHeight("auto");
 	   
 		//Format deck cards
-		deckCard1.setWidth("172.5px");
-		deckCard1.setHeight("240px");
-		deckCard2.setWidth("172.5px");
-		deckCard2.setHeight("240px");
-		deckCard3.setWidth("172.5px");
-		deckCard3.setHeight("240px");
-		deckCard4.setWidth("172.5px");
-		deckCard4.setHeight("240px");
-		deckCard5.setWidth("172.5px");
-	   	deckCard5.setHeight("240px");
+		deckCard1.setWidth("120px");
+		deckCard1.setHeight("180px");
+		deckCard2.setWidth("120px");
+		deckCard2.setHeight("180px");
+		deckCard3.setWidth("120px");
+		deckCard3.setHeight("180px");
+		deckCard4.setWidth("120px");
+		deckCard4.setHeight("180px");
+		deckCard5.setWidth("120px");
+	   	deckCard5.setHeight("180px");
 	   
 	   	//Format opponent cards
-	   	opponentCard1.setWidth("172.5px");
-	   	opponentCard1.setHeight("240px");
-	   	opponentCard2.setWidth("172.5px");
-	   	opponentCard2.setHeight("240px");
-	   	opponentCard3.setWidth("172.5px");
-	   	opponentCard3.setHeight("240px");
-	   	opponentCard4.setWidth("172.5px");
-	   	opponentCard4.setHeight("240px");
-	   	opponentCard5.setWidth("172.5px");
-	   	opponentCard5.setHeight("240px");
+	   	opponentCard1.setWidth("120px");
+	   	opponentCard1.setHeight("180px");
+	   	opponentCard2.setWidth("120px");
+	   	opponentCard2.setHeight("180px");
+	   	opponentCard3.setWidth("120px");
+	   	opponentCard3.setHeight("180px");
+	   	opponentCard4.setWidth("120px");
+	   	opponentCard4.setHeight("180px");
+	   	opponentCard5.setWidth("120px");
+	   	opponentCard5.setHeight("180px");
 	   
 	   	playBtn.addStyleName("PlayButton");
 	   	playBtn.setWidth("100px");
@@ -84,8 +84,6 @@ public class GWTBirdWorld implements EntryPoint {
 	   			Document.get().getElementById("GameTitleScreen").getStyle().setDisplay(Display.NONE);
 			   
 	   			Document.get().getElementById("GameBoard").getStyle().setDisplay(Display.BLOCK);
-			   
-	   			Document.get().getElementById("Deck").getStyle().setDisplay(Display.BLOCK);
 	        	 	
 	   			Document.get().getElementById("PlayButton").getStyle().setDisplay(Display.NONE);
 			   

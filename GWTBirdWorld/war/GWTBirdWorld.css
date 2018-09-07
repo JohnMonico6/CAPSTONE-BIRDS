@@ -24,6 +24,11 @@
 	max-width: 100%;
 	z-index: +1;
 	display: none;
+	transition: transform .2s;
+}
+
+#CardLeft:hover {
+    transform: scale(1.1);
 }
 			
 #CardMiddle {
@@ -36,6 +41,11 @@
 	max-width: 100%;
 	z-index: +1;
 	display: none;
+	transition: transform .2s;
+}
+
+#CardMiddle:hover {
+    transform: scale(1.1);
 }
 			
 #CardRight {
@@ -48,86 +58,137 @@
 	max-width: 100%;
 	z-index: +1;
 	display: none;
+	transition: transform .2s;
+}
+
+#CardRight:hover {
+    transform: scale(1.1);
 }
 			
 #DeckCard1 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 19.9%;
-	top: 121.5%;
+	width: 120px;
+	height: 180px;
+	left: 32%;
+	top: 126%;
 	max-width: 100%;
 	z-index: +1;
+	transform: rotate(-10deg);
+	transition: transform .2s;
+}
+
+#DeckCard1:hover {
+	top: 110%;
+	height: 200px;
+    transform: scale(2);
+    z-index: +2;
 }
 			
 #DeckCard2 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 31.9%;
-	top: 121.5%;
+	width: 120px;
+	height: 180px;
+	left: 39%;
+	top: 124%;
 	max-width: 100%;
 	z-index: +1;
+	transform: rotate(-5deg);
+	transition: transform .2s;
+}
+
+#DeckCard2:hover {
+	top: 110%;
+	height: 200px;
+    transform: scale(2);
+    z-index: +2;
 }
 			
 #DeckCard3 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 43.9%;
-	top: 121.5%;
+	width: 120px;
+	height: 180px;
+	left: 46%;
+	top: 123.5%;
 	max-width: 100%;
 	z-index: +1;
+	transition: transform .2s;
+}
+
+#DeckCard3:hover {
+	top: 110%;
+	height: 200px;
+    transform: scale(2);
+    z-index: +2;
 }
 			
 #DeckCard4 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 55.9%;
-	top: 121.5%;
+	width: 120px;
+	height: 180px;
+	left: 53.5%;
+	top: 124%;
 	max-width: 100%;
 	z-index: +1;
+	transform: rotate(5deg);
+	transition: transform .2s;
+}
+
+#DeckCard4:hover {
+	top: 110%;
+	height: 200px;
+    transform: scale(2);
+    z-index: +2;
 }
 			
 #DeckCard5 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 67.9%;
-	top: 121.5%;
+	width: 120px;
+	height: 180px;
+	left: 60.5%;
+	top: 126%;
 	max-width: 100%;
 	z-index: +1;
+	transform: rotate(10deg);
+	transition: transform .2s;
+}
+
+#DeckCard5:hover {
+	top: 110%;
+	height: 200px;
+    transform: scale(2);
+    z-index: +2;
 }
 
 #OpponentCard1 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 20.1%;
-	top: 56.8%;
+	width: 120px;
+	height: 180px;
+	left: 32%;
+	top: 60.2%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
+	transform: rotate(10deg);
 }
 			
 #OpponentCard2 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 32%;
-	top: 56.8%;
+	width: 120px;
+	height: 180px;
+	left: 39%;
+	top: 62.2%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
+	transform: rotate(5deg);
 }
 			
 #OpponentCard3 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 44%;
-	top: 56.8%;
+	width: 120px;
+	height: 180px;
+	left: 46%;
+	top: 62.7%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -135,32 +196,26 @@
 			
 #OpponentCard4 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 55.9%;
-	top: 56.8%;
+	width: 120px;
+	height: 180px;
+	left: 53.5%;
+	top: 62.2%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
+	transform: rotate(-5deg);
 }
 			
 #OpponentCard5 {
 	position: absolute;
-	width: 172.5px;
-	height: 240px;
-	left: 67.8%;
-	top: 56.8%;
+	width: 120px;
+	height: 180px;
+	left: 60.5%;
+	top: 60.2%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
-}
-
-#Deck {
-	position: absolute;
-	background: lightblue;
-	left: 20%;
-	top: 32.45%;
-	width: 860px;
+	transform: rotate(-10deg);
 }
 
 #PlayButton {
