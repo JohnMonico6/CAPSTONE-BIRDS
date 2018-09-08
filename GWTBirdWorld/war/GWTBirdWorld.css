@@ -1,17 +1,21 @@
 #GameTitleScreen {
+	position: relative;
 	border: 3px solid black;
 	width:1200px;
 	height:730px;
 	max-width: 120%;
+	background-image: url("images/BirdGameTitle.png");
+	background-size: 1200px 730px;
 }
 			
 #PlayButton {
-	position: absolute !important;
-	left: 45%;
-	top: 25%;
+	position: absolute;
+	left: 46%;
+	top: 46%;
 	width: 100px;
 	height: 30px;
 	max-width: 100%;
+	z-index: +2;
 }
 			
 #CardLeft {
@@ -20,7 +24,7 @@
 	width: 140px;
 	height: 230px;
 	left: 22%;
-	top: 62%;
+	top: 10%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -37,7 +41,7 @@
 	width: 230px;
 	height: 320px;
 	left: 42%;
-	top: 62%;
+	top: 10%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -54,7 +58,7 @@
 	width: 230px;
 	height: 320px;
 	left: 62%;
-	top: 62%;
+	top: 10%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -69,8 +73,8 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 32%;
-	top: 126%;
+	left: 28%;
+	top: 72.5%;
 	max-width: 100%;
 	z-index: +1;
 	transform: rotate(-10deg);
@@ -78,7 +82,7 @@
 }
 
 #DeckCard1:hover {
-	top: 110%;
+	top: 58.5%;
 	height: 200px;
     transform: scale(2);
     z-index: +2;
@@ -88,8 +92,8 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 39%;
-	top: 124%;
+	left: 37%;
+	top: 70.5%;
 	max-width: 100%;
 	z-index: +1;
 	transform: rotate(-5deg);
@@ -97,7 +101,7 @@
 }
 
 #DeckCard2:hover {
-	top: 110%;
+	top: 58.5%;
 	height: 200px;
     transform: scale(2);
     z-index: +2;
@@ -108,14 +112,14 @@
 	width: 120px;
 	height: 180px;
 	left: 46%;
-	top: 123.5%;
+	top: 70%;
 	max-width: 100%;
 	z-index: +1;
 	transition: transform .2s;
 }
 
 #DeckCard3:hover {
-	top: 110%;
+	top: 58.5%;
 	height: 200px;
     transform: scale(2);
     z-index: +2;
@@ -125,8 +129,8 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 53.5%;
-	top: 124%;
+	left: 55%;
+	top: 70.5%;
 	max-width: 100%;
 	z-index: +1;
 	transform: rotate(5deg);
@@ -134,7 +138,7 @@
 }
 
 #DeckCard4:hover {
-	top: 110%;
+	top: 58.5%;
 	height: 200px;
     transform: scale(2);
     z-index: +2;
@@ -144,8 +148,8 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 60.5%;
-	top: 126%;
+	left: 64%;
+	top: 72.5%;
 	max-width: 100%;
 	z-index: +1;
 	transform: rotate(10deg);
@@ -153,7 +157,7 @@
 }
 
 #DeckCard5:hover {
-	top: 110%;
+	top: 58.5%;
 	height: 200px;
     transform: scale(2);
     z-index: +2;
@@ -163,8 +167,8 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 32%;
-	top: 60.2%;
+	left: 28%;
+	top: 2.5%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -175,8 +179,8 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 39%;
-	top: 62.2%;
+	left: 37%;
+	top: 4.5%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -188,7 +192,7 @@
 	width: 120px;
 	height: 180px;
 	left: 46%;
-	top: 62.7%;
+	top: 5%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -198,8 +202,8 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 53.5%;
-	top: 62.2%;
+	left: 55%;
+	top: 4.5%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
@@ -210,17 +214,19 @@
 	position: absolute;
 	width: 120px;
 	height: 180px;
-	left: 60.5%;
-	top: 60.2%;
+	left: 64%;
+	top: 2.5%;
 	max-width: 100%;
 	z-index: +1;
 	display: none;
 	transform: rotate(-10deg);
 }
 
-#PlayButton {
-	position: absolute;
-	left: 45%;
-	top: 100%;
-	z-index: +2;
+#GameBoard {
+	position: relative;
+	width:1200px;
+	height:730px;
+	border:3px solid black; 
+	display:none;
+	background-image: url("images/WoodTableSurface2.jpg"); 
 }
