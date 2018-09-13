@@ -222,6 +222,17 @@
 	transform: rotate(-10deg);
 }
 
+#Pile {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	left: 84%;
+	top: 37%;
+	z-index: +1;
+	display: none;
+	transform: rotate(180deg);
+}
+
 #GameBoard {
 	position: relative;
 	width:1200px;
@@ -229,4 +240,5 @@
 	border:3px solid black; 
 	display:none;
 	background-image: url("images/WoodTableSurface2.jpg"); 
+	background-size: 1200px 720px;
 }

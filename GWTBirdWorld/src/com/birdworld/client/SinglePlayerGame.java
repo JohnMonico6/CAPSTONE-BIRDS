@@ -2,14 +2,14 @@ package com.birdworld.client;
 
 import java.util.Random;
 
-public class SinglePlayerRound {
+public class SinglePlayerGame {
 	private Pile pile;
 	private DrawHand drawHand;
 	private Player player;
 	private Player computer;
 	private final int MAX_DECK_SIZE = 5;
 	
-	public SinglePlayerRound(Player player) {
+	public SinglePlayerGame(Player player) {
 		pile = new Pile();
 		drawHand = new DrawHand();
 		computer = new Player("Bird Master");

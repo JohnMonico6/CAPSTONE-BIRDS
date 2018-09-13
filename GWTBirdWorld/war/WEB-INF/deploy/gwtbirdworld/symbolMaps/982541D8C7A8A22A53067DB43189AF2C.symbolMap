@@ -1,5 +1,5 @@
-# { 2 }
-# { 'user.agent' : 'ie9' }
+# { 1 }
+# { 'user.agent' : 'ie10' }
 # jsName, jsniIdent, className, memberName, sourceUri, sourceLine, fragmentNumber
 Card,,com.birdworld.client.Card,,com/birdworld/client/Card.java,2,-1
 S,com.birdworld.client.Card::Card(Ljava/lang/String;[ILjava/lang/String;) <init>,com.birdworld.client.Card,Card,com/birdworld/client/Card.java,8,0
@@ -17,9 +17,9 @@ Z,com.birdworld.client.DrawHand::$switchNewCard(Lcom/birdworld/client/DrawHand;I
 $,com.birdworld.client.DrawHand::DrawHand() <init>,com.birdworld.client.DrawHand,DrawHand,com/birdworld/client/DrawHand.java,12,0
 a,com.birdworld.client.DrawHand::drawHand,com.birdworld.client.DrawHand,drawHand,com/birdworld/client/DrawHand.java,9,-1
 GWTBirdWorld,,com.birdworld.client.GWTBirdWorld,,com/birdworld/client/GWTBirdWorld.java,13,-1
-ab,com.birdworld.client.GWTBirdWorld::$drawCardClicked(Lcom/birdworld/client/GWTBirdWorld;Lcom/google/gwt/user/client/ui/Image;I)V,com.birdworld.client.GWTBirdWorld,$drawCardClicked,com/birdworld/client/GWTBirdWorld.java,221,0
-bb,com.birdworld.client.GWTBirdWorld::$onModuleLoad(Lcom/birdworld/client/GWTBirdWorld;)V,com.birdworld.client.GWTBirdWorld,$onModuleLoad,com/birdworld/client/GWTBirdWorld.java,40,0
-cb,com.birdworld.client.GWTBirdWorld::$updateScreen(Lcom/birdworld/client/GWTBirdWorld;)V,com.birdworld.client.GWTBirdWorld,$updateScreen,com/birdworld/client/GWTBirdWorld.java,159,0
+ab,com.birdworld.client.GWTBirdWorld::$drawCardClicked(Lcom/birdworld/client/GWTBirdWorld;Lcom/google/gwt/user/client/ui/Image;I)V,com.birdworld.client.GWTBirdWorld,$drawCardClicked,com/birdworld/client/GWTBirdWorld.java,229,0
+bb,com.birdworld.client.GWTBirdWorld::$onModuleLoad(Lcom/birdworld/client/GWTBirdWorld;)V,com.birdworld.client.GWTBirdWorld,$onModuleLoad,com/birdworld/client/GWTBirdWorld.java,41,0
+cb,com.birdworld.client.GWTBirdWorld::$updateScreen(Lcom/birdworld/client/GWTBirdWorld;)V,com.birdworld.client.GWTBirdWorld,$updateScreen,com/birdworld/client/GWTBirdWorld.java,167,0
 db,com.birdworld.client.GWTBirdWorld::GWTBirdWorld() <init>,com.birdworld.client.GWTBirdWorld,GWTBirdWorld,com/birdworld/client/GWTBirdWorld.java,13,0
 a,com.birdworld.client.GWTBirdWorld::cardLeft,com.birdworld.client.GWTBirdWorld,cardLeft,com/birdworld/client/GWTBirdWorld.java,16,-1
 b,com.birdworld.client.GWTBirdWorld::cardMiddle,com.birdworld.client.GWTBirdWorld,cardMiddle,com/birdworld/client/GWTBirdWorld.java,17,-1
@@ -29,23 +29,24 @@ e,com.birdworld.client.GWTBirdWorld::deckCard2,com.birdworld.client.GWTBirdWorld
 f,com.birdworld.client.GWTBirdWorld::deckCard3,com.birdworld.client.GWTBirdWorld,deckCard3,com/birdworld/client/GWTBirdWorld.java,21,-1
 g,com.birdworld.client.GWTBirdWorld::deckCard4,com.birdworld.client.GWTBirdWorld,deckCard4,com/birdworld/client/GWTBirdWorld.java,22,-1
 i,com.birdworld.client.GWTBirdWorld::deckCard5,com.birdworld.client.GWTBirdWorld,deckCard5,com/birdworld/client/GWTBirdWorld.java,23,-1
-j,com.birdworld.client.GWTBirdWorld::opponentCard1,com.birdworld.client.GWTBirdWorld,opponentCard1,com/birdworld/client/GWTBirdWorld.java,24,-1
-k,com.birdworld.client.GWTBirdWorld::opponentCard2,com.birdworld.client.GWTBirdWorld,opponentCard2,com/birdworld/client/GWTBirdWorld.java,25,-1
-n,com.birdworld.client.GWTBirdWorld::opponentCard3,com.birdworld.client.GWTBirdWorld,opponentCard3,com/birdworld/client/GWTBirdWorld.java,26,-1
-o,com.birdworld.client.GWTBirdWorld::opponentCard4,com.birdworld.client.GWTBirdWorld,opponentCard4,com/birdworld/client/GWTBirdWorld.java,27,-1
-p,com.birdworld.client.GWTBirdWorld::opponentCard5,com.birdworld.client.GWTBirdWorld,opponentCard5,com/birdworld/client/GWTBirdWorld.java,28,-1
-q,com.birdworld.client.GWTBirdWorld::playBtn,com.birdworld.client.GWTBirdWorld,playBtn,com/birdworld/client/GWTBirdWorld.java,38,-1
-r,com.birdworld.client.GWTBirdWorld::player1,com.birdworld.client.GWTBirdWorld,player1,com/birdworld/client/GWTBirdWorld.java,32,-1
-s,com.birdworld.client.GWTBirdWorld::round,com.birdworld.client.GWTBirdWorld,round,com/birdworld/client/GWTBirdWorld.java,35,-1
-GWTBirdWorld$1,,com.birdworld.client.GWTBirdWorld$1,,com/birdworld/client/GWTBirdWorld.java,80,-1
-eb,com.birdworld.client.GWTBirdWorld$1::GWTBirdWorld$1(Lcom/birdworld/client/GWTBirdWorld;) <init>,com.birdworld.client.GWTBirdWorld$1,GWTBirdWorld$1,com/birdworld/client/GWTBirdWorld.java,80,0
-fb,com.birdworld.client.GWTBirdWorld$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.birdworld.client.GWTBirdWorld$1,onClick,com/birdworld/client/GWTBirdWorld.java,82,0
-a,com.birdworld.client.GWTBirdWorld$1::this$01,com.birdworld.client.GWTBirdWorld$1,this$01,com/birdworld/client/GWTBirdWorld.java,80,-1
-GWTBirdWorld$2,,com.birdworld.client.GWTBirdWorld$2,,com/birdworld/client/GWTBirdWorld.java,223,-1
-gb,com.birdworld.client.GWTBirdWorld$2::GWTBirdWorld$2(Lcom/birdworld/client/GWTBirdWorld;) <init>,com.birdworld.client.GWTBirdWorld$2,GWTBirdWorld$2,com/birdworld/client/GWTBirdWorld.java,223,0
-hb,com.birdworld.client.GWTBirdWorld$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.birdworld.client.GWTBirdWorld$2,onClick,com/birdworld/client/GWTBirdWorld.java,225,0
-a,com.birdworld.client.GWTBirdWorld$2::this$01,com.birdworld.client.GWTBirdWorld$2,this$01,com/birdworld/client/GWTBirdWorld.java,223,-1
-b,com.birdworld.client.GWTBirdWorld$2::val$index2,com.birdworld.client.GWTBirdWorld$2,val$index2,com/birdworld/client/GWTBirdWorld.java,223,-1
+j,com.birdworld.client.GWTBirdWorld::game,com.birdworld.client.GWTBirdWorld,game,com/birdworld/client/GWTBirdWorld.java,36,-1
+k,com.birdworld.client.GWTBirdWorld::opponentCard1,com.birdworld.client.GWTBirdWorld,opponentCard1,com/birdworld/client/GWTBirdWorld.java,24,-1
+n,com.birdworld.client.GWTBirdWorld::opponentCard2,com.birdworld.client.GWTBirdWorld,opponentCard2,com/birdworld/client/GWTBirdWorld.java,25,-1
+o,com.birdworld.client.GWTBirdWorld::opponentCard3,com.birdworld.client.GWTBirdWorld,opponentCard3,com/birdworld/client/GWTBirdWorld.java,26,-1
+p,com.birdworld.client.GWTBirdWorld::opponentCard4,com.birdworld.client.GWTBirdWorld,opponentCard4,com/birdworld/client/GWTBirdWorld.java,27,-1
+q,com.birdworld.client.GWTBirdWorld::opponentCard5,com.birdworld.client.GWTBirdWorld,opponentCard5,com/birdworld/client/GWTBirdWorld.java,28,-1
+r,com.birdworld.client.GWTBirdWorld::pile,com.birdworld.client.GWTBirdWorld,pile,com/birdworld/client/GWTBirdWorld.java,29,-1
+s,com.birdworld.client.GWTBirdWorld::playBtn,com.birdworld.client.GWTBirdWorld,playBtn,com/birdworld/client/GWTBirdWorld.java,39,-1
+t,com.birdworld.client.GWTBirdWorld::player1,com.birdworld.client.GWTBirdWorld,player1,com/birdworld/client/GWTBirdWorld.java,33,-1
+GWTBirdWorld$1,,com.birdworld.client.GWTBirdWorld$1,,com/birdworld/client/GWTBirdWorld.java,86,-1
+eb,com.birdworld.client.GWTBirdWorld$1::GWTBirdWorld$1(Lcom/birdworld/client/GWTBirdWorld;) <init>,com.birdworld.client.GWTBirdWorld$1,GWTBirdWorld$1,com/birdworld/client/GWTBirdWorld.java,86,0
+fb,com.birdworld.client.GWTBirdWorld$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.birdworld.client.GWTBirdWorld$1,onClick,com/birdworld/client/GWTBirdWorld.java,88,0
+a,com.birdworld.client.GWTBirdWorld$1::this$01,com.birdworld.client.GWTBirdWorld$1,this$01,com/birdworld/client/GWTBirdWorld.java,86,-1
+GWTBirdWorld$2,,com.birdworld.client.GWTBirdWorld$2,,com/birdworld/client/GWTBirdWorld.java,231,-1
+gb,com.birdworld.client.GWTBirdWorld$2::GWTBirdWorld$2(Lcom/birdworld/client/GWTBirdWorld;) <init>,com.birdworld.client.GWTBirdWorld$2,GWTBirdWorld$2,com/birdworld/client/GWTBirdWorld.java,231,0
+hb,com.birdworld.client.GWTBirdWorld$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.birdworld.client.GWTBirdWorld$2,onClick,com/birdworld/client/GWTBirdWorld.java,233,0
+a,com.birdworld.client.GWTBirdWorld$2::this$01,com.birdworld.client.GWTBirdWorld$2,this$01,com/birdworld/client/GWTBirdWorld.java,231,-1
+b,com.birdworld.client.GWTBirdWorld$2::val$index2,com.birdworld.client.GWTBirdWorld$2,val$index2,com/birdworld/client/GWTBirdWorld.java,231,-1
 Pile,,com.birdworld.client.Pile,,com/birdworld/client/Pile.java,7,-1
 ib,com.birdworld.client.Pile::Pile() <init>,com.birdworld.client.Pile,Pile,com/birdworld/client/Pile.java,17,0
 a,com.birdworld.client.Pile::pile,com.birdworld.client.Pile,pile,com/birdworld/client/Pile.java,8,-1
@@ -53,14 +54,14 @@ Player,,com.birdworld.client.Player,,com/birdworld/client/Player.java,5,-1
 jb,com.birdworld.client.Player::$addCardToDeck(Lcom/birdworld/client/Player;Lcom/birdworld/client/Card;)V,com.birdworld.client.Player,$addCardToDeck,com/birdworld/client/Player.java,35,0
 kb,com.birdworld.client.Player::Player(Ljava/lang/String;) <init>,com.birdworld.client.Player,Player,com/birdworld/client/Player.java,11,0
 a,com.birdworld.client.Player::deck,com.birdworld.client.Player,deck,com/birdworld/client/Player.java,7,-1
-SinglePlayerRound,,com.birdworld.client.SinglePlayerRound,,com/birdworld/client/SinglePlayerRound.java,5,-1
-lb,com.birdworld.client.SinglePlayerRound::$buildComputerDeck(Lcom/birdworld/client/SinglePlayerRound;)V,com.birdworld.client.SinglePlayerRound,$buildComputerDeck,com/birdworld/client/SinglePlayerRound.java,57,0
-mb,com.birdworld.client.SinglePlayerRound::$playerSelectedCard(Lcom/birdworld/client/SinglePlayerRound;I)V,com.birdworld.client.SinglePlayerRound,$playerSelectedCard,com/birdworld/client/SinglePlayerRound.java,28,0
-nb,com.birdworld.client.SinglePlayerRound::SinglePlayerRound(Lcom/birdworld/client/Player;) <init>,com.birdworld.client.SinglePlayerRound,SinglePlayerRound,com/birdworld/client/SinglePlayerRound.java,12,0
-a,com.birdworld.client.SinglePlayerRound::computer,com.birdworld.client.SinglePlayerRound,computer,com/birdworld/client/SinglePlayerRound.java,9,-1
-b,com.birdworld.client.SinglePlayerRound::drawHand,com.birdworld.client.SinglePlayerRound,drawHand,com/birdworld/client/SinglePlayerRound.java,7,-1
-c,com.birdworld.client.SinglePlayerRound::pile,com.birdworld.client.SinglePlayerRound,pile,com/birdworld/client/SinglePlayerRound.java,6,-1
-d,com.birdworld.client.SinglePlayerRound::player,com.birdworld.client.SinglePlayerRound,player,com/birdworld/client/SinglePlayerRound.java,8,-1
+SinglePlayerGame,,com.birdworld.client.SinglePlayerGame,,com/birdworld/client/SinglePlayerGame.java,5,-1
+lb,com.birdworld.client.SinglePlayerGame::$buildComputerDeck(Lcom/birdworld/client/SinglePlayerGame;)V,com.birdworld.client.SinglePlayerGame,$buildComputerDeck,com/birdworld/client/SinglePlayerGame.java,57,0
+mb,com.birdworld.client.SinglePlayerGame::$playerSelectedCard(Lcom/birdworld/client/SinglePlayerGame;I)V,com.birdworld.client.SinglePlayerGame,$playerSelectedCard,com/birdworld/client/SinglePlayerGame.java,28,0
+nb,com.birdworld.client.SinglePlayerGame::SinglePlayerGame(Lcom/birdworld/client/Player;) <init>,com.birdworld.client.SinglePlayerGame,SinglePlayerGame,com/birdworld/client/SinglePlayerGame.java,12,0
+a,com.birdworld.client.SinglePlayerGame::computer,com.birdworld.client.SinglePlayerGame,computer,com/birdworld/client/SinglePlayerGame.java,9,-1
+b,com.birdworld.client.SinglePlayerGame::drawHand,com.birdworld.client.SinglePlayerGame,drawHand,com/birdworld/client/SinglePlayerGame.java,7,-1
+c,com.birdworld.client.SinglePlayerGame::pile,com.birdworld.client.SinglePlayerGame,pile,com/birdworld/client/SinglePlayerGame.java,6,-1
+d,com.birdworld.client.SinglePlayerGame::player,com.birdworld.client.SinglePlayerGame,player,com/birdworld/client/SinglePlayerGame.java,8,-1
 Duration,,com.google.gwt.core.client.Duration,,com/google/gwt/core/client/Duration.java,21,-1
 ob,com.google.gwt.core.client.Duration::Duration() <init>,com.google.gwt.core.client.Duration,Duration,com/google/gwt/core/client/Duration.java,41,0
 a,com.google.gwt.core.client.Duration::start,com.google.gwt.core.client.Duration,start,com/google/gwt/core/client/Duration.java,36,-1
@@ -319,12 +320,12 @@ Se,com.google.gwt.lang.ClassLiteralHolder::D_classLit,com.google.gwt.lang.ClassL
 Te,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_Card_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_Card_2_classLit,com/birdworld/client/Card.java,2,-1
 Ue,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_Deck_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_Deck_2_classLit,com/birdworld/client/Deck.java,5,-1
 Ve,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_DrawHand_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_DrawHand_2_classLit,com/birdworld/client/DrawHand.java,8,-1
-We,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_GWTBirdWorld$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_GWTBirdWorld$1_2_classLit,com/birdworld/client/GWTBirdWorld.java,80,-1
-Xe,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_GWTBirdWorld$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_GWTBirdWorld$2_2_classLit,com/birdworld/client/GWTBirdWorld.java,223,-1
+We,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_GWTBirdWorld$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_GWTBirdWorld$1_2_classLit,com/birdworld/client/GWTBirdWorld.java,86,-1
+Xe,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_GWTBirdWorld$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_GWTBirdWorld$2_2_classLit,com/birdworld/client/GWTBirdWorld.java,231,-1
 Ye,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_GWTBirdWorld_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_GWTBirdWorld_2_classLit,com/birdworld/client/GWTBirdWorld.java,13,-1
 Ze,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_Pile_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_Pile_2_classLit,com/birdworld/client/Pile.java,7,-1
 $e,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_Player_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_Player_2_classLit,com/birdworld/client/Player.java,5,-1
-_e,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_SinglePlayerRound_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_SinglePlayerRound_2_classLit,com/birdworld/client/SinglePlayerRound.java,5,-1
+_e,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_SinglePlayerGame_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_SinglePlayerGame_2_classLit,com/birdworld/client/SinglePlayerGame.java,5,-1
 af,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_core_client_Duration_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_core_client_Duration_2_classLit,com/google/gwt/core/client/Duration.java,21,-1
 bf,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_core_client_JavaScriptException_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_core_client_JavaScriptException_2_classLit,com/google/gwt/core/client/JavaScriptException.java,46,-1
 cf,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_core_client_JavaScriptObject_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_core_client_JavaScriptObject_2_classLit,com/google/gwt/core/client/JavaScriptObject.java,28,-1
@@ -699,7 +700,7 @@ c,com.google.gwt.user.client.ui.WidgetCollection$WidgetIterator::this$01,com.goo
 Tk,com.google.gwt.useragent.client.UserAgentAsserter::assertCompileTimeUserAgent()V,com.google.gwt.useragent.client.UserAgentAsserter,assertCompileTimeUserAgent,com/google/gwt/useragent/client/UserAgentAsserter.java,49,0
 UserAgentAsserter$UserAgentAssertionError,,com.google.gwt.useragent.client.UserAgentAsserter$UserAgentAssertionError,,com/google/gwt/useragent/client/UserAgentAsserter.java,65,-1
 Vk,com.google.gwt.useragent.client.UserAgentAsserter$UserAgentAssertionError::UserAgentAsserter$UserAgentAssertionError(Ljava/lang/String;Ljava/lang/String;) <init>,com.google.gwt.useragent.client.UserAgentAsserter$UserAgentAssertionError,UserAgentAsserter$UserAgentAssertionError,com/google/gwt/useragent/client/UserAgentAsserter.java,79,0
-Wk,com.google.gwt.useragent.client.UserAgentImplIe9::$getRuntimeValue(Lcom/google/gwt/useragent/client/UserAgentImplIe9;)Ljava/lang/String;,com.google.gwt.useragent.client.UserAgentImplIe9,$getRuntimeValue,gen/com/google/gwt/useragent/client/UserAgentImplIe9.java,5,0
+Wk,com.google.gwt.useragent.client.UserAgentImplIe10::$getRuntimeValue(Lcom/google/gwt/useragent/client/UserAgentImplIe10;)Ljava/lang/String;,com.google.gwt.useragent.client.UserAgentImplIe10,$getRuntimeValue,gen/com/google/gwt/useragent/client/UserAgentImplIe10.java,5,0
 Event,,com.google.web.bindery.event.shared.Event,,com/google/web/bindery/event/shared/Event.java,23,-1
 d,com.google.web.bindery.event.shared.Event::source,com.google.web.bindery.event.shared.Event,source,com/google/web/bindery/event/shared/Event.java,51,-1
 Md,com.google.web.bindery.event.shared.Event::toString()Ljava/lang/String;,com.google.web.bindery.event.shared.Event,toString,com/google/web/bindery/event/shared/Event.java,102,0

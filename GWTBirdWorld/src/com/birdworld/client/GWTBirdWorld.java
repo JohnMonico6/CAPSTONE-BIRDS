@@ -26,13 +26,14 @@ public class GWTBirdWorld implements EntryPoint {
 	Image opponentCard3 = new Image();
 	Image opponentCard4 = new Image();
 	Image opponentCard5 = new Image(); 
+	Image pile = new Image();
 	   
 	   
 	//Initialize player
 	Player player1 = new Player("TheLegend27");
 	   
 	//Initialize SinglePlayerRound
-	SinglePlayerRound round = new SinglePlayerRound(player1);
+	SinglePlayerGame game = new SinglePlayerGame(player1);
 	
 	//Create button
 	Button playBtn = new Button("Play!");	   
@@ -70,6 +71,11 @@ public class GWTBirdWorld implements EntryPoint {
 	   	opponentCard4.setHeight("180px");
 	   	opponentCard5.setWidth("120px");
 	   	opponentCard5.setHeight("180px");
+	   	
+	   	//Format pile
+	   	pile.setWidth("120px");
+	   	pile.setHeight("180px");
+	   	pile.setUrl("images/BackOfCard.png");
 	   
 	   	playBtn.addStyleName("PlayButton");
 	   	playBtn.setWidth("100px");
@@ -82,11 +88,10 @@ public class GWTBirdWorld implements EntryPoint {
 	   		public void onClick(ClickEvent event) {	        	 
 			   
 	   			Document.get().getElementById("GameTitleScreen").getStyle().setDisplay(Display.NONE);
-			   
-	   			Document.get().getElementById("GameBoard").getStyle().setDisplay(Display.BLOCK);
-	        	 	
 	   			Document.get().getElementById("PlayButton").getStyle().setDisplay(Display.NONE);
-			   
+	   			
+	   			Document.get().getElementById("Pile").getStyle().setDisplay(Display.BLOCK);
+	   			Document.get().getElementById("GameBoard").getStyle().setDisplay(Display.BLOCK);
 	   			Document.get().getElementById("CardLeft").getStyle().setDisplay(Display.BLOCK);
 	   			Document.get().getElementById("CardMiddle").getStyle().setDisplay(Display.BLOCK);
 	   			Document.get().getElementById("CardRight").getStyle().setDisplay(Display.BLOCK);
@@ -119,6 +124,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel opponentCard3Panel = new VerticalPanel();
 	   	VerticalPanel opponentCard4Panel = new VerticalPanel();
 	   	VerticalPanel opponentCard5Panel = new VerticalPanel();
+	   	VerticalPanel pilePanel = new VerticalPanel();
 	   
 	   	//Add objects to Panels
 	   	playBtnPanel.add(playBtn);   
@@ -135,6 +141,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	opponentCard3Panel.add(opponentCard3);
 	   	opponentCard4Panel.add(opponentCard4);
 	   	opponentCard5Panel.add(opponentCard5);
+	   	pilePanel.add(pile);
 	   
 	   	//Add objects to panel.
 	   	RootPanel.get("PlayButton").add(playBtnPanel);
@@ -151,6 +158,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("OpponentCard3").add(opponentCard3Panel);
 	   	RootPanel.get("OpponentCard4").add(opponentCard4Panel);
 	   	RootPanel.get("OpponentCard5").add(opponentCard5Panel); 
+	   	RootPanel.get("Pile").add(pilePanel);
 	}
    
 	/**
@@ -159,9 +167,9 @@ public class GWTBirdWorld implements EntryPoint {
 	public void updateScreen() {
 		
 		//Update drawhand card images.
-		cardLeft.setUrl(round.getDrawHand().getCard(0).getImgSource());
-		cardMiddle.setUrl(round.getDrawHand().getCard(1).getImgSource());
-		cardRight.setUrl(round.getDrawHand().getCard(2).getImgSource());
+		cardLeft.setUrl(game.getDrawHand().getCard(0).getImgSource());
+		cardMiddle.setUrl(game.getDrawHand().getCard(1).getImgSource());
+		cardRight.setUrl(game.getDrawHand().getCard(2).getImgSource());
 	   
 		//Update player deck card images
 		deckCard1.setUrl(player1.getDeck().getCard(0).getImgSource());
@@ -186,7 +194,7 @@ public class GWTBirdWorld implements EntryPoint {
 			Document.get().getElementById("OpponentCard5").getStyle().setDisplay(Display.BLOCK);
 			
 			//Setup the computer.
-			round.buildComputerDeck();
+			game.buildComputerDeck();
 			
 			/*Test for opponent deck.
 			opponentCard1.setUrl(round.getOpponent().getDeck().getCard(0).getImgSource());
@@ -223,7 +231,7 @@ public class GWTBirdWorld implements EntryPoint {
 		card.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				round.playerSelectedCard(index); 
+				game.playerSelectedCard(index); 
 				updateScreen();
 			}
 		});
