@@ -30,6 +30,11 @@ public class GWTBirdWorld implements EntryPoint {
 	Image playerPlayedCard = new Image();
 	Image opponentPlayedCard = new Image(); 
 	Image pile = new Image();
+	Image option1 = new Image();
+	Image option2 = new Image();
+	Image option3 = new Image();
+	Image option4 = new Image();
+	Image notifier = new Image();
 	   
 	   
 	//Initialize player
@@ -80,7 +85,21 @@ public class GWTBirdWorld implements EntryPoint {
 	   	playerPlayedCard.setHeight("180px");
 	   	opponentPlayedCard.setWidth("120px");
 	   	opponentPlayedCard.setHeight("180px");
-	   	opponentPlayedCard.setUrl("images/BackOfCardUpright.png");
+	   	opponentPlayedCard.setUrl("images/backOppCard.png");
+	   	
+	   	//Format Card Guessors
+	   	option1.setWidth("auto"); //THESE VALUES NEED TO BE TWEAKED ONCE WE GET THE ACTUAL DIMENSIONS
+	   	option1.setHeight("150px");
+	   	option2.setWidth("auto");
+	   	option2.setHeight("150px");
+	   	option3.setWidth("auto");
+	   	option3.setHeight("150px");
+	   	option4.setWidth("auto");
+	   	option4.setHeight("150px");
+	   	option1.setUrl("images/Common_Koel_Option.png");//delete these later
+	   	option2.setUrl("images/Common_Koel_Option.png");//delete these later
+	   	option3.setUrl("images/Common_Koel_Option.png");//delete these later
+	   	option4.setUrl("images/Common_Koel_Option.png");//delete these later
 	   	
 	   	//Format pile
 	   	pile.setWidth("120px");
@@ -144,6 +163,10 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel playerPlayedCardPanel = new VerticalPanel();
 	   	VerticalPanel opponentPlayedCardPanel = new VerticalPanel();
 	   	VerticalPanel pilePanel = new VerticalPanel();
+	   	VerticalPanel option1Panel = new VerticalPanel();
+	   	VerticalPanel option2Panel = new VerticalPanel();
+	   	VerticalPanel option3Panel = new VerticalPanel();
+	   	VerticalPanel option4Panel = new VerticalPanel();
 	   	
 	   
 	   	//Add objects to Panels
@@ -164,8 +187,12 @@ public class GWTBirdWorld implements EntryPoint {
 	   	playerPlayedCardPanel.add(playerPlayedCard);
 	   	opponentPlayedCardPanel.add(opponentPlayedCard);
 	   	pilePanel.add(pile);
+	   	option1Panel.add(option1);
+	   	option2Panel.add(option2);
+	   	option3Panel.add(option3);
+	   	option4Panel.add(option4);
 	   
-	   	//Add objects to panel.
+	   	//Adding the panels to the div in the html file
 	   	RootPanel.get("PlayButton").add(playBtnPanel);
 	   	RootPanel.get("CardLeft").add(cardLeftPanel);
 	   	RootPanel.get("CardMiddle").add(cardMiddlePanel);
@@ -183,6 +210,10 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("PlayerPlayedCard").add(playerPlayedCardPanel);
 	   	RootPanel.get("OpponentPlayedCard").add(opponentPlayedCardPanel); 
 	   	RootPanel.get("Pile").add(pilePanel);
+	   	RootPanel.get("Option1").add(option1Panel);
+	   	RootPanel.get("Option2").add(option2Panel);
+	   	RootPanel.get("Option3").add(option3Panel);
+	   	RootPanel.get("Option4").add(option4Panel);
 	}
    
 	/**
@@ -299,7 +330,7 @@ public class GWTBirdWorld implements EntryPoint {
 					
 					Document.get().getElementById("PlayerPlayedCard").getStyle().setDisplay(Display.BLOCK);
 					Document.get().getElementById("OpponentPlayedCard").getStyle().setDisplay(Display.BLOCK);
-					opponentPlayedCard.setUrl(round.getOpponentCard().getImgSource());
+//					opponentPlayedCard.setUrl(round.getOpponentCard().getImgSource());
 					
 					switch(game.getOpponent().getDeck().getCardPositon(round.getOpponentCard())) {
 						case 0: 
