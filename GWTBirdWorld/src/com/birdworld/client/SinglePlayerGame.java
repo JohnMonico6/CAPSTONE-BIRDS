@@ -7,6 +7,7 @@ public class SinglePlayerGame {
 	private DrawHand drawHand;
 	private Player player;
 	private Player computer;
+	private boolean drawingInProgress;
 	private final int MAX_DECK_SIZE = 5;
 	
 	public SinglePlayerGame(Player player) {
@@ -19,6 +20,8 @@ public class SinglePlayerGame {
 		drawHand.addCard(pile);
 		drawHand.addCard(pile);
 		drawHand.addCard(pile);
+		
+		drawingInProgress = true;
 	}
 	
 	public DrawHand getDrawHand() {
@@ -31,6 +34,10 @@ public class SinglePlayerGame {
 		drawHand.removeCard(index);
 		drawHand.addCard(pile);
 		drawHand.switchNewCard(index);
+		
+		if (player.getDeck().isFull() == true) {
+			drawingInProgress = false;
+		}
 	}
 	
 	public void checkForVictory() {
@@ -52,6 +59,10 @@ public class SinglePlayerGame {
 	
 	public Player getOpponent() {
 		return computer;
+	}
+	
+	public boolean getDrawingStatus() {
+		return drawingInProgress;
 	}
 	
 	public void buildComputerDeck() {

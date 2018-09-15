@@ -222,6 +222,28 @@
 	transform: rotate(-10deg);
 }
 
+#PlayerPlayedCard {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	left: 32%;
+	top: 37%;
+	max-width: 100%;
+	z-index: +1;
+	display: none;
+}
+
+#OpponentPlayedCard {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	left: 60%;
+	top: 37%;
+	max-width: 100%;
+	z-index: +1;
+	display: none;
+}
+
 #Pile {
 	position: absolute;
 	width: 120px;

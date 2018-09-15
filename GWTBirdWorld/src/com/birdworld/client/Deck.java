@@ -36,4 +36,12 @@ public class Deck {
 			return false;
 		}
 	}
+	
+	public int getSize() {
+		return deck.size();
+	}
+	
+	public int getCardPositon(Card card) {
+		return deck.indexOf(card);
+	}
 }

@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.*;
 import com.birdworld.client.Player;
 
 public class GWTBirdWorld implements EntryPoint {
+	boolean roundInProgress = false;
 
 	//Create images
 	Image cardLeft = new Image();
@@ -26,6 +27,8 @@ public class GWTBirdWorld implements EntryPoint {
 	Image opponentCard3 = new Image();
 	Image opponentCard4 = new Image();
 	Image opponentCard5 = new Image(); 
+	Image playerPlayedCard = new Image();
+	Image opponentPlayedCard = new Image(); 
 	Image pile = new Image();
 	   
 	   
@@ -72,6 +75,13 @@ public class GWTBirdWorld implements EntryPoint {
 	   	opponentCard5.setWidth("120px");
 	   	opponentCard5.setHeight("180px");
 	   	
+	   	//Format played cards 
+	   	playerPlayedCard.setWidth("120px");
+	   	playerPlayedCard.setHeight("180px");
+	   	opponentPlayedCard.setWidth("120px");
+	   	opponentPlayedCard.setHeight("180px");
+	   	opponentPlayedCard.setUrl("images/BackOfCardUpright.png");
+	   	
 	   	//Format pile
 	   	pile.setWidth("120px");
 	   	pile.setHeight("180px");
@@ -100,14 +110,21 @@ public class GWTBirdWorld implements EntryPoint {
 	   		}
 	   	});
 	   
-	   	//Enable picking cards while player deck is empty.
-	   	if (player1.getDeck().isFull() == false) {
-	   		drawCardClicked(cardLeft, 0);
+	   	drawCardClicked(cardLeft, 0);
 		   
-	   		drawCardClicked(cardMiddle, 1);
+	   	drawCardClicked(cardMiddle, 1);
 		   
-	   		drawCardClicked(cardRight, 2);
-	   	}
+	   	drawCardClicked(cardRight, 2);
+	   	
+	   	deckCardClicked(deckCard1, 0);
+	   	
+	   	deckCardClicked(deckCard2, 1);
+	   	
+	   	deckCardClicked(deckCard3, 2);
+	   	
+	   	deckCardClicked(deckCard4, 3);
+	   	
+	   	deckCardClicked(deckCard5, 4);
 	   
 	   	//Create Panels for objects
 	   	VerticalPanel playBtnPanel = new VerticalPanel();
@@ -124,7 +141,10 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel opponentCard3Panel = new VerticalPanel();
 	   	VerticalPanel opponentCard4Panel = new VerticalPanel();
 	   	VerticalPanel opponentCard5Panel = new VerticalPanel();
+	   	VerticalPanel playerPlayedCardPanel = new VerticalPanel();
+	   	VerticalPanel opponentPlayedCardPanel = new VerticalPanel();
 	   	VerticalPanel pilePanel = new VerticalPanel();
+	   	
 	   
 	   	//Add objects to Panels
 	   	playBtnPanel.add(playBtn);   
@@ -141,6 +161,8 @@ public class GWTBirdWorld implements EntryPoint {
 	   	opponentCard3Panel.add(opponentCard3);
 	   	opponentCard4Panel.add(opponentCard4);
 	   	opponentCard5Panel.add(opponentCard5);
+	   	playerPlayedCardPanel.add(playerPlayedCard);
+	   	opponentPlayedCardPanel.add(opponentPlayedCard);
 	   	pilePanel.add(pile);
 	   
 	   	//Add objects to panel.
@@ -157,7 +179,9 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("OpponentCard2").add(opponentCard2Panel);
 	   	RootPanel.get("OpponentCard3").add(opponentCard3Panel);
 	   	RootPanel.get("OpponentCard4").add(opponentCard4Panel);
-	   	RootPanel.get("OpponentCard5").add(opponentCard5Panel); 
+	   	RootPanel.get("OpponentCard5").add(opponentCard5Panel);
+	   	RootPanel.get("PlayerPlayedCard").add(playerPlayedCardPanel);
+	   	RootPanel.get("OpponentPlayedCard").add(opponentPlayedCardPanel); 
 	   	RootPanel.get("Pile").add(pilePanel);
 	}
    
@@ -179,7 +203,7 @@ public class GWTBirdWorld implements EntryPoint {
 		deckCard5.setUrl(player1.getDeck().getCard(4).getImgSource());
 	   
 		//Update used when the drawing phase is over.
-		if (player1.getDeck().isFull() == true) {
+		if (game.getDrawingStatus() == false) {
 			
 			//Make drawhand cards disapear.
 			Document.get().getElementById("CardLeft").getStyle().setDisplay(Display.NONE);
@@ -196,13 +220,13 @@ public class GWTBirdWorld implements EntryPoint {
 			//Setup the computer.
 			game.buildComputerDeck();
 			
-			/*Test for opponent deck.
-			opponentCard1.setUrl(round.getOpponent().getDeck().getCard(0).getImgSource());
-			opponentCard2.setUrl(round.getOpponent().getDeck().getCard(1).getImgSource());
-			opponentCard3.setUrl(round.getOpponent().getDeck().getCard(2).getImgSource());
-			opponentCard4.setUrl(round.getOpponent().getDeck().getCard(3).getImgSource());
-			opponentCard5.setUrl(round.getOpponent().getDeck().getCard(4).getImgSource());
-			*/
+			//Test for opponent deck.
+			opponentCard1.setUrl(game.getOpponent().getDeck().getCard(0).getImgSource());
+			opponentCard2.setUrl(game.getOpponent().getDeck().getCard(1).getImgSource());
+			opponentCard3.setUrl(game.getOpponent().getDeck().getCard(2).getImgSource());
+			opponentCard4.setUrl(game.getOpponent().getDeck().getCard(3).getImgSource());
+			opponentCard5.setUrl(game.getOpponent().getDeck().getCard(4).getImgSource());
+			
 			
 			//Setup card images.
 			opponentCard1.setUrl("images/BackOfCard.png");
@@ -233,6 +257,74 @@ public class GWTBirdWorld implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				game.playerSelectedCard(index); 
 				updateScreen();
+			}
+		});
+	}
+	
+	/**
+	 * Add card to logical deck when clicked.
+	 * @param card The card clicked.
+	 * @param index The position of the card in the drawhand.
+	 */
+	public void deckCardClicked(Image card, final int index) {
+		//add a clickListener to CardRight
+		card.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				if (game.getDrawingStatus() == false && roundInProgress == false) {					
+					switch(index) {
+						case 0: 
+							Document.get().getElementById("DeckCard1").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 1: 
+							Document.get().getElementById("DeckCard2").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 2:
+							Document.get().getElementById("DeckCard3").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 3:
+							Document.get().getElementById("DeckCard4").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 4:
+							Document.get().getElementById("DeckCard5").getStyle().setDisplay(Display.NONE);
+							break;
+					}
+					
+					SinglePlayerRound round = new SinglePlayerRound(player1.getDeck().getCard(index), game);
+					playerPlayedCard.setUrl(player1.getDeck().getCard(index).getImgSource());
+					
+					Document.get().getElementById("PlayerPlayedCard").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("OpponentPlayedCard").getStyle().setDisplay(Display.BLOCK);
+					opponentPlayedCard.setUrl(round.getOpponentCard().getImgSource());
+					
+					switch(game.getOpponent().getDeck().getCardPositon(round.getOpponentCard())) {
+						case 0: 
+							Document.get().getElementById("OpponentCard1").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 1: 
+							Document.get().getElementById("OpponentCard2").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 2:
+							Document.get().getElementById("OpponentCard3").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 3:
+							Document.get().getElementById("OpponentCard4").getStyle().setDisplay(Display.NONE);
+							break;
+							
+						case 4:
+							Document.get().getElementById("OpponentCard5").getStyle().setDisplay(Display.NONE);
+							break;
+					}
+					
+					roundInProgress = true;
+				}
 			}
 		});
 	}
