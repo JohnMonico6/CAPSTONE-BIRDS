@@ -21,7 +21,7 @@ public class Pile {
 		//CURRENTLY ALL BIRD CARDS ARE HARDCODED FOR MVP
 		int[] birdAtr = {1, 2, 3, 4, 5};
 		
-		Card wattleBird = new Card("Wattle Bird", birdAtr, "images/WattleBird.png", " ");
+		Card wattleBird = new Card("Wattle Bird", birdAtr, "images/WattleBird.png", "images/wattle_bird_option.png");
 		Card wedgeTailEagle = new Card("Wedge-Tail Eagle", birdAtr, "images/WedgeTailEagle.png", "images/wedge-tailed_eagle_option.png");
 		Card easternBristleBird = new Card("Eastern Bristle Bird", birdAtr, "images/EasternBristleBird.png", "images/eastern_bristlebird_option.png");
 		Card australianMagpie = new Card("Australian Magpie", birdAtr, "images/Australian Magpie.PNG", "images/australian_magpie_option.png");
