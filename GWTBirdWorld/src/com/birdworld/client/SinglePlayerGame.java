@@ -65,11 +65,19 @@ public class SinglePlayerGame {
 		return drawingInProgress;
 	}
 	
+	public Pile getPile() {
+		return pile;
+	}
+	
+	public Card getPileCard(int index) {
+		return pile.getCard(index);
+	}
+	
 	public void buildComputerDeck() {
 		while (computer.getDeck().isFull() == false) {
 			Random random = new Random();  
 			
-			int n = random.nextInt(drawHand.getSize() - 1) + 0;
+			int n = random.nextInt(drawHand.getSize()) + 0;
 			
 			computer.addCardToDeck(drawHand.getCard(n));
 			drawHand.removeCard(n);
