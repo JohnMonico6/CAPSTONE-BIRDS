@@ -34,6 +34,7 @@ public class GWTBirdWorld implements EntryPoint {
 	Image option2 = new Image();
 	Image option3 = new Image();
 	Image option4 = new Image();
+	Image birdSkillSelector = new Image();
 	   
 	   
 	//Initialize player
@@ -98,10 +99,10 @@ public class GWTBirdWorld implements EntryPoint {
 	   	option3.setHeight("150px");
 	   	option4.setWidth("auto");
 	   	option4.setHeight("150px");
-	   	//option1.setUrl("images/Common_Koel_Option.png");//delete these later
-	   	//option2.setUrl("images/Common_Koel_Option.png");//delete these later
-	   	//option3.setUrl("images/Common_Koel_Option.png");//delete these later
-	   	//option4.setUrl("images/Common_Koel_Option.png");//delete these later
+
+	   	//Format Stat Selector 
+	   	birdSkillSelector.setWidth("120px");
+	   	birdSkillSelector.setHeight("180px");
 	   	
 	   	//Format pile
 	   	pile.setWidth("120px");
@@ -177,7 +178,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel option2Panel = new VerticalPanel();
 	   	VerticalPanel option3Panel = new VerticalPanel();
 	   	VerticalPanel option4Panel = new VerticalPanel();
-	   	
+	   	VerticalPanel birdSkillSelectorPanel = new VerticalPanel();
 	   
 	   	//Add objects to Panels
 	   	playBtnPanel.add(playBtn);   
@@ -201,6 +202,8 @@ public class GWTBirdWorld implements EntryPoint {
 	   	option2Panel.add(option2);
 	   	option3Panel.add(option3);
 	   	option4Panel.add(option4);
+	   	birdSkillSelectorPanel.add(birdSkillSelector);
+	   	
 	   
 	   	//Adding the panels to the div in the html file
 	   	RootPanel.get("PlayButton").add(playBtnPanel);
@@ -224,6 +227,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("Option2").add(option2Panel);
 	   	RootPanel.get("Option3").add(option3Panel);
 	   	RootPanel.get("Option4").add(option4Panel);
+	   	RootPanel.get("BirdSkillSelector").add(birdSkillSelectorPanel);
 	}
    
 	/**
@@ -307,8 +311,14 @@ public class GWTBirdWorld implements EntryPoint {
 		option.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				Window.alert(option.getUrl());
 				round.checkIfPlayerCorrect(option.getUrl());
+				if (round.getPlayerAdvantage() == true){
+					Window.alert("Correct!");
+					birdSkillSelector.setUrl(round.getPlayerCard().getCardImgSource());
+					Document.get().getElementById("BirdSkillSelector").getStyle().setDisplay(Display.BLOCK);
+				} else { 
+					Window.alert("Wrong!");
+				}
 			}
 		});
 	}
