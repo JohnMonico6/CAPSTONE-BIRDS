@@ -233,10 +233,6 @@
 	display: none;
 }
 
-#PlayerPlayedCard:Hover {
-	transform: scale(1.6);
-}
-
 #OpponentPlayedCard {
 	position: absolute;
 	width: 120px;
@@ -281,7 +277,7 @@
 	height: 150px;
 	left: 84%;
 	top: 32%;
-	z-index: +2;
+	z-index: +1;
 	display: none;
 	cursor: pointer;
 }
@@ -297,7 +293,7 @@
 	height: 150px;
 	left: 84%;
 	top: 54%;
-	z-index: +3;
+	z-index: +1;
 	display: none;
 	cursor: pointer;
 }
@@ -313,7 +309,7 @@
 	height: 150px;
 	left: 84%;
 	top: 76%;
-	z-index: +4;
+	z-index: +1;
 	display: none;
 	cursor: pointer;
 }
@@ -323,13 +319,68 @@
     z-index: +5;
 }
 
+.test {
+	border: 1px solid red;
+	cursor: pointer;
+}
+
+#Attribute1 {
+	position: absolute;
+	top: 60%;
+	left: 3.7%;
+}
+
+#Attribute2 {
+	position: absolute;
+	top: 80%;
+}
+
+#Attribute3 {
+	position: absolute;	
+	top: 80%;
+}
+
+#Attribute4 {
+	position: absolute;	
+	top: 80%;
+}
+
+#Attribute5 {
+	position: absolute;	
+	top: 80%;
+}
+
 #Notifier{
 	position: absolute;
 	width: 150px;
 	height: 120px;
 	left: 45%;
 	top: 43%;
-	z-index: +100;
+	z-index: +10;
+	opacity: 0.0;
+	display: none;
+}
+
+#Blackbox{
+	position: absolute;
+	width:1200px;
+	height:730px;
+	z-index: +2;
+	background: black;
+ 	opacity: 0.5;
+ 	display: none;
+}
+
+#BirdSkillSelector{
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	left: 45%;
+	top: 40%;
+	z-index: +3;
+	opacity: 1;
+	transform: scale(3);
+	display: none;
 }
 
 #GameBoard {

@@ -34,6 +34,13 @@ public class GWTBirdWorld implements EntryPoint {
 	Image option2 = new Image();
 	Image option3 = new Image();
 	Image option4 = new Image();
+	Image birdSkillSelector = new Image();
+	
+	HTML attribute1 = new HTML();
+	HTML attribute2 = new HTML();
+	HTML attribute3 = new HTML();
+	HTML attribute4 = new HTML();
+	HTML attribute5 = new HTML();
 	   
 	   
 	//Initialize player
@@ -46,7 +53,10 @@ public class GWTBirdWorld implements EntryPoint {
 	SinglePlayerRound round;
 	
 	//Create button
-	Button playBtn = new Button("Play!");	   
+	Button playBtn = new Button("Play!");
+	
+	//Create label
+	
 	   
 	public void onModuleLoad() {
 	   
@@ -98,10 +108,27 @@ public class GWTBirdWorld implements EntryPoint {
 	   	option3.setHeight("150px");
 	   	option4.setWidth("auto");
 	   	option4.setHeight("150px");
-	   	//option1.setUrl("images/Common_Koel_Option.png");//delete these later
-	   	//option2.setUrl("images/Common_Koel_Option.png");//delete these later
-	   	//option3.setUrl("images/Common_Koel_Option.png");//delete these later
-	   	//option4.setUrl("images/Common_Koel_Option.png");//delete these later
+	   	
+	   	//Format Attribute Selections
+	   	attribute1.setWidth("110px");
+	   	attribute1.setHeight("20px");
+	   	attribute1.setStyleName("test");
+	   	attribute2.setWidth("115px");
+	   	attribute2.setHeight("20px");
+	   	attribute2.setStyleName("test");
+	   	attribute3.setWidth("115px");
+	   	attribute3.setHeight("20px");
+	   	attribute3.setStyleName("test");
+	   	attribute4.setWidth("115px");
+	   	attribute4.setHeight("20px");
+	   	attribute4.setStyleName("test");
+	   	attribute5.setWidth("115px");
+	   	attribute5.setHeight("20px");
+	   	attribute5.setStyleName("test");
+
+	   	//Format Stat Selector 
+	   	birdSkillSelector.setWidth("120px");
+	   	birdSkillSelector.setHeight("180px");
 	   	
 	   	//Format pile
 	   	pile.setWidth("120px");
@@ -154,6 +181,8 @@ public class GWTBirdWorld implements EntryPoint {
 	   	optionClicked(option3);
 	   	
 	   	optionClicked(option4);
+	   	
+	   	attributeClicked(attribute1, 1);
 	   
 	   	//Create Panels for objects
 	   	VerticalPanel playBtnPanel = new VerticalPanel();
@@ -177,7 +206,12 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel option2Panel = new VerticalPanel();
 	   	VerticalPanel option3Panel = new VerticalPanel();
 	   	VerticalPanel option4Panel = new VerticalPanel();
-	   	
+	   	VerticalPanel birdSkillSelectorPanel = new VerticalPanel();
+	   	VerticalPanel attribute1Panel = new VerticalPanel();
+	   	VerticalPanel attribute2Panel = new VerticalPanel();
+	   	VerticalPanel attribute3Panel = new VerticalPanel();
+	   	VerticalPanel attribute4Panel = new VerticalPanel();
+	   	VerticalPanel attribute5Panel = new VerticalPanel();
 	   
 	   	//Add objects to Panels
 	   	playBtnPanel.add(playBtn);   
@@ -201,6 +235,12 @@ public class GWTBirdWorld implements EntryPoint {
 	   	option2Panel.add(option2);
 	   	option3Panel.add(option3);
 	   	option4Panel.add(option4);
+	   	birdSkillSelectorPanel.add(birdSkillSelector);
+	   	attribute1Panel.add(attribute1);
+	   	attribute2Panel.add(attribute2);
+	   	attribute3Panel.add(attribute3);
+	   	attribute4Panel.add(attribute4);
+	   	attribute5Panel.add(attribute5);
 	   
 	   	//Adding the panels to the div in the html file
 	   	RootPanel.get("PlayButton").add(playBtnPanel);
@@ -224,6 +264,12 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("Option2").add(option2Panel);
 	   	RootPanel.get("Option3").add(option3Panel);
 	   	RootPanel.get("Option4").add(option4Panel);
+	   	RootPanel.get("Attribute1").add(attribute1Panel);
+	   	RootPanel.get("Attribute2").add(attribute2Panel);
+	   	RootPanel.get("Attribute3").add(attribute3Panel);
+	   	RootPanel.get("Attribute4").add(attribute4Panel);
+	   	RootPanel.get("Attribute5").add(attribute5Panel);
+	   	RootPanel.get("BirdSkillSelector").add(birdSkillSelectorPanel); 	
 	}
    
 	/**
@@ -302,13 +348,40 @@ public class GWTBirdWorld implements EntryPoint {
 		});
 	}
 	
+	/**
+	 * Add card to logical deck when clicked.
+	 * @param card The card clicked.
+	 * @param index The position of the card in the drawhand.
+	 */
+	public void attributeClicked(HTML attribute, final int index) {
+		//add a clickListener to CardRight
+		attribute.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				Window.alert("Clicked!");
+			}
+		});
+	}
+	
 	public void optionClicked(final Image option) {
 		//add a clickListener to CardRight
 		option.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				Window.alert(option.getUrl());
 				round.checkIfPlayerCorrect(option.getUrl());
+				if (round.getPlayerAdvantage() == true){
+					//Window.alert("Correct!");
+					birdSkillSelector.setUrl(round.getPlayerCard().getCardImgSource());
+					Document.get().getElementById("BirdSkillSelector").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("Blackbox").getStyle().setDisplay(Display.BLOCK);
+					
+					Document.get().getElementById("Option1").getStyle().setDisplay(Display.NONE);
+					Document.get().getElementById("Option2").getStyle().setDisplay(Display.NONE);
+					Document.get().getElementById("Option3").getStyle().setDisplay(Display.NONE);
+					Document.get().getElementById("Option4").getStyle().setDisplay(Display.NONE);
+				} else { 
+					//Window.alert("Wrong!");
+				}
 			}
 		});
 	}
