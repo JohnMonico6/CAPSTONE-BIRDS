@@ -319,7 +319,7 @@
     z-index: +5;
 }
 
-.test {
+.attribute {
 	border: 1px solid red;
 	cursor: pointer;
 }
@@ -332,22 +332,26 @@
 
 #Attribute2 {
 	position: absolute;
-	top: 80%;
+	top: 66%;
+	left: 3.7%;
 }
 
 #Attribute3 {
 	position: absolute;	
-	top: 80%;
+	top: 72%;
+	left: 3.7%;
 }
 
 #Attribute4 {
 	position: absolute;	
-	top: 80%;
+	top: 78%;
+	left: 3.7%;
 }
 
 #Attribute5 {
 	position: absolute;	
-	top: 80%;
+	top: 84%;
+	left: 3.7%;
 }
 
 #Notifier{
@@ -391,4 +395,46 @@
 	display:none;
 	background-image: url("images/WoodTableSurface2.jpg"); 
 	background-size: 1200px 720px;
+}
+
+.deckCardSound {
+	border: 1px solid red;
+	cursor: pointer;
+}
+
+#DeckCardSound1 {
+	position: absolute;
+}
+
+#DeckCardSound2 {
+	position: absolute;
+}
+
+#DeckCardSound3 {
+	position: absolute;	
+}
+
+#DeckCardSound4 {
+	position: absolute;	
+}
+
+#DeckCardSound5 {
+	position: absolute;	
+}
+
+.drawCardSound {
+	border: 1px solid red;
+	cursor: pointer;
+}
+
+#DrawCardSound1 {
+	position: absolute;	
+}
+
+#DrawCardSound2 {
+	position: absolute;	
+}
+
+#DrawCardSound3 {
+	position: absolute;	
 }

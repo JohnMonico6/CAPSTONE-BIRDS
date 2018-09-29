@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.birdworld.client.Player;
+import com.google.gwt.media.client.Audio;
 
 public class GWTBirdWorld implements EntryPoint {
 	boolean roundInProgress = false;
@@ -40,9 +41,19 @@ public class GWTBirdWorld implements EntryPoint {
 	HTML attribute2 = new HTML();
 	HTML attribute3 = new HTML();
 	HTML attribute4 = new HTML();
-	HTML attribute5 = new HTML();
-	   
-	   
+	HTML attribute5 = new HTML();	
+	HTML deckCardSound1 = new HTML();
+	HTML deckCardSound2 = new HTML();
+	HTML deckCardSound3 = new HTML();
+	HTML deckCardSound4 = new HTML();
+	HTML deckCardSound5 = new HTML();	
+	HTML drawCardSound1 = new HTML();
+	HTML drawCardSound2 = new HTML();
+	HTML drawCardSound3 = new HTML();
+	
+	//Initialize Audio files
+	Audio opponentPlayedCardAudio = Audio.createIfSupported();
+
 	//Initialize player
 	Player player1 = new Player("TheLegend27");
 	   
@@ -111,20 +122,48 @@ public class GWTBirdWorld implements EntryPoint {
 	   	
 	   	//Format Attribute Selections
 	   	attribute1.setWidth("110px");
-	   	attribute1.setHeight("20px");
-	   	attribute1.setStyleName("test");
-	   	attribute2.setWidth("115px");
-	   	attribute2.setHeight("20px");
-	   	attribute2.setStyleName("test");
-	   	attribute3.setWidth("115px");
-	   	attribute3.setHeight("20px");
-	   	attribute3.setStyleName("test");
-	   	attribute4.setWidth("115px");
-	   	attribute4.setHeight("20px");
-	   	attribute4.setStyleName("test");
-	   	attribute5.setWidth("115px");
-	   	attribute5.setHeight("20px");
-	   	attribute5.setStyleName("test");
+	   	attribute1.setHeight("12px");
+	   	attribute1.setStyleName("attribute");
+	   	attribute2.setWidth("110px");
+	   	attribute2.setHeight("12px");
+	   	attribute2.setStyleName("attribute");
+	   	attribute3.setWidth("110px");
+	   	attribute3.setHeight("12px");
+	   	attribute3.setStyleName("attribute");
+	   	attribute4.setWidth("110px");
+	   	attribute4.setHeight("12px");
+	   	attribute4.setStyleName("attribute");
+	   	attribute5.setWidth("110px");
+	   	attribute5.setHeight("12px");
+	   	attribute5.setStyleName("attribute");
+	   	
+	   	//Format Deck Card Sounds
+	   	deckCardSound1.setWidth("28px");
+	   	deckCardSound1.setHeight("20px");
+	   	deckCardSound1.setStyleName("deckCardSound");
+	   	deckCardSound2.setWidth("28px");
+	   	deckCardSound2.setHeight("20px");
+	   	deckCardSound2.setStyleName("deckCardSound");
+	   	deckCardSound3.setWidth("28px");
+	   	deckCardSound3.setHeight("20px");
+	   	deckCardSound3.setStyleName("deckCardSound");
+	   	deckCardSound4.setWidth("28px");
+	   	deckCardSound4.setHeight("20px");
+	   	deckCardSound4.setStyleName("deckCardSound");
+	   	deckCardSound5.setWidth("28px");
+	   	deckCardSound5.setHeight("20px");
+	   	deckCardSound5.setStyleName("deckCardSound");
+	   	
+	   	//Format Draw Card Sounds
+	   	drawCardSound1.setWidth("46px");
+	   	drawCardSound1.setHeight("35px");
+	   	drawCardSound1.setStyleName("drawCardSound");
+	   	drawCardSound2.setWidth("46px");
+	   	drawCardSound2.setHeight("35px");
+	   	drawCardSound2.setStyleName("drawCardSound");
+	   	drawCardSound3.setWidth("46px");
+	   	drawCardSound3.setHeight("35px");
+	   	drawCardSound3.setStyleName("drawCardSound");
 
 	   	//Format Stat Selector 
 	   	birdSkillSelector.setWidth("120px");
@@ -157,32 +196,31 @@ public class GWTBirdWorld implements EntryPoint {
 	   			updateScreen();
 	   		}
 	   	});
-	   
+	   	
+	   	//Check if draw card has been clicked.
 	   	drawCardClicked(cardLeft, 0);
-		   
-	   	drawCardClicked(cardMiddle, 1);
-		   
+	   	drawCardClicked(cardMiddle, 1);   
 	   	drawCardClicked(cardRight, 2);
-	   	
+	  
+	   	//Check if deck card has been clicked
 	   	deckCardClicked(deckCard1, 0);
-	   	
 	   	deckCardClicked(deckCard2, 1);
-	   	
 	   	deckCardClicked(deckCard3, 2);
-	   	
 	   	deckCardClicked(deckCard4, 3);
-	   	
 	   	deckCardClicked(deckCard5, 4);
 	   	
+	   	//Check if option has been clicked
 	   	optionClicked(option1);
-	   	
 	   	optionClicked(option2);
-	   	
 	   	optionClicked(option3);
-	   	
 	   	optionClicked(option4);
 	   	
+	   	//Check if attribute has benn clicked
 	   	attributeClicked(attribute1, 1);
+	   	
+	   	soundButtonClicked(deckCardSound1, 0);
+	   	
+	   	opponentCardClicked();
 	   
 	   	//Create Panels for objects
 	   	VerticalPanel playBtnPanel = new VerticalPanel();
@@ -212,6 +250,14 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel attribute3Panel = new VerticalPanel();
 	   	VerticalPanel attribute4Panel = new VerticalPanel();
 	   	VerticalPanel attribute5Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound1Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound2Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound3Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound4Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound5Panel = new VerticalPanel();
+	   	VerticalPanel drawCardSound1Panel = new VerticalPanel();
+	   	VerticalPanel drawCardSound2Panel = new VerticalPanel();
+	   	VerticalPanel drawCardSound3Panel = new VerticalPanel();
 	   
 	   	//Add objects to Panels
 	   	playBtnPanel.add(playBtn);   
@@ -241,6 +287,14 @@ public class GWTBirdWorld implements EntryPoint {
 	   	attribute3Panel.add(attribute3);
 	   	attribute4Panel.add(attribute4);
 	   	attribute5Panel.add(attribute5);
+	   	deckCardSound1Panel.add(deckCardSound1);
+	   	deckCardSound2Panel.add(deckCardSound2);
+	   	deckCardSound3Panel.add(deckCardSound3);
+	   	deckCardSound4Panel.add(deckCardSound4);
+	   	deckCardSound5Panel.add(deckCardSound5);
+	   	drawCardSound1Panel.add(drawCardSound1);
+	   	drawCardSound2Panel.add(drawCardSound2);
+	   	drawCardSound3Panel.add(drawCardSound3);
 	   
 	   	//Adding the panels to the div in the html file
 	   	RootPanel.get("PlayButton").add(playBtnPanel);
@@ -269,7 +323,15 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("Attribute3").add(attribute3Panel);
 	   	RootPanel.get("Attribute4").add(attribute4Panel);
 	   	RootPanel.get("Attribute5").add(attribute5Panel);
-	   	RootPanel.get("BirdSkillSelector").add(birdSkillSelectorPanel); 	
+	   	RootPanel.get("BirdSkillSelector").add(birdSkillSelectorPanel);
+	   	RootPanel.get("DeckCardSound1").add(deckCardSound1Panel);
+	   	RootPanel.get("DeckCardSound2").add(deckCardSound2Panel);
+	   	RootPanel.get("DeckCardSound3").add(deckCardSound3Panel);
+	   	RootPanel.get("DeckCardSound4").add(deckCardSound4Panel);
+	   	RootPanel.get("DeckCardSound5").add(deckCardSound5Panel);
+	   	RootPanel.get("DrawCardSound1").add(drawCardSound1Panel);
+	   	RootPanel.get("DrawCardSound2").add(drawCardSound2Panel);
+	   	RootPanel.get("DrawCardSound3").add(drawCardSound3Panel);
 	}
    
 	/**
@@ -348,17 +410,33 @@ public class GWTBirdWorld implements EntryPoint {
 		});
 	}
 	
-	/**
-	 * Add card to logical deck when clicked.
-	 * @param card The card clicked.
-	 * @param index The position of the card in the drawhand.
-	 */
 	public void attributeClicked(HTML attribute, final int index) {
 		//add a clickListener to CardRight
 		attribute.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				Window.alert("Clicked!");
+			}
+		});
+	}
+	
+	public void soundButtonClicked(HTML soundButton, final int index) {
+		//add a clickListener to CardRight
+		soundButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				Window.alert("Clicked!");
+			}
+		});
+	}
+	
+	public void opponentCardClicked() {
+		//add a clickListener to CardRight
+		opponentPlayedCard.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				opponentPlayedCardAudio.setSrc(round.getOpponentCard().getAudioSource());
+				opponentPlayedCardAudio.play();
 			}
 		});
 	}
@@ -386,11 +464,6 @@ public class GWTBirdWorld implements EntryPoint {
 		});
 	}
 	
-	/**
-	 * Add card to logical deck when clicked.
-	 * @param card The card clicked.
-	 * @param index The position of the card in the drawhand.
-	 */
 	public void deckCardClicked(Image card, final int index) {
 		//add a clickListener to CardRight
 		card.addClickHandler(new ClickHandler() {
