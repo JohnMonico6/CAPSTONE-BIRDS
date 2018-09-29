@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.birdworld.client.Player;
+import com.google.gwt.media.client.Audio;
 
 public class GWTBirdWorld implements EntryPoint {
 	boolean roundInProgress = false;
@@ -34,17 +35,45 @@ public class GWTBirdWorld implements EntryPoint {
 	Image option2 = new Image();
 	Image option3 = new Image();
 	Image option4 = new Image();
+<<<<<<< HEAD
 	Image notifier = new Image();
 	   
 	   
+=======
+	Image birdSkillSelector = new Image();
+	
+	HTML attribute1 = new HTML();
+	HTML attribute2 = new HTML();
+	HTML attribute3 = new HTML();
+	HTML attribute4 = new HTML();
+	HTML attribute5 = new HTML();	
+	HTML deckCardSound1 = new HTML();
+	HTML deckCardSound2 = new HTML();
+	HTML deckCardSound3 = new HTML();
+	HTML deckCardSound4 = new HTML();
+	HTML deckCardSound5 = new HTML();	
+	HTML drawCardSound1 = new HTML();
+	HTML drawCardSound2 = new HTML();
+	HTML drawCardSound3 = new HTML();
+	
+	//Initialize Audio files
+	Audio opponentPlayedCardAudio = Audio.createIfSupported();
+
+>>>>>>> LukesFiles
 	//Initialize player
 	Player player1 = new Player("TheLegend27");
 	   
-	//Initialize SinglePlayerRound
+	//Initialize SinglePlayerGame
 	SinglePlayerGame game = new SinglePlayerGame(player1);
 	
+	//Initialize SinglePlayerRound
+	SinglePlayerRound round;
+	
 	//Create button
-	Button playBtn = new Button("Play!");	   
+	Button playBtn = new Button("Play!");
+	
+	//Create label
+	
 	   
 	public void onModuleLoad() {
 	   
@@ -96,10 +125,62 @@ public class GWTBirdWorld implements EntryPoint {
 	   	option3.setHeight("150px");
 	   	option4.setWidth("auto");
 	   	option4.setHeight("150px");
+<<<<<<< HEAD
 	   	option1.setUrl("images/Common_Koel_Option.png");//delete these later
 	   	option2.setUrl("images/Common_Koel_Option.png");//delete these later
 	   	option3.setUrl("images/Common_Koel_Option.png");//delete these later
 	   	option4.setUrl("images/Common_Koel_Option.png");//delete these later
+=======
+	   	
+	   	//Format Attribute Selections
+	   	attribute1.setWidth("110px");
+	   	attribute1.setHeight("12px");
+	   	attribute1.setStyleName("attribute");
+	   	attribute2.setWidth("110px");
+	   	attribute2.setHeight("12px");
+	   	attribute2.setStyleName("attribute");
+	   	attribute3.setWidth("110px");
+	   	attribute3.setHeight("12px");
+	   	attribute3.setStyleName("attribute");
+	   	attribute4.setWidth("110px");
+	   	attribute4.setHeight("12px");
+	   	attribute4.setStyleName("attribute");
+	   	attribute5.setWidth("110px");
+	   	attribute5.setHeight("12px");
+	   	attribute5.setStyleName("attribute");
+	   	
+	   	//Format Deck Card Sounds
+	   	deckCardSound1.setWidth("28px");
+	   	deckCardSound1.setHeight("20px");
+	   	deckCardSound1.setStyleName("deckCardSound");
+	   	deckCardSound2.setWidth("28px");
+	   	deckCardSound2.setHeight("20px");
+	   	deckCardSound2.setStyleName("deckCardSound");
+	   	deckCardSound3.setWidth("28px");
+	   	deckCardSound3.setHeight("20px");
+	   	deckCardSound3.setStyleName("deckCardSound");
+	   	deckCardSound4.setWidth("28px");
+	   	deckCardSound4.setHeight("20px");
+	   	deckCardSound4.setStyleName("deckCardSound");
+	   	deckCardSound5.setWidth("28px");
+	   	deckCardSound5.setHeight("20px");
+	   	deckCardSound5.setStyleName("deckCardSound");
+	   	
+	   	//Format Draw Card Sounds
+	   	drawCardSound1.setWidth("46px");
+	   	drawCardSound1.setHeight("35px");
+	   	drawCardSound1.setStyleName("drawCardSound");
+	   	drawCardSound2.setWidth("46px");
+	   	drawCardSound2.setHeight("35px");
+	   	drawCardSound2.setStyleName("drawCardSound");
+	   	drawCardSound3.setWidth("46px");
+	   	drawCardSound3.setHeight("35px");
+	   	drawCardSound3.setStyleName("drawCardSound");
+
+	   	//Format Stat Selector 
+	   	birdSkillSelector.setWidth("120px");
+	   	birdSkillSelector.setHeight("180px");
+>>>>>>> LukesFiles
 	   	
 	   	//Format pile
 	   	pile.setWidth("120px");
@@ -128,22 +209,31 @@ public class GWTBirdWorld implements EntryPoint {
 	   			updateScreen();
 	   		}
 	   	});
-	   
+	   	
+	   	//Check if draw card has been clicked.
 	   	drawCardClicked(cardLeft, 0);
-		   
-	   	drawCardClicked(cardMiddle, 1);
-		   
+	   	drawCardClicked(cardMiddle, 1);   
 	   	drawCardClicked(cardRight, 2);
-	   	
+	  
+	   	//Check if deck card has been clicked
 	   	deckCardClicked(deckCard1, 0);
-	   	
 	   	deckCardClicked(deckCard2, 1);
-	   	
 	   	deckCardClicked(deckCard3, 2);
-	   	
 	   	deckCardClicked(deckCard4, 3);
-	   	
 	   	deckCardClicked(deckCard5, 4);
+	   	
+	   	//Check if option has been clicked
+	   	optionClicked(option1);
+	   	optionClicked(option2);
+	   	optionClicked(option3);
+	   	optionClicked(option4);
+	   	
+	   	//Check if attribute has benn clicked
+	   	attributeClicked(attribute1, 1);
+	   	
+	   	soundButtonClicked(deckCardSound1, 0);
+	   	
+	   	opponentCardClicked();
 	   
 	   	//Create Panels for objects
 	   	VerticalPanel playBtnPanel = new VerticalPanel();
@@ -167,7 +257,24 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel option2Panel = new VerticalPanel();
 	   	VerticalPanel option3Panel = new VerticalPanel();
 	   	VerticalPanel option4Panel = new VerticalPanel();
+<<<<<<< HEAD
 	   	
+=======
+	   	VerticalPanel birdSkillSelectorPanel = new VerticalPanel();
+	   	VerticalPanel attribute1Panel = new VerticalPanel();
+	   	VerticalPanel attribute2Panel = new VerticalPanel();
+	   	VerticalPanel attribute3Panel = new VerticalPanel();
+	   	VerticalPanel attribute4Panel = new VerticalPanel();
+	   	VerticalPanel attribute5Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound1Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound2Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound3Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound4Panel = new VerticalPanel();
+	   	VerticalPanel deckCardSound5Panel = new VerticalPanel();
+	   	VerticalPanel drawCardSound1Panel = new VerticalPanel();
+	   	VerticalPanel drawCardSound2Panel = new VerticalPanel();
+	   	VerticalPanel drawCardSound3Panel = new VerticalPanel();
+>>>>>>> LukesFiles
 	   
 	   	//Add objects to Panels
 	   	playBtnPanel.add(playBtn);   
@@ -191,6 +298,23 @@ public class GWTBirdWorld implements EntryPoint {
 	   	option2Panel.add(option2);
 	   	option3Panel.add(option3);
 	   	option4Panel.add(option4);
+<<<<<<< HEAD
+=======
+	   	birdSkillSelectorPanel.add(birdSkillSelector);
+	   	attribute1Panel.add(attribute1);
+	   	attribute2Panel.add(attribute2);
+	   	attribute3Panel.add(attribute3);
+	   	attribute4Panel.add(attribute4);
+	   	attribute5Panel.add(attribute5);
+	   	deckCardSound1Panel.add(deckCardSound1);
+	   	deckCardSound2Panel.add(deckCardSound2);
+	   	deckCardSound3Panel.add(deckCardSound3);
+	   	deckCardSound4Panel.add(deckCardSound4);
+	   	deckCardSound5Panel.add(deckCardSound5);
+	   	drawCardSound1Panel.add(drawCardSound1);
+	   	drawCardSound2Panel.add(drawCardSound2);
+	   	drawCardSound3Panel.add(drawCardSound3);
+>>>>>>> LukesFiles
 	   
 	   	//Adding the panels to the div in the html file
 	   	RootPanel.get("PlayButton").add(playBtnPanel);
@@ -214,6 +338,23 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("Option2").add(option2Panel);
 	   	RootPanel.get("Option3").add(option3Panel);
 	   	RootPanel.get("Option4").add(option4Panel);
+<<<<<<< HEAD
+=======
+	   	RootPanel.get("Attribute1").add(attribute1Panel);
+	   	RootPanel.get("Attribute2").add(attribute2Panel);
+	   	RootPanel.get("Attribute3").add(attribute3Panel);
+	   	RootPanel.get("Attribute4").add(attribute4Panel);
+	   	RootPanel.get("Attribute5").add(attribute5Panel);
+	   	RootPanel.get("BirdSkillSelector").add(birdSkillSelectorPanel);
+	   	RootPanel.get("DeckCardSound1").add(deckCardSound1Panel);
+	   	RootPanel.get("DeckCardSound2").add(deckCardSound2Panel);
+	   	RootPanel.get("DeckCardSound3").add(deckCardSound3Panel);
+	   	RootPanel.get("DeckCardSound4").add(deckCardSound4Panel);
+	   	RootPanel.get("DeckCardSound5").add(deckCardSound5Panel);
+	   	RootPanel.get("DrawCardSound1").add(drawCardSound1Panel);
+	   	RootPanel.get("DrawCardSound2").add(drawCardSound2Panel);
+	   	RootPanel.get("DrawCardSound3").add(drawCardSound3Panel);
+>>>>>>> LukesFiles
 	}
    
 	/**
@@ -222,16 +363,16 @@ public class GWTBirdWorld implements EntryPoint {
 	public void updateScreen() {
 		
 		//Update drawhand card images.
-		cardLeft.setUrl(game.getDrawHand().getCard(0).getImgSource());
-		cardMiddle.setUrl(game.getDrawHand().getCard(1).getImgSource());
-		cardRight.setUrl(game.getDrawHand().getCard(2).getImgSource());
+		cardLeft.setUrl(game.getDrawHand().getCard(0).getCardImgSource());
+		cardMiddle.setUrl(game.getDrawHand().getCard(1).getCardImgSource());
+		cardRight.setUrl(game.getDrawHand().getCard(2).getCardImgSource());
 	   
 		//Update player deck card images
-		deckCard1.setUrl(player1.getDeck().getCard(0).getImgSource());
-		deckCard2.setUrl(player1.getDeck().getCard(1).getImgSource());
-		deckCard3.setUrl(player1.getDeck().getCard(2).getImgSource());
-		deckCard4.setUrl(player1.getDeck().getCard(3).getImgSource());
-		deckCard5.setUrl(player1.getDeck().getCard(4).getImgSource());
+		deckCard1.setUrl(player1.getDeck().getCard(0).getCardImgSource());
+		deckCard2.setUrl(player1.getDeck().getCard(1).getCardImgSource());
+		deckCard3.setUrl(player1.getDeck().getCard(2).getCardImgSource());
+		deckCard4.setUrl(player1.getDeck().getCard(3).getCardImgSource());
+		deckCard5.setUrl(player1.getDeck().getCard(4).getCardImgSource());
 	   
 		//Update used when the drawing phase is over.
 		if (game.getDrawingStatus() == false) {
@@ -252,11 +393,11 @@ public class GWTBirdWorld implements EntryPoint {
 			game.buildComputerDeck();
 			
 			//Test for opponent deck.
-			opponentCard1.setUrl(game.getOpponent().getDeck().getCard(0).getImgSource());
-			opponentCard2.setUrl(game.getOpponent().getDeck().getCard(1).getImgSource());
-			opponentCard3.setUrl(game.getOpponent().getDeck().getCard(2).getImgSource());
-			opponentCard4.setUrl(game.getOpponent().getDeck().getCard(3).getImgSource());
-			opponentCard5.setUrl(game.getOpponent().getDeck().getCard(4).getImgSource());
+			opponentCard1.setUrl(game.getOpponent().getDeck().getCard(0).getCardImgSource());
+			opponentCard2.setUrl(game.getOpponent().getDeck().getCard(1).getCardImgSource());
+			opponentCard3.setUrl(game.getOpponent().getDeck().getCard(2).getCardImgSource());
+			opponentCard4.setUrl(game.getOpponent().getDeck().getCard(3).getCardImgSource());
+			opponentCard5.setUrl(game.getOpponent().getDeck().getCard(4).getCardImgSource());
 			
 			
 			//Setup card images.
@@ -292,11 +433,60 @@ public class GWTBirdWorld implements EntryPoint {
 		});
 	}
 	
-	/**
-	 * Add card to logical deck when clicked.
-	 * @param card The card clicked.
-	 * @param index The position of the card in the drawhand.
-	 */
+	public void attributeClicked(HTML attribute, final int index) {
+		//add a clickListener to CardRight
+		attribute.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				Window.alert("Clicked!");
+			}
+		});
+	}
+	
+	public void soundButtonClicked(HTML soundButton, final int index) {
+		//add a clickListener to CardRight
+		soundButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				Window.alert("Clicked!");
+			}
+		});
+	}
+	
+	public void opponentCardClicked() {
+		//add a clickListener to CardRight
+		opponentPlayedCard.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				opponentPlayedCardAudio.setSrc(round.getOpponentCard().getAudioSource());
+				opponentPlayedCardAudio.play();
+			}
+		});
+	}
+	
+	public void optionClicked(final Image option) {
+		//add a clickListener to CardRight
+		option.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				round.checkIfPlayerCorrect(option.getUrl());
+				if (round.getPlayerAdvantage() == true){
+					//Window.alert("Correct!");
+					birdSkillSelector.setUrl(round.getPlayerCard().getCardImgSource());
+					Document.get().getElementById("BirdSkillSelector").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("Blackbox").getStyle().setDisplay(Display.BLOCK);
+					
+					Document.get().getElementById("Option1").getStyle().setDisplay(Display.NONE);
+					Document.get().getElementById("Option2").getStyle().setDisplay(Display.NONE);
+					Document.get().getElementById("Option3").getStyle().setDisplay(Display.NONE);
+					Document.get().getElementById("Option4").getStyle().setDisplay(Display.NONE);
+				} else { 
+					//Window.alert("Wrong!");
+				}
+			}
+		});
+	}
+	
 	public void deckCardClicked(Image card, final int index) {
 		//add a clickListener to CardRight
 		card.addClickHandler(new ClickHandler() {
@@ -325,12 +515,27 @@ public class GWTBirdWorld implements EntryPoint {
 							break;
 					}
 					
-					SinglePlayerRound round = new SinglePlayerRound(player1.getDeck().getCard(index), game);
-					playerPlayedCard.setUrl(player1.getDeck().getCard(index).getImgSource());
+					round = new SinglePlayerRound(player1.getDeck().getCard(index), game);
+					playerPlayedCard.setUrl(player1.getDeck().getCard(index).getCardImgSource());
 					
 					Document.get().getElementById("PlayerPlayedCard").getStyle().setDisplay(Display.BLOCK);
 					Document.get().getElementById("OpponentPlayedCard").getStyle().setDisplay(Display.BLOCK);
+<<<<<<< HEAD
 //					opponentPlayedCard.setUrl(round.getOpponentCard().getImgSource());
+=======
+					
+					Document.get().getElementById("Option1").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("Option2").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("Option3").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("Option4").getStyle().setDisplay(Display.BLOCK);
+					
+					round.createOptions();
+					option1.setUrl(round.getOptions().get(0).toString());
+					option2.setUrl(round.getOptions().get(1).toString());
+					option3.setUrl(round.getOptions().get(2).toString());
+					option4.setUrl(round.getOptions().get(3).toString());
+					opponentPlayedCard.setUrl(round.getOpponentCard().getCardImgSource());
+>>>>>>> LukesFiles
 					
 					switch(game.getOpponent().getDeck().getCardPositon(round.getOpponentCard())) {
 						case 0: 

@@ -266,6 +266,11 @@
 	left: 84%;
 	top: 10%;
 	z-index: +1;
+<<<<<<< HEAD
+=======
+	display: none;
+	cursor: pointer;
+>>>>>>> LukesFiles
 }
 
 #Option1:hover {
@@ -279,7 +284,13 @@
 	height: 150px;
 	left: 84%;
 	top: 32%;
+<<<<<<< HEAD
 	z-index: +2;
+=======
+	z-index: +1;
+	display: none;
+	cursor: pointer;
+>>>>>>> LukesFiles
 }
 
 #Option2:hover {
@@ -293,7 +304,13 @@
 	height: 150px;
 	left: 84%;
 	top: 54%;
+<<<<<<< HEAD
 	z-index: +3;
+=======
+	z-index: +1;
+	display: none;
+	cursor: pointer;
+>>>>>>> LukesFiles
 }
 
 #Option3:hover {
@@ -307,7 +324,13 @@
 	height: 150px;
 	left: 84%;
 	top: 76%;
+<<<<<<< HEAD
 	z-index: +4;
+=======
+	z-index: +1;
+	display: none;
+	cursor: pointer;
+>>>>>>> LukesFiles
 }
 
 #Option4:hover {
@@ -315,13 +338,79 @@
     z-index: +5;
 }
 
+<<<<<<< HEAD
+=======
+.attribute {
+	border: 1px solid red;
+	cursor: pointer;
+}
+
+#Attribute1 {
+	position: absolute;
+	top: 60%;
+	left: 3.7%;
+}
+
+#Attribute2 {
+	position: absolute;
+	top: 66%;
+	left: 3.7%;
+}
+
+#Attribute3 {
+	position: absolute;	
+	top: 72%;
+	left: 3.7%;
+}
+
+#Attribute4 {
+	position: absolute;	
+	top: 78%;
+	left: 3.7%;
+}
+
+#Attribute5 {
+	position: absolute;	
+	top: 84%;
+	left: 3.7%;
+}
+
+>>>>>>> LukesFiles
 #Notifier{
 	position: absolute;
 	width: 150px;
 	height: 120px;
 	left: 45%;
 	top: 43%;
+<<<<<<< HEAD
 	z-index: +100
+=======
+	z-index: +10;
+	opacity: 0.0;
+	display: none;
+}
+
+#Blackbox{
+	position: absolute;
+	width:1200px;
+	height:730px;
+	z-index: +2;
+	background: black;
+ 	opacity: 0.5;
+ 	display: none;
+}
+
+#BirdSkillSelector{
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	left: 45%;
+	top: 40%;
+	z-index: +3;
+	opacity: 1;
+	transform: scale(3);
+	display: none;
+>>>>>>> LukesFiles
 }
 
 #GameBoard {
@@ -332,4 +421,46 @@
 	display:none;
 	background-image: url("images/WoodTableSurface2.jpg"); 
 	background-size: 1200px 720px;
+}
+
+.deckCardSound {
+	border: 1px solid red;
+	cursor: pointer;
+}
+
+#DeckCardSound1 {
+	position: absolute;
+}
+
+#DeckCardSound2 {
+	position: absolute;
+}
+
+#DeckCardSound3 {
+	position: absolute;	
+}
+
+#DeckCardSound4 {
+	position: absolute;	
+}
+
+#DeckCardSound5 {
+	position: absolute;	
+}
+
+.drawCardSound {
+	border: 1px solid red;
+	cursor: pointer;
+}
+
+#DrawCardSound1 {
+	position: absolute;	
+}
+
+#DrawCardSound2 {
+	position: absolute;	
+}
+
+#DrawCardSound3 {
+	position: absolute;	
 }

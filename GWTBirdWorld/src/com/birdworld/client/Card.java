@@ -3,12 +3,16 @@ public class Card {
 	
 	private String birdName;
 	private int[] attributes = new int[5];
-	private String imgSource;
+	private String cardImgSrc;
+	private String optionImgSrc;
+	private String audioSrc;
 	
-	public Card(String birdName, int[] attributes, String imgSource) {
+	public Card(String birdName, int[] attributes, String cardImgSrc, String optionImgSrc, String audioSrc) {
 		this.birdName = birdName;
 		this.attributes = attributes;
-		this.imgSource = imgSource;
+		this.cardImgSrc = cardImgSrc;
+		this.optionImgSrc = optionImgSrc;
+		this.audioSrc = audioSrc;
 	}
 	
 	public String getName() {
@@ -19,7 +23,15 @@ public class Card {
 		return attributes[index];
 	}
 	
-	public String getImgSource() {
-		return imgSource;
+	public String getCardImgSource() {
+		return cardImgSrc;
+	}
+	
+	public String getOptionImgSource() {
+		return optionImgSrc;
+	}
+	
+	public String getAudioSource() {
+		return audioSrc;
 	}
 }
