@@ -48,7 +48,13 @@ public class Computer {
 		}
 	}
 	
-	public void isWinner() {
+	public void makeWinner() {
 		winner = true;
+		//System.out.print("Computer is winner.");
+	}
+	
+	public boolean isWinner() {
+		return winner;
+		//System.out.print("Player is winner.");
 	}
 }

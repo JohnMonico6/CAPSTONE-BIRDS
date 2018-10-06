@@ -24,6 +24,9 @@ public class SinglePlayerRound {
 		int n = random.nextInt(game.getOpponent().getDeck().getSize()) + 0;
 		
 		opponentCard = game.getOpponent().getDeck().getCard(n);
+		game.getOpponent().getDeck().removeCard(opponentCard);
+		
+		
 	}
 	
 	public void createOptions() {

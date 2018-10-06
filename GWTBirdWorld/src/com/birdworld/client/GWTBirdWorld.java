@@ -14,6 +14,7 @@ import com.google.gwt.media.client.Audio;
 
 public class GWTBirdWorld implements EntryPoint {
 	boolean roundInProgress = false;
+	int handSize = 4;
 
 	//Create images
 	Image cardLeft = new Image();
@@ -548,6 +549,26 @@ public class GWTBirdWorld implements EntryPoint {
 						Document.get().getElementById("OpponentArrow5").getStyle().setDisplay(Display.NONE);
 						Document.get().getElementById("PlayerPlayedCard").getStyle().setDisplay(Display.NONE);
 						Document.get().getElementById("OpponentPlayedCard").getStyle().setDisplay(Display.NONE);
+						
+						if (true){ 
+							game.checkForVictory();
+							if (game.getPlayer().isWinner() && game.getOpponent().isWinner()){
+								//Window.alert("It's a draw!");
+								Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
+								Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);
+								Document.get().getElementById("TieNoVictory").getStyle().setDisplay(Display.BLOCK);
+							} else if (game.getOpponent().isWinner()){ 
+								//Window.alert("Computer has won");
+								Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
+								Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);
+								Document.get().getElementById("ComputerVictory").getStyle().setDisplay(Display.BLOCK);
+							} else if (game.getPlayer().isWinner()){
+								//Window.alert("Player has won");
+								Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
+								Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);
+								Document.get().getElementById("PlayerVictory").getStyle().setDisplay(Display.BLOCK);
+							}
+						}
 				    }
 				};
 				
@@ -670,25 +691,30 @@ public class GWTBirdWorld implements EntryPoint {
 					option4.setUrl(round.getOptions().get(3).toString());
 					opponentPlayedCard.setUrl(round.getOpponentCard().getCardImgSource());
 					
-					switch(game.getOpponent().getDeck().getCardPositon(round.getOpponentCard())) {
+					switch(handSize) {
 						case 0: 
 							Document.get().getElementById("OpponentCard1").getStyle().setDisplay(Display.NONE);
+							handSize--;
 							break;
 							
 						case 1: 
 							Document.get().getElementById("OpponentCard2").getStyle().setDisplay(Display.NONE);
+							handSize--;
 							break;
 							
 						case 2:
 							Document.get().getElementById("OpponentCard3").getStyle().setDisplay(Display.NONE);
+							handSize--;
 							break;
 							
 						case 3:
 							Document.get().getElementById("OpponentCard4").getStyle().setDisplay(Display.NONE);
+							handSize--;
 							break;
 							
 						case 4:
 							Document.get().getElementById("OpponentCard5").getStyle().setDisplay(Display.NONE);
+							handSize--;
 							break;
 					}
 					

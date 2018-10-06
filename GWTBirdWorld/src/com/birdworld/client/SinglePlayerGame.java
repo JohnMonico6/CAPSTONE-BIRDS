@@ -9,6 +9,7 @@ public class SinglePlayerGame {
 	private Player computer;
 	private boolean drawingInProgress;
 	private final int MAX_DECK_SIZE = 5;
+	private boolean gameOver = false;
 	
 	public SinglePlayerGame(Player player) {
 		pile = new Pile();
@@ -43,12 +44,18 @@ public class SinglePlayerGame {
 	public void checkForVictory() {
 		boolean playerDeckEmpty = player.getDeck().isEmpty();
 		boolean computerDeckEmpty = computer.getDeck().isEmpty();
-		
-		if (playerDeckEmpty == true && computerDeckEmpty == true) {
+		if (computerDeckEmpty == true) {
 			if (player.getScore() < computer.getScore()) {
-				computer.isWinner();
+				computer.makeWinner();
+				//Display Computer is Winner
+				//System.out.print('PLAYER HAS WON!');
 			} else if (player.getScore() > computer.getScore()) {
-				player.isWinner();
+				player.makeWinner();
+				//Display Player is Winner
+				//System.out.print('PLAYER HAS WON!');
+			} else if (player.getScore() == computer.getScore()){
+				player.makeWinner();
+				computer.makeWinner();
 			}
 		}
 	}
