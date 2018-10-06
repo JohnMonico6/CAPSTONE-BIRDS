@@ -6,6 +6,7 @@ import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.*;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.birdworld.client.Player;
@@ -41,6 +42,8 @@ public class GWTBirdWorld implements EntryPoint {
 	   
 =======
 	Image birdSkillSelector = new Image();
+	Image opponentCardComparison = new Image();
+	Image playerCardComparison = new Image();
 	
 	HTML attribute1 = new HTML();
 	HTML attribute2 = new HTML();
@@ -55,9 +58,10 @@ public class GWTBirdWorld implements EntryPoint {
 	HTML drawCardSound1 = new HTML();
 	HTML drawCardSound2 = new HTML();
 	HTML drawCardSound3 = new HTML();
+	HTML playerPlayedCardSound = new HTML();
 	
 	//Initialize Audio files
-	Audio opponentPlayedCardAudio = Audio.createIfSupported();
+	Audio audio = Audio.createIfSupported();
 
 >>>>>>> LukesFiles
 	//Initialize player
@@ -133,20 +137,20 @@ public class GWTBirdWorld implements EntryPoint {
 =======
 	   	
 	   	//Format Attribute Selections
-	   	attribute1.setWidth("110px");
-	   	attribute1.setHeight("12px");
+	   	attribute1.setWidth("113px");
+	   	attribute1.setHeight("13px");
 	   	attribute1.setStyleName("attribute");
-	   	attribute2.setWidth("110px");
-	   	attribute2.setHeight("12px");
+	   	attribute2.setWidth("113px");
+	   	attribute2.setHeight("13px");
 	   	attribute2.setStyleName("attribute");
-	   	attribute3.setWidth("110px");
-	   	attribute3.setHeight("12px");
+	   	attribute3.setWidth("113px");
+	   	attribute3.setHeight("13px");
 	   	attribute3.setStyleName("attribute");
-	   	attribute4.setWidth("110px");
-	   	attribute4.setHeight("12px");
+	   	attribute4.setWidth("113px");
+	   	attribute4.setHeight("19px");
 	   	attribute4.setStyleName("attribute");
-	   	attribute5.setWidth("110px");
-	   	attribute5.setHeight("12px");
+	   	attribute5.setWidth("113px");
+	   	attribute5.setHeight("13px");
 	   	attribute5.setStyleName("attribute");
 	   	
 	   	//Format Deck Card Sounds
@@ -176,6 +180,11 @@ public class GWTBirdWorld implements EntryPoint {
 	   	drawCardSound3.setWidth("46px");
 	   	drawCardSound3.setHeight("35px");
 	   	drawCardSound3.setStyleName("drawCardSound");
+	   	
+	   	//Format Player Played Card
+	   	playerPlayedCardSound.setWidth("28px");
+	   	playerPlayedCardSound.setHeight("20px");
+	   	playerPlayedCardSound.setStyleName("playerPlayedCardSound");
 
 	   	//Format Stat Selector 
 	   	birdSkillSelector.setWidth("120px");
@@ -187,8 +196,15 @@ public class GWTBirdWorld implements EntryPoint {
 	   	pile.setHeight("180px");
 	   	pile.setUrl("images/BackOfCard.png");
 	   
+	   	//Format Play Button
 	   	playBtn.addStyleName("PlayButton");
 	   	playBtn.setWidth("100px");
+	   	
+	   	//Format Comparison Cards
+	   	opponentCardComparison.setWidth("120px");
+	   	opponentCardComparison.setHeight("180px");
+	   	playerCardComparison.setWidth("120px");
+	   	playerCardComparison.setHeight("180px");
 	   
 	   	/**
 	   	 * Add a clickListener to the button.
@@ -229,11 +245,26 @@ public class GWTBirdWorld implements EntryPoint {
 	   	optionClicked(option4);
 	   	
 	   	//Check if attribute has benn clicked
-	   	attributeClicked(attribute1, 1);
+	   	attributeClicked(attribute1, 0);
+	   	attributeClicked(attribute2, 1);
+	   	attributeClicked(attribute3, 2);
+	   	attributeClicked(attribute4, 3);
+	   	attributeClicked(attribute5, 4);
 	   	
-	   	soundButtonClicked(deckCardSound1, 0);
+	   	//Check if sound button clicked
+	   	deckSoundButtonClicked(deckCardSound1, 0);
+	   	deckSoundButtonClicked(deckCardSound2, 1);
+	   	deckSoundButtonClicked(deckCardSound3, 2);
+	   	deckSoundButtonClicked(deckCardSound4, 3);
+	   	deckSoundButtonClicked(deckCardSound5, 4);
+	   	
+	   	drawSoundButtonClicked(drawCardSound1, 0);
+	   	drawSoundButtonClicked(drawCardSound2, 1);
+	   	drawSoundButtonClicked(drawCardSound3, 2);
 	   	
 	   	opponentCardClicked();
+	   	
+	   	playerCardClicked();
 	   
 	   	//Create Panels for objects
 	   	VerticalPanel playBtnPanel = new VerticalPanel();
@@ -274,6 +305,12 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel drawCardSound1Panel = new VerticalPanel();
 	   	VerticalPanel drawCardSound2Panel = new VerticalPanel();
 	   	VerticalPanel drawCardSound3Panel = new VerticalPanel();
+<<<<<<< HEAD
+>>>>>>> LukesFiles
+=======
+		VerticalPanel playerPlayedCardSoundPanel = new VerticalPanel();
+		VerticalPanel playerCardComparisonPanel = new VerticalPanel();
+		VerticalPanel opponentCardComparisonPanel = new VerticalPanel();
 >>>>>>> LukesFiles
 	   
 	   	//Add objects to Panels
@@ -314,6 +351,12 @@ public class GWTBirdWorld implements EntryPoint {
 	   	drawCardSound1Panel.add(drawCardSound1);
 	   	drawCardSound2Panel.add(drawCardSound2);
 	   	drawCardSound3Panel.add(drawCardSound3);
+<<<<<<< HEAD
+>>>>>>> LukesFiles
+=======
+	   	playerPlayedCardSoundPanel.add(playerPlayedCardSound);
+	   	playerCardComparisonPanel.add(playerCardComparison);
+	   	opponentCardComparisonPanel.add(opponentCardComparison);
 >>>>>>> LukesFiles
 	   
 	   	//Adding the panels to the div in the html file
@@ -345,7 +388,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("Attribute3").add(attribute3Panel);
 	   	RootPanel.get("Attribute4").add(attribute4Panel);
 	   	RootPanel.get("Attribute5").add(attribute5Panel);
-	   	RootPanel.get("BirdSkillSelector").add(birdSkillSelectorPanel);
+	   	RootPanel.get("BirdAttributeSelector").add(birdSkillSelectorPanel);
 	   	RootPanel.get("DeckCardSound1").add(deckCardSound1Panel);
 	   	RootPanel.get("DeckCardSound2").add(deckCardSound2Panel);
 	   	RootPanel.get("DeckCardSound3").add(deckCardSound3Panel);
@@ -354,6 +397,12 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("DrawCardSound1").add(drawCardSound1Panel);
 	   	RootPanel.get("DrawCardSound2").add(drawCardSound2Panel);
 	   	RootPanel.get("DrawCardSound3").add(drawCardSound3Panel);
+<<<<<<< HEAD
+>>>>>>> LukesFiles
+=======
+	   	RootPanel.get("PlayerPlayedCardSound").add(playerPlayedCardSoundPanel);
+	   	RootPanel.get("PlayerCardComparison").add(playerCardComparison);
+	   	RootPanel.get("OpponentCardComparison").add(opponentCardComparison);
 >>>>>>> LukesFiles
 	}
    
@@ -438,17 +487,125 @@ public class GWTBirdWorld implements EntryPoint {
 		attribute.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				Window.alert("Clicked!");
+				//Window.alert("Clicked!");
+				round.compareAttributes(index);
+				
+				Document.get().getElementById("BirdAttributeSelector").getStyle().setDisplay(Display.NONE);
+				//Document.get().getElementById("Blackbox").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("Meter").getStyle().setDisplay(Display.BLOCK);
+				Document.get().getElementById("PlayerCardComparison").getStyle().setDisplay(Display.BLOCK);
+				Document.get().getElementById("OpponentCardComparison").getStyle().setDisplay(Display.BLOCK);
+				
+			   	opponentCardComparison.setUrl(round.getOpponentCard().getCardImgSource());
+			   	playerCardComparison.setUrl(round.getPlayerCard().getCardImgSource());
+				
+				switch(round.getPlayerCard().getBirdAttribute(index)) {
+					case 1:
+						Document.get().getElementById("PlayerArrow1").getStyle().setDisplay(Display.BLOCK);
+						break;
+					case 2:
+						Document.get().getElementById("PlayerArrow2").getStyle().setDisplay(Display.BLOCK);
+						break;
+					case 3:
+						Document.get().getElementById("PlayerArrow3").getStyle().setDisplay(Display.BLOCK);
+						break;
+					case 4:
+						Document.get().getElementById("PlayerArrow4").getStyle().setDisplay(Display.BLOCK);
+						break;
+					case 5: 
+						Document.get().getElementById("PlayerArrow5").getStyle().setDisplay(Display.BLOCK);
+						break;
+				}
+				
+				switch(round.getOpponentCard().getBirdAttribute(index)) {
+				case 1:
+					Document.get().getElementById("OpponentArrow1").getStyle().setDisplay(Display.BLOCK);
+					break;
+				case 2:
+					Document.get().getElementById("OpponentArrow2").getStyle().setDisplay(Display.BLOCK);
+					break;
+				case 3:
+					Document.get().getElementById("OpponentArrow3").getStyle().setDisplay(Display.BLOCK);
+					break;
+				case 4:
+					Document.get().getElementById("OpponentArrow4").getStyle().setDisplay(Display.BLOCK);
+					break;
+				case 5: 
+					Document.get().getElementById("OpponentArrow5").getStyle().setDisplay(Display.BLOCK);
+					break;
+				}
+				
+				Timer delayBirdMessage = new Timer() {
+					public void run() {
+						Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
+						Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);
+						
+						if (round.getPlayerHasWon() == true) {
+							Document.get().getElementById("WinMessage").getStyle().setDisplay(Display.BLOCK);
+						} else if (round.getOpponentHasWon() == true) {
+							Document.get().getElementById("LoseMessage").getStyle().setDisplay(Display.BLOCK);
+						} else {
+							Document.get().getElementById("DrawMessage").getStyle().setDisplay(Display.BLOCK);
+						}
+				    }
+				};
+				
+				delayBirdMessage.schedule(3500);
+				
+				Timer delaySetup = new Timer() {
+					public void run() {
+						roundInProgress = false;
+						
+						Document.get().getElementById("PlayerScore").setInnerText(Integer.toString(game.getPlayer().getScore()));
+						Document.get().getElementById("OpponentScore").setInnerText(Integer.toString(game.getOpponent().getScore()));
+						
+						Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("WinMessage").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("LoseMessage").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("DrawMessage").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("Meter").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("PlayerCardComparison").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OpponentCardComparison").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("Blackbox").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("PlayerArrow1").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("PlayerArrow2").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("PlayerArrow3").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("PlayerArrow4").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("PlayerArrow5").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OpponentArrow1").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OpponentArrow2").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OpponentArrow3").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OpponentArrow4").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OpponentArrow5").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("PlayerPlayedCard").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OpponentPlayedCard").getStyle().setDisplay(Display.NONE);
+				    }
+				};
+				
+				delaySetup.schedule(5000);
 			}
 		});
 	}
 	
-	public void soundButtonClicked(HTML soundButton, final int index) {
+	public void deckSoundButtonClicked(HTML soundButton, final int index) {
 		//add a clickListener to CardRight
 		soundButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				Window.alert("Clicked!");
+				audio.setSrc(game.getPlayer().getDeck().getCard(index).getAudioSource());
+				audio.play();
+			}
+		});
+	}
+	
+	public void drawSoundButtonClicked(HTML soundButton, final int index) {
+		//add a clickListener to CardRight
+		soundButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				audio.setSrc(game.getDrawHand().getCard(index).getAudioSource());
+				audio.play();
 			}
 		});
 	}
@@ -458,8 +615,19 @@ public class GWTBirdWorld implements EntryPoint {
 		opponentPlayedCard.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				opponentPlayedCardAudio.setSrc(round.getOpponentCard().getAudioSource());
-				opponentPlayedCardAudio.play();
+				audio.setSrc(round.getOpponentCard().getAudioSource());
+				audio.play();
+			}
+		});
+	}
+	
+	public void playerCardClicked() {
+		//add a clickListener to CardRight
+		playerPlayedCardSound.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				audio.setSrc(round.getPlayerCard().getAudioSource());
+				audio.play();
 			}
 		});
 	}
@@ -472,8 +640,9 @@ public class GWTBirdWorld implements EntryPoint {
 				round.checkIfPlayerCorrect(option.getUrl());
 				if (round.getPlayerAdvantage() == true){
 					//Window.alert("Correct!");
+					audio.pause();
 					birdSkillSelector.setUrl(round.getPlayerCard().getCardImgSource());
-					Document.get().getElementById("BirdSkillSelector").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("BirdAttributeSelector").getStyle().setDisplay(Display.BLOCK);
 					Document.get().getElementById("Blackbox").getStyle().setDisplay(Display.BLOCK);
 					
 					Document.get().getElementById("Option1").getStyle().setDisplay(Display.NONE);
@@ -558,6 +727,8 @@ public class GWTBirdWorld implements EntryPoint {
 							Document.get().getElementById("OpponentCard5").getStyle().setDisplay(Display.NONE);
 							break;
 					}
+					
+					//round.removePlayedCardsFromDecks();
 					
 					roundInProgress = true;
 				}

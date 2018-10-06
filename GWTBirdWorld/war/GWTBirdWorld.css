@@ -348,31 +348,31 @@
 #Attribute1 {
 	position: absolute;
 	top: 60%;
-	left: 3.7%;
+	left: 3.2%;
 }
 
 #Attribute2 {
 	position: absolute;
-	top: 66%;
-	left: 3.7%;
+	top: 67%;
+	left: 3.2%;
 }
 
 #Attribute3 {
 	position: absolute;	
-	top: 72%;
-	left: 3.7%;
+	top: 74%;
+	left: 3.2%;
 }
 
 #Attribute4 {
 	position: absolute;	
-	top: 78%;
-	left: 3.7%;
+	top: 81%;
+	left: 3.2%;
 }
 
 #Attribute5 {
 	position: absolute;	
-	top: 84%;
-	left: 3.7%;
+	top: 91%;
+	left: 3.2%;
 }
 
 >>>>>>> LukesFiles
@@ -400,7 +400,7 @@
  	display: none;
 }
 
-#BirdSkillSelector{
+#BirdAttributeSelector{
 	position: absolute;
 	width: 120px;
 	height: 180px;
@@ -424,7 +424,6 @@
 }
 
 .deckCardSound {
-	border: 1px solid red;
 	cursor: pointer;
 }
 
@@ -449,7 +448,10 @@
 }
 
 .drawCardSound {
-	border: 1px solid red;
+	cursor: pointer;
+}
+
+.playerPlayedCardSound {
 	cursor: pointer;
 }
 
@@ -463,4 +465,338 @@
 
 #DrawCardSound3 {
 	position: absolute;	
+}
+
+#PlayerPlayedCardSound {
+	position: absolute;
+}
+
+#PlayerScoreLabel {
+	position: absolute;
+	top: 85%;
+	left: 8%;
+	color: white;
+	font-weight: bold;
+}
+
+#OpponentScoreLabel {
+	position: absolute;
+	top: 90%;
+	left: 8%;
+	color: white;
+	font-weight: bold;
+}
+
+#PlayerScore {
+	position: absolute;
+	top: 85%;
+	left: 20%;
+	color: white;
+	font-weight: bold;
+}
+
+#OpponentScore {
+	position: absolute;
+	top: 90%;
+	left: 20%;
+	color: white;
+	font-weight: bold;
+}
+
+#WinMessage {
+	position: absolute;
+	left: 39%;
+	top: 50%;
+	font-size: 33px;
+	font-weight: bold;
+	z-index: +21;
+	display: none;
+}
+
+#LoseMessage {
+	position: absolute;
+	left: 39%;
+	top: 50%;
+	font-size: 33px;
+	font-weight: bold;
+	z-index: +21;
+	display: none;
+}
+
+#DrawMessage {
+	position: absolute;
+	left: 39%;
+	top: 50%;
+	font-size: 33px;
+	font-weight: bold;
+	z-index: +21;
+	display: none;
+}
+
+#BristleBird {
+	position: absolute;
+	top: 69%;
+	left: 12%;
+	width: 250px;
+	height: auto;
+	z-index: +20;
+	display: none;
+}
+
+#SpeechBubble {
+	position: absolute;
+	top: 40%;
+	left: 33%;
+	width: 300px;
+	height: auto;
+	z-index: +20;
+	display: none;	
+}
+
+#Meter {
+	position: absolute;
+	width: 60px;
+	height: auto;
+	top: 28%;
+	left: 48.3%;
+	z-index: +10;
+	display: none;
+}
+
+#OpponentCardComparison {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	transform: scale(2);
+	left: 71%;
+	top: 30%;
+	z-index: +15;
+	display: none;
+}
+
+#PlayerCardComparison {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	transform: scale(2);
+	left: 20%;
+	top: 30%;
+	z-index: +15;
+	display: none;
+}
+
+#PlayerArrow1 {
+	position: absolute;
+	top: 60%;
+	left: 41%;
+	z-index: +10;
+    display: none;	
+}
+
+#PlayerArrow2 {
+	position: absolute;
+	top: 60%;
+	left: 41%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: move2;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move2 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 52%;}
+}
+
+/* Standard syntax */
+@keyframes move2 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 52%;}
+}
+
+#PlayerArrow3 {
+	position: absolute;
+	top: 60%;
+	left: 41%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: move3;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move3 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 44%;}
+}
+
+/* Standard syntax */
+@keyframes move3 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 44%;}
+}
+
+#PlayerArrow4 {
+	position: absolute;
+	top: 60%;
+	left: 41%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: move4;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move4 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 36%;}
+}
+
+/* Standard syntax */
+@keyframes move4 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 36%;}
+}
+
+#PlayerArrow5 {
+	position: absolute;
+	top: 60%;
+	left: 41%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: move5;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes move5 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 28%;}
+}
+
+/* Standard syntax */
+@keyframes move5 {
+    0%   {left:41%; top: 60%;}
+    100%  {left: 41%; top: 28%;}
+}
+
+#OpponentArrow1 {
+	position: absolute;
+	top: 60%;
+	left: 54%;
+	z-index: +10;
+    display: none;	
+}
+
+#OpponentArrow2 {
+	position: absolute;
+	top: 60%;
+	left: 54%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: rightMove2;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rightMove2 {
+    0%   {left:54%; top: 60%;}
+    100%  {left: 54%; top: 52%;}
+}
+
+/* Standard syntax */
+@keyframes rightMove2 {
+    0%   {left:54%; top: 60%;}
+    100%  {left: 54%; top: 52%;}
+}
+
+#OpponentArrow3 {
+	position: absolute;
+	top: 60%;
+	left: 54%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: rightMove3;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rightMove3 {
+    0%   {left:54%; top: 60%;}
+    100%  {left: 54%; top: 44%;}
+}
+
+/* Standard syntax */
+@keyframes rightMove3 {
+    0%   {left:54%; top: 60%;}
+    100%  {left: 54%; top: 44%;}
+}
+
+#OpponentArrow4 {
+	position: absolute;
+	top: 60%;
+	left: 54%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: rightMove4;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rightMove4 {
+    0%   {left:54%; top: 60%;}
+    100%  {left: 54%; top: 36%;}
+}
+
+/* Standard syntax */
+@keyframes rightMove4 {
+    0%   {left:54%; top: 60%;}
+    100%  {left: 54%; top: 36%;}
+}
+
+#OpponentArrow5 {
+	position: absolute;
+	top: 60%;
+	left: 54%;
+	z-index: +10;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-fill-mode:forwards;
+    animation-name: rightMove5;
+    animation-duration: 3s;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rightMove5 {
+    0%   {left:54%; top: 60%;}
+    100%  {left: 54%; top: 28%;}
+}
+
+/* Standard syntax */
+@keyframes rightMove5 {
+    0%   {left:54%; top: 60%;}s
+    100%  {left: 54%; top: 28%;}
 }

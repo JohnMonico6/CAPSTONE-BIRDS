@@ -10,6 +10,9 @@ public class SinglePlayerRound {
 	private Card opponentCard;
 	private SinglePlayerGame game;
 	private boolean playerHasAdvantage;
+	private boolean playerHasWon = false;
+	private boolean opponentHasWon = false;
+	private boolean isDraw = false;
 	private ArrayList<String> options = new ArrayList<String>();
 
 	public SinglePlayerRound(Card playerCard, SinglePlayerGame game) {
@@ -58,6 +61,39 @@ public class SinglePlayerRound {
 		} else {
 			playerHasAdvantage = false;
 		}
+	}
+	
+	public void compareAttributes(int attributeIndex) {
+		int playerAttribute = playerCard.getBirdAttribute(attributeIndex);
+		int opponentAttribute = opponentCard.getBirdAttribute(attributeIndex);
+
+		if (playerAttribute > opponentAttribute) {
+			playerHasWon = true;	
+			game.getPlayer().increaseScore();
+		} else if (playerAttribute < opponentAttribute) {
+			opponentHasWon = true;
+			game.getOpponent().increaseScore();
+		} else if (playerAttribute == opponentAttribute) {
+			game.getPlayer().increaseScore();
+			game.getOpponent().increaseScore();
+		}
+	}
+	
+	public void removePlayedCardsFromDecks() {
+		game.getPlayer().getDeck().removeCard(playerCard);
+		game.getOpponent().getDeck().removeCard(opponentCard);
+	}
+	
+	public boolean getPlayerHasWon() {
+		return playerHasWon;
+	}
+	
+	public boolean getOpponentHasWon() {
+		return opponentHasWon;
+	}
+	
+	public boolean getIsDraw() {
+		return isDraw;
 	}
 	
 	public ArrayList getOptions() {
