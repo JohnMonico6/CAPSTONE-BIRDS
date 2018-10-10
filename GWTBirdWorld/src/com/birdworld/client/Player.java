@@ -44,7 +44,18 @@ public class Player {
 		}
 	}
 	
-	public void isWinner() {
+	public void makeWinner() {
 		winner = true;
+		//System.out.print("Player is winner.");
+	}
+	
+	public void makeLoser() {
+		winner = false;
+		//System.out.print("Player is winner.");
+	}
+	
+	public boolean isWinner() {
+		return winner;
+		//System.out.print("Player is winner.");
 	}
 }
