@@ -143,6 +143,7 @@ b,com.birdworld.client.SinglePlayerGame::drawHand,com.birdworld.client.SinglePla
 c,com.birdworld.client.SinglePlayerGame::drawingInProgress,com.birdworld.client.SinglePlayerGame,drawingInProgress,com/birdworld/client/SinglePlayerGame.java,10,-1
 d,com.birdworld.client.SinglePlayerGame::pile,com.birdworld.client.SinglePlayerGame,pile,com/birdworld/client/SinglePlayerGame.java,6,-1
 e,com.birdworld.client.SinglePlayerGame::player,com.birdworld.client.SinglePlayerGame,player,com/birdworld/client/SinglePlayerGame.java,8,-1
+<<<<<<< HEAD:GWTBirdWorld/war/WEB-INF/deploy/gwtbirdworld/symbolMaps/0833BD1D0BDBC28AB7288079AB9BF7E1.symbolMap
 SinglePlayerRound,,com.birdworld.client.SinglePlayerRound,,com/birdworld/client/SinglePlayerRound.java,7,-1
 Fc,com.birdworld.client.SinglePlayerRound::$checkIfPlayerCorrect(Lcom/birdworld/client/SinglePlayerRound;Ljava/lang/String;)V,com.birdworld.client.SinglePlayerRound,$checkIfPlayerCorrect,com/birdworld/client/SinglePlayerRound.java,60,0
 Gc,com.birdworld.client.SinglePlayerRound::$compareAttributes(Lcom/birdworld/client/SinglePlayerRound;I)V,com.birdworld.client.SinglePlayerRound,$compareAttributes,com/birdworld/client/SinglePlayerRound.java,68,0
@@ -155,6 +156,20 @@ d,com.birdworld.client.SinglePlayerRound::options,com.birdworld.client.SinglePla
 e,com.birdworld.client.SinglePlayerRound::playerCard,com.birdworld.client.SinglePlayerRound,playerCard,com/birdworld/client/SinglePlayerRound.java,8,-1
 f,com.birdworld.client.SinglePlayerRound::playerHasAdvantage,com.birdworld.client.SinglePlayerRound,playerHasAdvantage,com/birdworld/client/SinglePlayerRound.java,11,-1
 g,com.birdworld.client.SinglePlayerRound::playerHasWon,com.birdworld.client.SinglePlayerRound,playerHasWon,com/birdworld/client/SinglePlayerRound.java,12,-1
+=======
+SinglePlayerRound,,com.birdworld.client.SinglePlayerRound,,com/birdworld/client/SinglePlayerRound.java,8,-1
+Fc,com.birdworld.client.SinglePlayerRound::$checkIfPlayerCorrect(Lcom/birdworld/client/SinglePlayerRound;Ljava/lang/String;)V,com.birdworld.client.SinglePlayerRound,$checkIfPlayerCorrect,com/birdworld/client/SinglePlayerRound.java,61,0
+Gc,com.birdworld.client.SinglePlayerRound::$compareAttributes(Lcom/birdworld/client/SinglePlayerRound;I)V,com.birdworld.client.SinglePlayerRound,$compareAttributes,com/birdworld/client/SinglePlayerRound.java,69,0
+Hc,com.birdworld.client.SinglePlayerRound::$createOptions(Lcom/birdworld/client/SinglePlayerRound;)V,com.birdworld.client.SinglePlayerRound,$createOptions,com/birdworld/client/SinglePlayerRound.java,32,0
+Ic,com.birdworld.client.SinglePlayerRound::SinglePlayerRound(Lcom/birdworld/client/Card;Lcom/birdworld/client/SinglePlayerGame;) <init>,com.birdworld.client.SinglePlayerRound,SinglePlayerRound,com/birdworld/client/SinglePlayerRound.java,18,0
+a,com.birdworld.client.SinglePlayerRound::game,com.birdworld.client.SinglePlayerRound,game,com/birdworld/client/SinglePlayerRound.java,11,-1
+b,com.birdworld.client.SinglePlayerRound::opponentCard,com.birdworld.client.SinglePlayerRound,opponentCard,com/birdworld/client/SinglePlayerRound.java,10,-1
+c,com.birdworld.client.SinglePlayerRound::opponentHasWon,com.birdworld.client.SinglePlayerRound,opponentHasWon,com/birdworld/client/SinglePlayerRound.java,14,-1
+d,com.birdworld.client.SinglePlayerRound::options,com.birdworld.client.SinglePlayerRound,options,com/birdworld/client/SinglePlayerRound.java,16,-1
+e,com.birdworld.client.SinglePlayerRound::playerCard,com.birdworld.client.SinglePlayerRound,playerCard,com/birdworld/client/SinglePlayerRound.java,9,-1
+f,com.birdworld.client.SinglePlayerRound::playerHasAdvantage,com.birdworld.client.SinglePlayerRound,playerHasAdvantage,com/birdworld/client/SinglePlayerRound.java,12,-1
+g,com.birdworld.client.SinglePlayerRound::playerHasWon,com.birdworld.client.SinglePlayerRound,playerHasWon,com/birdworld/client/SinglePlayerRound.java,13,-1
+>>>>>>> bfe58d0155c72af02bcd23f95bd09fc60e43edb4:GWTBirdWorld/war/WEB-INF/deploy/gwtbirdworld/symbolMaps/0833BD1D0BDBC28AB7288079AB9BF7E1.symbolMap
 Duration,,com.google.gwt.core.client.Duration,,com/google/gwt/core/client/Duration.java,21,-1
 Jc,com.google.gwt.core.client.Duration::Duration() <init>,com.google.gwt.core.client.Duration,Duration,com/google/gwt/core/client/Duration.java,41,0
 a,com.google.gwt.core.client.Duration::start,com.google.gwt.core.client.Duration,start,com/google/gwt/core/client/Duration.java,36,-1
@@ -436,7 +451,11 @@ Ig,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_GWTBirdWorld_2_
 Jg,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_Pile_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_Pile_2_classLit,com/birdworld/client/Pile.java,7,-1
 Kg,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_Player_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_Player_2_classLit,com/birdworld/client/Player.java,5,-1
 Lg,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_SinglePlayerGame_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_SinglePlayerGame_2_classLit,com/birdworld/client/SinglePlayerGame.java,5,-1
+<<<<<<< HEAD:GWTBirdWorld/war/WEB-INF/deploy/gwtbirdworld/symbolMaps/0833BD1D0BDBC28AB7288079AB9BF7E1.symbolMap
 Mg,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_SinglePlayerRound_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_SinglePlayerRound_2_classLit,com/birdworld/client/SinglePlayerRound.java,7,-1
+=======
+Mg,com.google.gwt.lang.ClassLiteralHolder::Lcom_birdworld_client_SinglePlayerRound_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_birdworld_client_SinglePlayerRound_2_classLit,com/birdworld/client/SinglePlayerRound.java,8,-1
+>>>>>>> bfe58d0155c72af02bcd23f95bd09fc60e43edb4:GWTBirdWorld/war/WEB-INF/deploy/gwtbirdworld/symbolMaps/0833BD1D0BDBC28AB7288079AB9BF7E1.symbolMap
 Ng,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_core_client_Duration_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_core_client_Duration_2_classLit,com/google/gwt/core/client/Duration.java,21,-1
 Og,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_core_client_JavaScriptException_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_core_client_JavaScriptException_2_classLit,com/google/gwt/core/client/JavaScriptException.java,46,-1
 Pg,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_core_client_JavaScriptObject_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_core_client_JavaScriptObject_2_classLit,com/google/gwt/core/client/JavaScriptObject.java,28,-1
