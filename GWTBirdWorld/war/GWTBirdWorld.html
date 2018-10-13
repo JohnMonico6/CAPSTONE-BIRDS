@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<!--
+	Ex Machina by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Bird World | Play</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel = "stylesheet" href = "GWTBirdWorld.css"/>
+        <script language = "javascript" src = "gwtbirdworld/gwtbirdworld.nocache.js">
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+			<link rel="stylesheet" href="GWTBirdWorld.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		
+	<script>
+	</script>
+
+	<body class="right-sidebar">
+	
+	<!-- Header -->
+		<div id="header">
+			<div class="container">
+
+				<!-- Logo -->
+					<div id="logo">
+						<h1><a href="#">Bird World - Play</a></h1>
+					</div>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Homepage</a></li>
+							<li class="active"><a href="play.html">Play</a></li>
+							<li><a href="news.html">Read</a></li>
+							<li><a href="Login_Register.html">Login/Register</a></li>
+						</ul>
+					</nav>
+			</div>
+		</div>
+	<!-- Header -->
+
+	<!-- Banner -->
+		<div id="banner">
+			<div class="container">
+			</div>
+		</div>
+	<!-- /Banner -->
+
+	<!-- Main -->
+		<div id="page">
+
+	<!-- Game -->
+	<div id="game" class="container">
+		<div class="row">
+			<div class="gameScreen">
+				<section>
+					<header>
+						<h2>Bird Challenge!</h2>
+						<span class="byline">Learn bird calls and facts about Birds in this game! (Playable in web browser)</span>
+					</header>
+					<p>
+						<div alt="BirdGame" id="GameTitleScreen">
+							<div id = "PlayButton"></div>
+						</div>
+						<!--<img id="CardLeft" value="Card1">-->
+						<!--<img id="CardMiddle" value="Card2">-->
+						<!--<img id="CardRight" value="Card3">-->
+						<img id="DeckCardLeftMost" value="Card4">
+						<img id="DeckCardLeftMiddle" value="Card5">
+						<img id="DeckCardMiddle" value="Card6">
+						<img id="DeckCardRightMiddle" value="Card7">
+						<img id="DeckCardRightMost" value="Card8">
+						
+						
+<!-- 						<img id="DeckCardLeftMost" value="Card4" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardLeftMiddle" value="Card5" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardMiddle" value="Card6" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardRightMiddle" value="Card7" src="images/Galah.PNG"> -->
+<!-- 						<img id="DeckCardRightMost" value="Card8" src="images/Galah.PNG"> -->
+						
+						<div id="GameBoard">
+							<div id="Blackbox"></div>
+							<div id = "CardLeft">
+								<div id = "DrawCardSound1"></div>
+							</div>
+							<div id = "CardMiddle">
+								<div id = "DrawCardSound2"></div>
+							</div>
+							<div id = "CardRight">
+								<div id = "DrawCardSound3"></div>
+							</div>
+							<div id = "DeckCard1">
+								<div id = "DeckCardSound1"></div>
+							</div>
+							<div id = "DeckCard2">
+								<div id = "DeckCardSound2"></div>
+							</div>
+							<div id = "DeckCard3">
+								<div id = "DeckCardSound3"></div>
+							</div>
+							<div id = "DeckCard4">
+								<div id = "DeckCardSound4"></div>
+							</div>
+							<div id = "DeckCard5">
+								<div id = "DeckCardSound5"></div>
+							</div>
+							<div id = "OpponentCard1"></div>
+							<div id = "OpponentCard2"></div>
+							<div id = "OpponentCard3"></div>
+							<div id = "OpponentCard4"></div>
+							<div id = "OpponentCard5"></div>
+							<div id = "PlayerPlayedCard">
+								<div id = "PlayerPlayedCardSound"></div> 
+							</div>
+							<div id = "OpponentPlayedCard">
+								<div id = "SoundIcon"></div>
+							</div>
+							<div id = "Pile"></div>
+							<div id = "Option1"></div>
+							<div id = "Option2"></div>
+							<div id = "Option3"></div>
+							<div id = "Option4"></div>
+							<div id = OpponentCardComparison></div>
+							<div id = PlayerCardComparison></div>
+							<div id="BirdAttributeSelector">
+								<div id = "Attribute1"></div>
+								<div id = "Attribute2"></div>
+								<div id = "Attribute3"></div>
+								<div id = "Attribute4"></div>
+								<div id = "Attribute5"></div>
+							</div>
+							<label id = "WinMessage">Nice Work!</label>
+							<label id = "LoseMessage">Bad Luck!</label>
+							<label id = "DrawMessage">It's a Draw!</label>
+							<label id = "PlayerVictory">You win!</label>
+							<label id = "ComputerVictory">Computer Win!</label>
+							<label id = "TieNoVictory">It's a Draw!</label>
+							<label id = "PlayerScoreLabel">Player Score:</label>
+							<label id = "OpponentScoreLabel">Opponent Score:</label>
+							<label id = "PlayerScore">0</label>
+							<label id = "OpponentScore">0</label>
+							<img id = "Notifier" src="images/Notfier1.png" value ="notifier"></img>
+							<img id = "BristleBird" src="images/bristlebird.png"></img>
+							<img id = "SpeechBubble" src="images/speechbubble.png"></img>
+							<img id = "Meter" src="images/Meter.png"></img>
+							<img id = "PlayerArrow1" src="images/RightArrow.png"></img>
+							<img id = "PlayerArrow2" src="images/RightArrow.png"></img>
+							<img id = "PlayerArrow3" src="images/RightArrow.png"></img>
+							<img id = "PlayerArrow4" src="images/RightArrow.png"></img>
+							<img id = "PlayerArrow5" src="images/RightArrow.png"></img>
+							<img id = "OpponentArrow1" src="images/LeftArrow.png"></img>
+							<img id = "OpponentArrow2" src="images/LeftArrow.png"></img>
+							<img id = "OpponentArrow3" src="images/LeftArrow.png"></img>
+							<img id = "OpponentArrow4" src="images/LeftArrow.png"></img>
+							<img id = "OpponentArrow5" src="images/LeftArrow.png"></img>
+						</div>
+					</p>
+				</section>
+			</div>
+		
+	<!-- Featured -->
+		<div id="featured">
+			<div class="container">
+				<div class="row">
+					<section class="4u">
+						<div class="box">
+							<a href="#" class="image left"><img src="images/pics04.jpg" alt=""></a>
+							<h3>Etiam posuere augue</h3>
+							<p>Donec nonummy magna quis risus eleifend. </p>
+							<a href="#" class="button">More</a>
+						</div>
+					</section>
+					<section class="4u">
+						<div class="box">
+							<a href="#" class="image left"><img src="images/pics05.jpg" alt=""></a>
+							<h3>Etiam posuere augue</h3>
+							<p>Donec nonummy magna quis risus eleifend. </p>
+							<a href="#" class="button">More</a>
+						</div>
+					</section>
+					<section class="4u">
+						<div class="box">
+							<a href="#" class="image left"><img src="images/pics06.jpg" alt=""></a>
+							<h3>Etiam posuere augue</h3>
+							<p>Donec nonummy magna quis risus eleifend. </p>
+							<a href="#" class="button">More</a>
+						</div>
+					</section>
+				</div>
+				<div class="divider"></div>
+			</div>
+		</div>
+	<!-- /Featured -->
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="3u">
+						<section>
+							<h2>Bird Quote of the Day</h2>
+							<div class="balloon">
+								<blockquote>&ldquo;&nbsp;&nbsp;"Those little nimble musicians of the air, that warble forth their curious ditties, with which nature hath furnished them to the shame of art."&nbsp;&nbsp;&rdquo;<br>
+									<br>
+									<strong>&ndash;&nbsp;&nbsp;Izaak Walton</strong></blockquote>
+							</div>
+							<div class="ballon-bgbtm">&nbsp;</div>
+						</section>
+					</div>
+					<div class="3u">
+						<section>
+							<h2>Donec dictum</h2>
+							<ul class="default">
+								<li>
+									<h3>Mauris vulputate dolor sit amet</h3>
+									<p><a href="#">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</a></p>
+								</li>
+								<li>
+									<h3>Fusce ultrices fringilla metus</h3>
+									<p><a href="#">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</a></p>
+								</li>
+								<li>
+									<h3>Donec dictum metus in sapien</h3>
+									<p><a href="#">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</a></p>
+								</li>
+							</ul>
+						</section>
+					</div>
+					<div class="3u">
+						<section>
+							<h2>Nulla leifend</h2>
+							<p>Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Nam in massa. Sed vel tellus. Curabitur sem urna, consequat.</p>
+							<ul class="style5">
+								<li><a href="#"><img src="images/pics07.jpg" alt=""></a></li>
+								<li><a href="#"><img src="images/pics08.jpg" alt=""></a></li>
+								<li><a href="#"><img src="images/pics09.jpg" alt=""></a></li>
+								<li><a href="#"><img src="images/pics10.jpg" alt=""></a></li>
+								<li><a href="#"><img src="images/pics11.jpg" alt=""></a></li>
+								<li><a href="#"><img src="images/pics12.jpg" alt=""></a></li>
+							</ul>
+							<a href="#" class="button">More Collections</a>
+						</section>
+					</div>
+					<div class="3u">
+						<section>
+							<h2>Support Us</h2>
+							<p><strong>Our platform is fully funded by you!</strong></p>
+							<p>If you like our website; please consider donating to keep us going!</p>
+							<p>Paypall | Bitcoin | Patreon</p>
+							<a href="donate.html" class="button">Donate</a>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- /Footer -->
+
+	<!-- Copyright -->
+		<div id="copyright" class="container">
+			Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+		</div>
+
+
+	</body>
+</html>
