@@ -42,7 +42,7 @@ public class GWTBirdWorld implements EntryPoint {
 	Image option2 = new Image();
 	Image option3 = new Image();
 	Image option4 = new Image();
-	Image birdSkillSelector = new Image();
+	Image birdAttributeSelector = new Image();
 	Image opponentCardComparison = new Image();
 	Image playerCardComparison = new Image();
 	Image soundIcon = new Image();
@@ -140,7 +140,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	attribute3.setHeight("13px");
 	   	attribute3.setStyleName("attribute");
 	   	attribute4.setWidth("113px");
-	   	attribute4.setHeight("19px");
+	   	attribute4.setHeight("13px");
 	   	attribute4.setStyleName("attribute");
 	   	attribute5.setWidth("113px");
 	   	attribute5.setHeight("13px");
@@ -180,8 +180,8 @@ public class GWTBirdWorld implements EntryPoint {
 	   	playerPlayedCardSound.setStyleName("playerPlayedCardSound");
 
 	   	//Format Stat Selector 
-	   	birdSkillSelector.setWidth("120px");
-	   	birdSkillSelector.setHeight("180px");
+	   	birdAttributeSelector.setWidth("120px");
+	   	birdAttributeSelector.setHeight("180px");
 	   	
 	   	//Format pile
 	   	pile.setWidth("120px");
@@ -285,7 +285,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel option2Panel = new VerticalPanel();
 	   	VerticalPanel option3Panel = new VerticalPanel();
 	   	VerticalPanel option4Panel = new VerticalPanel();
-	   	VerticalPanel birdSkillSelectorPanel = new VerticalPanel();
+	   	VerticalPanel birdAttributeSelectorPanel = new VerticalPanel();
 	   	VerticalPanel attribute1Panel = new VerticalPanel();
 	   	VerticalPanel attribute2Panel = new VerticalPanel();
 	   	VerticalPanel attribute3Panel = new VerticalPanel();
@@ -326,7 +326,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	option2Panel.add(option2);
 	   	option3Panel.add(option3);
 	   	option4Panel.add(option4);
-	   	birdSkillSelectorPanel.add(birdSkillSelector);
+	   	birdAttributeSelectorPanel.add(birdAttributeSelector);
 	   	attribute1Panel.add(attribute1);
 	   	attribute2Panel.add(attribute2);
 	   	attribute3Panel.add(attribute3);
@@ -372,7 +372,7 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("Attribute3").add(attribute3Panel);
 	   	RootPanel.get("Attribute4").add(attribute4Panel);
 	   	RootPanel.get("Attribute5").add(attribute5Panel);
-	   	RootPanel.get("BirdAttributeSelector").add(birdSkillSelectorPanel);
+	   	RootPanel.get("BirdAttributeSelector").add(birdAttributeSelectorPanel);
 	   	RootPanel.get("DeckCardSound1").add(deckCardSound1Panel);
 	   	RootPanel.get("DeckCardSound2").add(deckCardSound2Panel);
 	   	RootPanel.get("DeckCardSound3").add(deckCardSound3Panel);
@@ -459,6 +459,7 @@ public class GWTBirdWorld implements EntryPoint {
 		card.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
+				audio.pause();
 				game.playerSelectedCard(index); 
 				updateScreen();
 			}
@@ -479,17 +480,17 @@ public class GWTBirdWorld implements EntryPoint {
 		round.compareAttributes(attributeIndex);
 		
 		//Setup comparison interface 
-		Document.get().getElementById("BirdAttributeSelector").getStyle().setDisplay(Display.NONE);
-		Document.get().getElementById("Meter").getStyle().setDisplay(Display.BLOCK);
 		Document.get().getElementById("PlayerCardComparison").getStyle().setDisplay(Display.BLOCK);
 		Document.get().getElementById("OpponentCardComparison").getStyle().setDisplay(Display.BLOCK);
+		Document.get().getElementById("BirdAttributeSelector").getStyle().setDisplay(Display.NONE);
+		Document.get().getElementById("Meter").getStyle().setDisplay(Display.BLOCK);
 		
 		//Set the selected bird card images to the comparison cards.
 	   	opponentCardComparison.setUrl(round.getOpponentCard().getCardImgSource());
 	   	playerCardComparison.setUrl(round.getPlayerCard().getCardImgSource());
 		
 	   	//Find the appropriate arrow animation to use for the player's card. 
-		switch(round.getPlayerCard().getBirdAttribute(attributeIndex)) {
+		switch(round.getPlayerCard().getAttribute(attributeIndex)) {
 			case 1:
 				Document.get().getElementById("PlayerArrow1").getStyle().setDisplay(Display.BLOCK);
 				break;
@@ -508,7 +509,7 @@ public class GWTBirdWorld implements EntryPoint {
 		}
 
 	   	//Find the appropriate arrow animation to use for the opponent's card.
-		switch(round.getOpponentCard().getBirdAttribute(attributeIndex)) {
+		switch(round.getOpponentCard().getAttribute(attributeIndex)) {
 			case 1:
 				Document.get().getElementById("OpponentArrow1").getStyle().setDisplay(Display.BLOCK);
 				break;
@@ -669,26 +670,50 @@ public class GWTBirdWorld implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				audio.pause();
 				
-				Document.get().getElementById("Blackbox").getStyle().setDisplay(Display.BLOCK);
-				
 				Document.get().getElementById("Option1").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("Option2").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("Option3").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("Option4").getStyle().setDisplay(Display.NONE);
 				
+				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
+				Document.get().getElementById("LargeSpeechBubble").getStyle().setDisplay(Display.BLOCK);
+				
 				round.checkIfPlayerCorrect(option.getUrl());
 				
-				if (round.getPlayerAdvantage() == true){
-					//Window.alert("Correct!");
-					birdSkillSelector.setUrl(round.getPlayerCard().getCardImgSource());
-					Document.get().getElementById("BirdAttributeSelector").getStyle().setDisplay(Display.BLOCK);
-				} else { 
-					//Window.alert("Wrong!");
-					Random random = new Random();
-					int attributeIndex = random.nextInt(NUM_OF_ATTRIBUTES - 1) + 0;
-					
-					playerCardVsOpponentCard(attributeIndex);
+				if (round.getPlayerAdvantage() == true) {
+					Document.get().getElementById("OptionCorrect").getStyle().setDisplay(Display.BLOCK);
+				} else {
+					Document.get().getElementById("OptionIncorrect").getStyle().setDisplay(Display.BLOCK);
 				}
+				
+				//Create bird message.
+				Timer delayAttributeSelection = new Timer() {
+					public void run() {
+						Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("LargeSpeechBubble").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OptionCorrect").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("OptionIncorrect").getStyle().setDisplay(Display.NONE);
+						
+						Document.get().getElementById("Blackbox").getStyle().setDisplay(Display.BLOCK);
+						
+						if (round.getPlayerAdvantage() == true) {
+							//Window.alert("Correct!"); Tester for correct answer.
+							game.getPlayer().increaseScore();
+							Document.get().getElementById("PlayerScore").setInnerText(Integer.toString(game.getPlayer().getScore()));
+							
+							birdAttributeSelector.setUrl(round.getPlayerCard().getCardImgSource());
+							Document.get().getElementById("BirdAttributeSelector").getStyle().setDisplay(Display.BLOCK);
+						} else { 
+							//Window.alert("Wrong!"); Tester for wrong answer.
+							game.getOpponent().increaseScore();
+							Document.get().getElementById("OpponentScore").setInnerText(Integer.toString(game.getOpponent().getScore()));
+							
+							playerCardVsOpponentCard(round.opponentChoosesAttribute());
+						}
+				    }
+				};
+				
+				delayAttributeSelection.schedule(3500);
 			}
 		});
 	}
@@ -698,6 +723,8 @@ public class GWTBirdWorld implements EntryPoint {
 		card.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
+				audio.pause();
+				
 				if (game.getDrawingStatus() == false && roundInProgress == false) {					
 					switch(index) {
 						case 0: 

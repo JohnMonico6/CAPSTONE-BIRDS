@@ -66,8 +66,8 @@ public class SinglePlayerRound {
 	}
 	
 	public void compareAttributes(int attributeIndex) {
-		int playerAttribute = playerCard.getBirdAttribute(attributeIndex);
-		int opponentAttribute = opponentCard.getBirdAttribute(attributeIndex);
+		int playerAttribute = playerCard.getAttribute(attributeIndex);
+		int opponentAttribute = opponentCard.getAttribute(attributeIndex);
 
 		if (playerAttribute > opponentAttribute) {
 			playerHasWon = true;	
@@ -84,6 +84,16 @@ public class SinglePlayerRound {
 	public void removePlayedCardsFromDecks() {
 		game.getPlayer().getDeck().removeCard(playerCard);
 		game.getOpponent().getDeck().removeCard(opponentCard);
+	}
+	
+	public int opponentChoosesAttribute() {
+		int[] array = opponentCard.getAttributes();
+		
+		int largest = 0;
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > array[largest] ) largest = i;
+		}
+		return largest;
 	}
 	
 	public boolean getPlayerHasWon() {

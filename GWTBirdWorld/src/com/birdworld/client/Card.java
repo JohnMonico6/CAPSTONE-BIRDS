@@ -19,7 +19,7 @@ public class Card {
 		return birdName;
 	}
 	
-	public int getBirdAttribute(int index) {
+	public int getAttribute(int index) {
 		return attributes[index];
 	}
 	
@@ -33,5 +33,9 @@ public class Card {
 	
 	public String getAudioSource() {
 		return audioSrc;
+	}
+	
+	public int[] getAttributes() {
+		return attributes;
 	}
 }
