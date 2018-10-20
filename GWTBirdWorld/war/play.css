@@ -7,6 +7,12 @@
 	background-image: url("images/BirdGameTitle.png");
 	background-size: 1200px 730px;
 }
+
+#Rules {
+	position: relative;
+	padding-top: 30px;
+	padding-left: 120px;
+}
 			
 #PlayButton {
 	position: absolute;
@@ -258,23 +264,12 @@
     transform: scale(1.1);
 }
 
-#Pile {
-	position: absolute;
-	width: 120px;
-	height: 180px;
-	left: 4%;
-	top: 37%;
-	z-index: +1;
-	display: none;
-	transform: rotate(180deg);
-}
-
 #Option1 {
 	position: absolute;
 	width: auto;
 	height: 150px;
 	left: 84%;
-	top: 10%;
+	top: 7%;
 	z-index: +1;
 	display: none;
 	cursor: pointer;
@@ -290,7 +285,7 @@
 	width: auto;
 	height: 150px;
 	left: 84%;
-	top: 32%;
+	top: 29%;
 	z-index: +1;
 	display: none;
 	cursor: pointer;
@@ -306,7 +301,7 @@
 	width: auto;
 	height: 150px;
 	left: 84%;
-	top: 54%;
+	top: 51%;
 	z-index: +1;
 	display: none;
 	cursor: pointer;
@@ -322,7 +317,7 @@
 	width: auto;
 	height: 150px;
 	left: 84%;
-	top: 76%;
+	top: 73%;
 	z-index: +1;
 	display: none;
 	cursor: pointer;
@@ -526,8 +521,8 @@
 
 #OptionCorrect {
 	position: absolute;
-	left: 41%;
-	top: 42%;
+	left: 39%;
+	top: 50%;
 	font-size: 33px;
 	font-weight: bold;
 	z-index: +21;
@@ -599,16 +594,6 @@
 	top: 40%;
 	left: 33%;
 	width: 300px;
-	height: auto;
-	z-index: +20;
-	display: none;	
-}
-
-#LargeSpeechBubble {
-	position: absolute;
-	top: 30%;
-	left: 33%;
-	width: 400px;
 	height: auto;
 	z-index: +20;
 	display: none;	

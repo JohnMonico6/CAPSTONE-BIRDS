@@ -37,7 +37,6 @@ public class GWTBirdWorld implements EntryPoint {
 	Image opponentCard5 = new Image(); 
 	Image playerPlayedCard = new Image();
 	Image opponentPlayedCard = new Image(); 
-	Image pile = new Image();
 	Image option1 = new Image();
 	Image option2 = new Image();
 	Image option3 = new Image();
@@ -120,13 +119,13 @@ public class GWTBirdWorld implements EntryPoint {
 	   	opponentPlayedCard.setUrl("images/BackOfCardUpright.png");
 	   	
 	   	//Format Card Guessors
-	   	option1.setWidth("auto"); //THESE VALUES NEED TO BE TWEAKED ONCE WE GET THE ACTUAL DIMENSIONS
+	   	option1.setWidth("168px");
 	   	option1.setHeight("150px");
-	   	option2.setWidth("auto");
+	   	option2.setWidth("168px");
 	   	option2.setHeight("150px");
-	   	option3.setWidth("auto");
+	   	option3.setWidth("168px");
 	   	option3.setHeight("150px");
-	   	option4.setWidth("auto");
+	   	option4.setWidth("168px");
 	   	option4.setHeight("150px");
 	   	
 	   	//Format Attribute Selections
@@ -182,11 +181,6 @@ public class GWTBirdWorld implements EntryPoint {
 	   	//Format Stat Selector 
 	   	birdAttributeSelector.setWidth("120px");
 	   	birdAttributeSelector.setHeight("180px");
-	   	
-	   	//Format pile
-	   	pile.setWidth("120px");
-	   	pile.setHeight("180px");
-	   	pile.setUrl("images/BackOfCard.png");
 	   
 	   	//Format Play Button
 	   	playBtn.addStyleName("PlayButton");
@@ -214,7 +208,6 @@ public class GWTBirdWorld implements EntryPoint {
 	   			Document.get().getElementById("GameTitleScreen").getStyle().setDisplay(Display.NONE);
 	   			Document.get().getElementById("PlayButton").getStyle().setDisplay(Display.NONE);
 	   			
-	   			Document.get().getElementById("Pile").getStyle().setDisplay(Display.BLOCK);
 	   			Document.get().getElementById("GameBoard").getStyle().setDisplay(Display.BLOCK);
 	   			Document.get().getElementById("CardLeft").getStyle().setDisplay(Display.BLOCK);
 	   			Document.get().getElementById("CardMiddle").getStyle().setDisplay(Display.BLOCK);
@@ -280,7 +273,6 @@ public class GWTBirdWorld implements EntryPoint {
 	   	VerticalPanel opponentCard5Panel = new VerticalPanel();
 	   	VerticalPanel playerPlayedCardPanel = new VerticalPanel();
 	   	VerticalPanel opponentPlayedCardPanel = new VerticalPanel();
-	   	VerticalPanel pilePanel = new VerticalPanel();
 	   	VerticalPanel option1Panel = new VerticalPanel();
 	   	VerticalPanel option2Panel = new VerticalPanel();
 	   	VerticalPanel option3Panel = new VerticalPanel();
@@ -321,7 +313,6 @@ public class GWTBirdWorld implements EntryPoint {
 	   	opponentCard5Panel.add(opponentCard5);
 	   	playerPlayedCardPanel.add(playerPlayedCard);
 	   	opponentPlayedCardPanel.add(opponentPlayedCard);
-	   	pilePanel.add(pile);
 	   	option1Panel.add(option1);
 	   	option2Panel.add(option2);
 	   	option3Panel.add(option3);
@@ -362,7 +353,6 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("OpponentCard5").add(opponentCard5Panel);
 	   	RootPanel.get("PlayerPlayedCard").add(playerPlayedCardPanel);
 	   	RootPanel.get("OpponentPlayedCard").add(opponentPlayedCardPanel); 
-	   	RootPanel.get("Pile").add(pilePanel);
 	   	RootPanel.get("Option1").add(option1Panel);
 	   	RootPanel.get("Option2").add(option2Panel);
 	   	RootPanel.get("Option3").add(option3Panel);
@@ -676,7 +666,7 @@ public class GWTBirdWorld implements EntryPoint {
 				Document.get().getElementById("Option4").getStyle().setDisplay(Display.NONE);
 				
 				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
-				Document.get().getElementById("LargeSpeechBubble").getStyle().setDisplay(Display.BLOCK);
+				Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);
 				
 				round.checkIfPlayerCorrect(option.getUrl());
 				
@@ -690,7 +680,7 @@ public class GWTBirdWorld implements EntryPoint {
 				Timer delayAttributeSelection = new Timer() {
 					public void run() {
 						Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.NONE);
-						Document.get().getElementById("LargeSpeechBubble").getStyle().setDisplay(Display.NONE);
+						Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.NONE);
 						Document.get().getElementById("OptionCorrect").getStyle().setDisplay(Display.NONE);
 						Document.get().getElementById("OptionIncorrect").getStyle().setDisplay(Display.NONE);
 						
@@ -713,7 +703,7 @@ public class GWTBirdWorld implements EntryPoint {
 				    }
 				};
 				
-				delayAttributeSelection.schedule(3500);
+				delayAttributeSelection.schedule(1500);
 			}
 		});
 	}
