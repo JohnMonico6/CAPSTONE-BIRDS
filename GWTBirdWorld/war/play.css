@@ -8,6 +8,80 @@
 	background-size: 1200px 730px;
 }
 
+#HelpIcon {
+	width: 50px;
+    heigth: auto;
+    z-index: +3;
+}
+
+ /* Popup container */
+.popup {
+    position: absolute;
+    display: inline-block;
+    width: 50px;
+    heigth: auto;
+    z-index: +3;
+}
+
+.Information {
+	cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: visible;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 8px 10px;
+    position: absolute;
+    z-index: +3;
+    margin-top: 55px;
+    left: 50%;
+    margin-left: -21px;
+    	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 13%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+    	transform: rotate(180deg);
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+} 
+
+/* Add animation (fade out the popup) */
+@-webkit-keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+} 
+
 #Rules {
 	position: relative;
 	padding-top: 30px;
@@ -22,6 +96,30 @@
 	height: 30px;
 	max-width: 100%;
 	z-index: +2;
+}
+
+#ContinueButton {
+	position: absolute;
+	left: 45.5%;
+	top: 75%;
+	z-index: +50;
+	display: none;
+	width: 200px;
+}
+
+.GWTContinueButton {
+	cursor: pointer;
+	border: 3px solid black;
+	background-color: white;
+	height: 30px;
+	font-weight: bold;
+	font-size: 20px;
+	width: 500px;
+	border-radius: 12px;
+}
+
+.GWTContinueButton:hover {
+	transform: scale(1.1);
 }
 			
 #CardLeft {
@@ -460,7 +558,7 @@
 #PlayerScoreLabel {
 	position: absolute;
 	top: 85%;
-	left: 8%;
+	left: 1%;
 	color: white;
 	font-weight: bold;
 }
@@ -468,7 +566,7 @@
 #OpponentScoreLabel {
 	position: absolute;
 	top: 90%;
-	left: 8%;
+	left: 1%;
 	color: white;
 	font-weight: bold;
 }
@@ -476,7 +574,7 @@
 #PlayerScore {
 	position: absolute;
 	top: 85%;
-	left: 20%;
+	left: 13%;
 	color: white;
 	font-weight: bold;
 }
@@ -484,7 +582,7 @@
 #OpponentScore {
 	position: absolute;
 	top: 90%;
-	left: 20%;
+	left: 13%;
 	color: white;
 	font-weight: bold;
 }

@@ -16,9 +16,14 @@ import com.birdworld.client.Player;
 import com.google.gwt.media.client.Audio;
 
 public class GWTBirdWorld implements EntryPoint {
+	
+	//Global variables
 	boolean roundInProgress = false;
+	boolean popupActive = true;
+	
 	int handSize = 4;
 	final int NUM_OF_ATTRIBUTES = 5;
+	
 	enum CardType{DECK, DRAW, PLAYER_PLAYED_CARD, OPPONENT_PLAYED_CARD};
 
 	//Create images
@@ -45,6 +50,7 @@ public class GWTBirdWorld implements EntryPoint {
 	Image opponentCardComparison = new Image();
 	Image playerCardComparison = new Image();
 	Image soundIcon = new Image();
+	Image helpIcon = new Image();
 	
 	//Create HTML objects
 	HTML attribute1 = new HTML();
@@ -62,6 +68,10 @@ public class GWTBirdWorld implements EntryPoint {
 	HTML drawCardSound3 = new HTML();
 	HTML playerPlayedCardSound = new HTML();
 	
+	//Initialize Button
+	Button continueBtn = new Button("Continue!");
+	Button playBtn = new Button("Play!");
+	
 	//Initialize Audio files
 	Audio audio = Audio.createIfSupported();
 
@@ -74,8 +84,6 @@ public class GWTBirdWorld implements EntryPoint {
 	//Initialize SinglePlayerRound
 	SinglePlayerRound round;
 	
-	//Create button
-	Button playBtn = new Button("Play!");
 	   
 	public void onModuleLoad() {
 	   
@@ -186,6 +194,11 @@ public class GWTBirdWorld implements EntryPoint {
 	   	playBtn.addStyleName("PlayButton");
 	   	playBtn.setWidth("100px");
 	   	
+	   	//Format Continue Button
+	   	continueBtn.setStyleName("GWTContinueButton");
+	   	continueBtn.setWidth("120px");
+	   	continueBtn.setHeight("40px");
+	   	
 	   	//Format Comparison Cards
 	   	opponentCardComparison.setWidth("120px");
 	   	opponentCardComparison.setHeight("180px");
@@ -197,25 +210,11 @@ public class GWTBirdWorld implements EntryPoint {
 	   	soundIcon.setHeight("110px");
 	   	soundIcon.setUrl("images/replay.png");
 	   	
-	   
-	   	/**
-	   	 * Create game space when the "play button" is clicked.
-	   	 */
-	   	playBtn.addClickHandler(new ClickHandler() {
-	   		@Override
-	   		public void onClick(ClickEvent event) {	        	 
-			   
-	   			Document.get().getElementById("GameTitleScreen").getStyle().setDisplay(Display.NONE);
-	   			Document.get().getElementById("PlayButton").getStyle().setDisplay(Display.NONE);
-	   			
-	   			Document.get().getElementById("GameBoard").getStyle().setDisplay(Display.BLOCK);
-	   			Document.get().getElementById("CardLeft").getStyle().setDisplay(Display.BLOCK);
-	   			Document.get().getElementById("CardMiddle").getStyle().setDisplay(Display.BLOCK);
-	   			Document.get().getElementById("CardRight").getStyle().setDisplay(Display.BLOCK);
-			   
-	   			updateScreen();
-	   		}
-	   	});
+	   	//Format helpIcon
+	   	helpIcon.setWidth("50px");
+	   	helpIcon.setHeight("auto");
+	   	helpIcon.setUrl("images/Information.png");
+	   	helpIcon.setStyleName("Information");
 	   	
 	   	//Check if draw card has been clicked.
 	   	drawCardClicked(cardLeft, 0);
@@ -252,8 +251,19 @@ public class GWTBirdWorld implements EntryPoint {
 	   	soundButtonClicked(drawCardSound2, 1, CardType.DRAW);
 	   	soundButtonClicked(drawCardSound3, 2, CardType.DRAW);
 	   	
+	   	//Check if play button is clicked.
+	   	playBtnClicked();
+	   	
+	   	//Check if continue button is clicked.
+	   	continueBtnClicked();
+	   	
+	   	//Check if sound button is clicked.
 	   	soundIconClicked();
 	   	
+	   	//Check if help icon is clicked.
+	   	helpIconClicked();
+	   	
+	   	//Check if player card is clicked.
 	   	playerCardClicked();
 	   
 	   	//Create Panels for objects
@@ -295,6 +305,8 @@ public class GWTBirdWorld implements EntryPoint {
 		VerticalPanel playerCardComparisonPanel = new VerticalPanel();
 		VerticalPanel opponentCardComparisonPanel = new VerticalPanel();
 		VerticalPanel soundIconPanel = new VerticalPanel();
+		VerticalPanel continueBtnPanel = new VerticalPanel();
+		VerticalPanel helpIconPanel = new VerticalPanel();
 	   
 	   	//Add objects to Panels
 	   	playBtnPanel.add(playBtn);   
@@ -335,6 +347,8 @@ public class GWTBirdWorld implements EntryPoint {
 	   	playerCardComparisonPanel.add(playerCardComparison);
 	   	opponentCardComparisonPanel.add(opponentCardComparison);
 	   	soundIconPanel.add(soundIcon);
+	   	continueBtnPanel.add(continueBtn);
+	   	helpIconPanel.add(helpIcon);
 	   
 	   	//Add the panels to the div in the html file
 	   	RootPanel.get("PlayButton").add(playBtnPanel);
@@ -375,8 +389,10 @@ public class GWTBirdWorld implements EntryPoint {
 	   	RootPanel.get("PlayerCardComparison").add(playerCardComparisonPanel);
 	   	RootPanel.get("OpponentCardComparison").add(opponentCardComparisonPanel);
 	   	RootPanel.get("SoundIcon").add(soundIconPanel);
-	   	
+	   	RootPanel.get("ContinueButton").add(continueBtnPanel);
+	   	RootPanel.get("HelpIcon").add(helpIconPanel);
 	}
+	
    
 	/**
 	 * Updates the screen when cards have moved or changed.
@@ -452,6 +468,9 @@ public class GWTBirdWorld implements EntryPoint {
 				audio.pause();
 				game.playerSelectedCard(index); 
 				updateScreen();
+				
+				//Update popup help message.
+				Document.get().getElementById("myPopup").setInnerText("Choose a card from your deck to challenge your opponent with.");
 			}
 		});
 	}
@@ -517,7 +536,7 @@ public class GWTBirdWorld implements EntryPoint {
 				break;
 		}
 		
-		//Create bird message.
+		//Create bird message timer.
 		Timer delayBirdMessage = new Timer() {
 			public void run() {
 				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
@@ -525,30 +544,81 @@ public class GWTBirdWorld implements EntryPoint {
 				
 				if (round.getPlayerHasWon() == true) {
 					Document.get().getElementById("WinMessage").getStyle().setDisplay(Display.BLOCK);
+					
+					//Update popup help message.
+					Document.get().getElementById("myPopup").setInnerText("Your attribute's score was higher than your opponent's! You score a point. Click the continue button to start a new round.");
 				} else if (round.getOpponentHasWon() == true) {
 					Document.get().getElementById("LoseMessage").getStyle().setDisplay(Display.BLOCK);
+					
+					//Update popup help message.
+					Document.get().getElementById("myPopup").setInnerText("Your opponent's attribute score was higher than yours! Opponent scores a point. Click the continue button to start a new round.");
 				} else {
 					Document.get().getElementById("DrawMessage").getStyle().setDisplay(Display.BLOCK);
+					
+					//Update popup help message.
+					Document.get().getElementById("myPopup").setInnerText("The attribute scores were equal! Both players score a point. Click the continue button to start a new round.");
 				}
+		    }
+		};
+		
+		//Create timer to wipe bird message.
+		Timer wipeBirdMessage = new Timer() {
+			public void run() {
+				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("WinMessage").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("LoseMessage").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("DrawMessage").getStyle().setDisplay(Display.NONE);
+				
+				Document.get().getElementById("ContinueButton").getStyle().setDisplay(Display.BLOCK);
 		    }
 		};
 		
 		//Play bird message after 3500 milliseconds.
 		delayBirdMessage.schedule(3500);
 		
-		//Return the interface to the original state before a round starts.
-		Timer delaySetup = new Timer() {
-			public void run() {
+		//Wipe bird message after 5000 milliseconds.
+		wipeBirdMessage.schedule(5000);
+	}
+	
+	/**
+	 * Create game space when the "play button" is clicked.
+	 * 
+	 */
+	public void playBtnClicked() {
+	   	playBtn.addClickHandler(new ClickHandler() {
+	   		@Override
+	   		public void onClick(ClickEvent event) {	        	 
+			   
+	   			Document.get().getElementById("GameTitleScreen").getStyle().setDisplay(Display.NONE);
+	   			Document.get().getElementById("PlayButton").getStyle().setDisplay(Display.NONE);
+	   			
+	   			Document.get().getElementById("GameBoard").getStyle().setDisplay(Display.BLOCK);
+	   			Document.get().getElementById("CardLeft").getStyle().setDisplay(Display.BLOCK);
+	   			Document.get().getElementById("CardMiddle").getStyle().setDisplay(Display.BLOCK);
+	   			Document.get().getElementById("CardRight").getStyle().setDisplay(Display.BLOCK);
+			   
+	   			updateScreen();
+	   		}
+	   	});
+	}
+	
+	/**
+	 * Return interface to original state when continueBtn is
+	 * clicked. If no one has won, start another round.
+	 * 
+	 */
+	public void continueBtnClicked() {
+		//add a clickListener to player attributes.
+		continueBtn.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				//Window.alert("Clicked!"); Tester to see if clickevent responding.
 				roundInProgress = false;
 				
 				Document.get().getElementById("PlayerScore").setInnerText(Integer.toString(game.getPlayer().getScore()));
 				Document.get().getElementById("OpponentScore").setInnerText(Integer.toString(game.getOpponent().getScore()));
-				
-				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("WinMessage").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("LoseMessage").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("DrawMessage").getStyle().setDisplay(Display.NONE);
+	
 				Document.get().getElementById("Meter").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("PlayerCardComparison").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("OpponentCardComparison").getStyle().setDisplay(Display.NONE);
@@ -565,6 +635,10 @@ public class GWTBirdWorld implements EntryPoint {
 				Document.get().getElementById("OpponentArrow5").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("PlayerPlayedCard").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("OpponentPlayedCard").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("ContinueButton").getStyle().setDisplay(Display.NONE);
+				
+				//Update popup help message.
+				Document.get().getElementById("myPopup").setInnerText("Choose a card from your deck to challenge your opponent with.");
 				
 				game.checkForVictory();
 				if (game.getPlayer().isWinner() && game.getOpponent().isWinner()){
@@ -575,18 +649,36 @@ public class GWTBirdWorld implements EntryPoint {
 				} else if (game.getOpponent().isWinner()){ 
 					//Window.alert("Computer has won");
 					Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
-					Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);								Document.get().getElementById("ComputerVictory").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);
+					Document.get().getElementById("ComputerVictory").getStyle().setDisplay(Display.BLOCK);
 				} else if (game.getPlayer().isWinner()){
 					//Window.alert("Player has won");
 					Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
 					Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.BLOCK);
 					Document.get().getElementById("PlayerVictory").getStyle().setDisplay(Display.BLOCK);
 				}
-		    }
-		};
-		
-		//Return interface to original state after 5000 milliseconds.
-		delaySetup.schedule(5000);
+			}		
+		});
+	}
+	
+	/**
+	 * Show popup message when help icon is clicked.
+	 * 
+	 */
+	public void helpIconClicked() {
+		//add a clickListener to player attributes.
+		helpIcon.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				if (popupActive == true) {
+					Document.get().getElementById("myPopup").getStyle().setDisplay(Display.NONE);
+					popupActive = false;
+				} else {
+					Document.get().getElementById("myPopup").getStyle().setDisplay(Display.BLOCK);
+					popupActive = true;
+				}
+			}
+		});
 	}
 	
 	/**
@@ -602,6 +694,10 @@ public class GWTBirdWorld implements EntryPoint {
 			@Override
 			public void onClick(ClickEvent event) {
 				//Window.alert("Clicked!"); Tester to see if clickevent responding.
+				
+				//Update popup help message.
+				Document.get().getElementById("myPopup").setInnerText("You chose an attribute. Comparing scores...");
+				
 				playerCardVsOpponentCard(attributeIndex);
 			}
 				
@@ -693,10 +789,16 @@ public class GWTBirdWorld implements EntryPoint {
 							
 							birdAttributeSelector.setUrl(round.getPlayerCard().getCardImgSource());
 							Document.get().getElementById("BirdAttributeSelector").getStyle().setDisplay(Display.BLOCK);
+							
+							//Update popup help message.
+							Document.get().getElementById("myPopup").setInnerText("Select one of your bird's attributes. If the attribute's score is higher than your opponent's, you score a point!");
 						} else { 
 							//Window.alert("Wrong!"); Tester for wrong answer.
 							game.getOpponent().increaseScore();
 							Document.get().getElementById("OpponentScore").setInnerText(Integer.toString(game.getOpponent().getScore()));
+							
+							//Update popup help message.
+							Document.get().getElementById("myPopup").setInnerText("Opponent chose an attribute. Comparing scores...");
 							
 							playerCardVsOpponentCard(round.opponentChoosesAttribute());
 						}
@@ -714,6 +816,9 @@ public class GWTBirdWorld implements EntryPoint {
 			@Override
 			public void onClick(ClickEvent event) {
 				audio.pause();
+				
+				//Update popup help message.
+				Document.get().getElementById("myPopup").setInnerText("Guess what bird is on the opponent's card based on the bird call. If you're correct, you'll score a point. If you're incorrect, your opponent will get a point instead.");
 				
 				if (game.getDrawingStatus() == false && roundInProgress == false) {					
 					switch(index) {

@@ -27,8 +27,13 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		
-	<script>
-	</script>
+		<script>
+		// When the user clicks on <div>, open the popup
+		function myFunction() {
+   			var popup = document.getElementById("myPopup");
+   			popup.classList.toggle("hide");
+		}
+		</script>
 
 	<body class="right-sidebar">
 	
@@ -136,6 +141,7 @@
 								<div id = "Attribute4"></div>
 								<div id = "Attribute5"></div>
 							</div>
+							<div id = "ContinueButton"></div>
 							<label id = "WinMessage">Nice Work!</label>
 							<label id = "LoseMessage">Bad Luck!</label>
 							<label id = "DrawMessage">It's a Draw!</label>
@@ -162,6 +168,9 @@
 							<img id = "OpponentArrow3" src="images/LeftArrow.png"></img>
 							<img id = "OpponentArrow4" src="images/LeftArrow.png"></img>
 							<img id = "OpponentArrow5" src="images/LeftArrow.png"></img>
+							<div id = "HelpIcon" class="popup">
+  								<span class="popuptext" id="myPopup">Choose a card out of the three presented until your deck is full. (Click on the icon above to hide messages.)</span>
+							</div> 
 						</p>
 						</div>
 				</section>
