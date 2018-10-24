@@ -69,7 +69,7 @@ public class GWTBirdWorld implements EntryPoint {
 	HTML playerPlayedCardSound = new HTML();
 	
 	//Initialize Button
-	Button continueBtn = new Button("Continue!");
+	Button continueBtn = new Button("Continue?");
 	Button playBtn = new Button("Play!");
 	
 	//Initialize Audio files
@@ -536,7 +536,7 @@ public class GWTBirdWorld implements EntryPoint {
 				break;
 		}
 		
-		//Create bird message timer.
+		//Create bird message.
 		Timer delayBirdMessage = new Timer() {
 			public void run() {
 				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.BLOCK);
@@ -558,17 +558,6 @@ public class GWTBirdWorld implements EntryPoint {
 					//Update popup help message.
 					Document.get().getElementById("myPopup").setInnerText("The attribute scores were equal! Both players score a point. Click the continue button to start a new round.");
 				}
-		    }
-		};
-		
-		//Create timer to wipe bird message.
-		Timer wipeBirdMessage = new Timer() {
-			public void run() {
-				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("WinMessage").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("LoseMessage").getStyle().setDisplay(Display.NONE);
-				Document.get().getElementById("DrawMessage").getStyle().setDisplay(Display.NONE);
 				
 				Document.get().getElementById("ContinueButton").getStyle().setDisplay(Display.BLOCK);
 		    }
@@ -576,9 +565,6 @@ public class GWTBirdWorld implements EntryPoint {
 		
 		//Play bird message after 3500 milliseconds.
 		delayBirdMessage.schedule(3500);
-		
-		//Wipe bird message after 5000 milliseconds.
-		wipeBirdMessage.schedule(5000);
 	}
 	
 	/**
@@ -618,7 +604,12 @@ public class GWTBirdWorld implements EntryPoint {
 				
 				Document.get().getElementById("PlayerScore").setInnerText(Integer.toString(game.getPlayer().getScore()));
 				Document.get().getElementById("OpponentScore").setInnerText(Integer.toString(game.getOpponent().getScore()));
-	
+				
+				Document.get().getElementById("BristleBird").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("SpeechBubble").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("WinMessage").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("LoseMessage").getStyle().setDisplay(Display.NONE);
+				Document.get().getElementById("DrawMessage").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("Meter").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("PlayerCardComparison").getStyle().setDisplay(Display.NONE);
 				Document.get().getElementById("OpponentCardComparison").getStyle().setDisplay(Display.NONE);
