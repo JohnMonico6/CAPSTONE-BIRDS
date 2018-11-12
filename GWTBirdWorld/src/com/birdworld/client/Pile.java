@@ -4,11 +4,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+
+/**
+ * Constructor Class that creates a Pile object.
+ * 
+ * @authors Luke Humphryes, John Monico.
+ * @version 1.5
+ *
+ */
 public class Pile {
 	ArrayList<Card> pile;
 	int numOfCards = 10;
 	
 	/**
+	 * Constructs a pile of cards.
 	 * 
 	 * Currently all cards are hard coded.
 	 * In future set code to draw cards from server.
@@ -121,6 +130,12 @@ public class Pile {
 		
 	}
 	
+	
+	/**
+	 * Randomly draws a card from the pile.
+	 * 
+	 * @return drawnCard The card selected from the pile tp be drawn.
+	 */
 	public Card draw() {
 		Card drawnCard;
 		
@@ -134,6 +149,13 @@ public class Pile {
 		return drawnCard;
 	}
 	
+	
+	/**
+	 * Gets card from the pile at a specified index.
+	 * 
+	 * @param index The position of the desired card.
+	 * @return Returns the card at specified index.
+	 */
 	public Card getCard(int index) {
 		return pile.get(index);
 	}

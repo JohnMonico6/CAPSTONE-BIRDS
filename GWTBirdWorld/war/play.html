@@ -96,52 +96,80 @@
 							<div id = "CardLeft">
 								<div id = "DrawCardSound1"></div>
 							</div>
+							
 							<div id = "CardMiddle">
 								<div id = "DrawCardSound2"></div>
 							</div>
+							
 							<div id = "CardRight">
 								<div id = "DrawCardSound3"></div>
 							</div>
+							
 							<div id = "DeckCard1">
 								<div id = "DeckCardSound1"></div>
 							</div>
+							
 							<div id = "DeckCard2">
 								<div id = "DeckCardSound2"></div>
 							</div>
+							
 							<div id = "DeckCard3">
 								<div id = "DeckCardSound3"></div>
 							</div>
+							
 							<div id = "DeckCard4">
 								<div id = "DeckCardSound4"></div>
 							</div>
+							
 							<div id = "DeckCard5">
 								<div id = "DeckCardSound5"></div>
 							</div>
+							
 							<div id = "OpponentCard1"></div>
 							<div id = "OpponentCard2"></div>
 							<div id = "OpponentCard3"></div>
 							<div id = "OpponentCard4"></div>
 							<div id = "OpponentCard5"></div>
+							
 							<div id = "PlayerPlayedCard">
 								<div id = "PlayerPlayedCardSound"></div> 
 							</div>
+							
 							<div id = "OpponentPlayedCard">
 								<div id = "SoundIcon"></div>
 							</div>
+							
 							<div id = "Option1"></div>
 							<div id = "Option2"></div>
 							<div id = "Option3"></div>
 							<div id = "Option4"></div>
-							<div id = OpponentCardComparison></div>
-							<div id = PlayerCardComparison></div>
-							<div id="BirdAttributeSelector">
-								<div id = "Attribute1"></div>
-								<div id = "Attribute2"></div>
-								<div id = "Attribute3"></div>
-								<div id = "Attribute4"></div>
-								<div id = "Attribute5"></div>
+							
+							<div id = "OpponentCardComparison">
+								<div id = "OpponentSelectedAttribute1"  class = "selectedAttribute"></div> 
+								<div id = "OpponentSelectedAttribute2" class = "selectedAttribute"></div>
+								<div id = "OpponentSelectedAttribute3" class = "selectedAttribute"></div>
+								<div id = "OpponentSelectedAttribute4" class = "selectedAttribute"></div>
+								<div id = "OpponentSelectedAttribute5" class = "selectedAttribute"></div>
 							</div>
+							
+							<div id = "PlayerCardComparison">
+								<div id = "PlayerSelectedAttribute1" class = "selectedAttribute"></div>
+								<div id = "PlayerSelectedAttribute2" class = "selectedAttribute"></div>
+								<div id = "PlayerSelectedAttribute3" class = "selectedAttribute"></div>
+								<div id = "PlayerSelectedAttribute4" class = "selectedAttribute"></div>
+								<div id = "PlayerSelectedAttribute5" class = "selectedAttribute"></div>
+							</div>
+							
+							<div id="BirdAttributeSelector">
+								<div id = "SelectableAttribute1"></div>
+								<div id = "SelectableAttribute2"></div>
+								<div id = "SelectableAttribute3"></div>
+								<div id = "SelectableAttribute4"></div>
+								<div id = "SelectableAttribute5"></div>
+							</div>
+							
 							<div id = "ContinueButton"></div>
+							
 							<label id = "WinMessage">Nice Work!</label>
 							<label id = "LoseMessage">Bad Luck!</label>
 							<label id = "DrawMessage">It's a Draw!</label>
@@ -154,6 +182,7 @@
 							<label id = "OpponentScoreLabel">Opponent Score:</label>
 							<label id = "PlayerScore">0</label>
 							<label id = "OpponentScore">0</label>
+							
 							<img id = "Notifier" src="images/Notfier1.png" value ="notifier"></img>
 							<img id = "BristleBird" src="images/bristlebird.png"></img>
 							<img id = "SpeechBubble" src="images/speechbubble.png"></img>
@@ -168,9 +197,12 @@
 							<img id = "OpponentArrow3" src="images/LeftArrow.png"></img>
 							<img id = "OpponentArrow4" src="images/LeftArrow.png"></img>
 							<img id = "OpponentArrow5" src="images/LeftArrow.png"></img>
+							
 							<div id = "HelpIcon" class="popup">
   								<span class="popuptext" id="myPopup">Choose a card out of the three presented until your deck is full. (Click on the icon above to hide messages.)</span>
 							</div> 
+							
+							<input id="RefreshButton" type="button" value="Play Again?" onClick="window.location.reload()">
 						</p>
 						</div>
 				</section>

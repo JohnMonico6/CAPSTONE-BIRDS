@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+
+/**
+ * Constructor Class that creates a SinglePlayerRound object.
+ * 
+ * @authors Luke Humphryes, John Monico.
+ * @version 1.6
+ *
+ */
 public class SinglePlayerRound {
 	private Card playerCard;
 	private Card opponentCard;
@@ -14,6 +22,13 @@ public class SinglePlayerRound {
 	private boolean isDraw = false;
 	private ArrayList<String> options = new ArrayList<String>();
 
+	
+	/**
+	 * Constructs a single player round.
+	 * 
+	 * @param playerCard The player's played card.
+	 * @param game The game which the round occurs in.
+	 */
 	public SinglePlayerRound(Card playerCard, SinglePlayerGame game) {
 		this.playerCard = playerCard;
 		this.game = game;
@@ -28,9 +43,15 @@ public class SinglePlayerRound {
 		
 	}
 	
+	
+	/**
+	 * Creates four options for the player to choose from. One of them
+	 * is the bird that owns the played bird call while the others are
+	 * randomly selected.
+	 * 
+	 */
 	public void createOptions() {
 		Random random = new Random();
-		ArrayList<String> newOptions = new ArrayList<String>();
 		
 		for (int i = 0; i < 3; i++) {
 			
@@ -54,9 +75,18 @@ public class SinglePlayerRound {
 			options.add(dummyUrl);
 		}	
 		options.add(opponentCard.getOptionImgSource());
-		Collections.swap(options, 3, random.nextInt(4));
+		Collections.swap(options, 3, random.nextInt(3));
 	}
 	
+	
+	/**
+	 * Checks if player has selected the correct bird from the four
+	 * options given. If the image source of the image matches the one
+	 * constructed with the opponents card, then the player is given the
+	 * advantage, otherwise, the opponent is given the advantage. 
+	 * 
+	 * @param optionImgSource The source of the option image selected. 
+	 */
 	public void checkIfPlayerCorrect(String optionImgSource) {
 		if (optionImgSource.contains(opponentCard.getOptionImgSource())) {
 			playerHasAdvantage = true;
@@ -65,6 +95,13 @@ public class SinglePlayerRound {
 		}
 	}
 	
+	
+	/**
+	 * Compares the opponents score and the player's score of the selected
+	 * attribute.
+	 * 
+	 * @param attributeIndex The position of the selected attribute.
+	 */
 	public void compareAttributes(int attributeIndex) {
 		int playerAttribute = playerCard.getAttribute(attributeIndex);
 		int opponentAttribute = opponentCard.getAttribute(attributeIndex);
@@ -80,12 +117,14 @@ public class SinglePlayerRound {
 			game.getOpponent().increaseScore();
 		}
 	}
+
 	
-	public void removePlayedCardsFromDecks() {
-		game.getPlayer().getDeck().removeCard(playerCard);
-		game.getOpponent().getDeck().removeCard(opponentCard);
-	}
-	
+	/**
+	 * Chooses the attribute with the highest score for the opponent 
+	 * should they have the advantage.
+	 * 
+	 * @return largest The attribute with the highest score.
+	 */
 	public int opponentChoosesAttribute() {
 		int[] array = opponentCard.getAttributes();
 		
@@ -96,38 +135,90 @@ public class SinglePlayerRound {
 		return largest;
 	}
 	
+	
+	/**
+	 * Gets playerHasWon.
+	 * 
+	 * @return playerHasWon.
+	 */
 	public boolean getPlayerHasWon() {
 		return playerHasWon;
 	}
 	
+	
+	/**
+	 * Gets opponentHasWon.
+	 * 
+	 * @return opponentHasWon.
+	 */
 	public boolean getOpponentHasWon() {
 		return opponentHasWon;
 	}
 	
+	
+	/**
+	 * Gets isDraw.
+	 * 
+	 * @return isDraw.
+	 */
 	public boolean getIsDraw() {
 		return isDraw;
 	}
 	
+	
+	/**
+	 * Gets array of options.
+	 * 
+	 * @return options The array of options.
+	 */
 	public ArrayList getOptions() {
 		return options;
 	}
 	
+	
+	/**
+	 * Gets the opponent's played card for the round.
+	 * 
+	 * @return opponentCard The opponents played card.
+	 */
 	public Card getOpponentCard() {
 		return opponentCard;
 	}
 	
+	
+	/**
+	 * Gets the player's played card for the round.
+	 * 
+	 * @return playerCard The player's played card.
+	 */
 	public Card getPlayerCard() {
 		return playerCard;
 	}
 	
+	
+	/**
+	 * Gets playerHasAdvantage.
+	 * 
+	 * @return playerHasAdvantage.
+	 */
 	public boolean getPlayerAdvantage() {
 		return playerHasAdvantage;
 	}
 	
+	
+	/**
+	 * Gives the player the advantage.
+	 * 
+	 */
 	public void givePlayerAdvantage() {
 		playerHasAdvantage = true;
 	}
 	
+	
+	/**
+	 * Gives the opponent the advantage.
+	 * 
+	 */
 	public void giveOpponentAdvantage() {
 		playerHasAdvantage = false;
 	}
